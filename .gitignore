@@ -1,0 +1,3 @@
+.DS_Store
+tests/codeception/web/assets/*
+!tests/codeception/web/assets/TEMP

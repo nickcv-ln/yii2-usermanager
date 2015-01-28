@@ -1,0 +1,1021 @@
+2015-01-28 11:34:35 [][-][-][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Call to undefined method Mock_ContactForm_dd738b06::contact()' in /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/unit/models/ContactFormTest.php:39
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2015-01-28 11:34:34 [][-][-][info][application] $_SERVER = [
+    'SCRIPT_FILENAME' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/web/index-test.php'
+    'SCRIPT_NAME' => '/index-test.php'
+    'RA_GIV' => 's6Hdwl8fWHC1_t|P'
+    'TERM_PROGRAM' => 'Apple_Terminal'
+    'RA_SMTP_USR' => 'no-reply@beg-for-keys.com'
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/nj/87nq3v6x2534mm930q6kbzgh0000gq/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.gGqpLjt2JT/Render'
+    'TERM_PROGRAM_VERSION' => '343'
+    'RA_GP' => 'vS4Y334_!dTj2'
+    'TERM_SESSION_ID' => 'E7FDF372-92E6-43EF-9BE0-DF74AAA0B879'
+    'USER' => 'nicola.puddu'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.b1MLtaQTBE/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F7:0x0:0x0'
+    'RA_SMTP_PSW' => 'ranchanucchan89'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin'
+    'RA_DB_NAME' => 'rest_assured'
+    'RA_SALT' => 'gewerVewa432SfE3478'
+    'PWD' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests'
+    'LANG' => 'en_GB.UTF-8'
+    'RA_DB_PSW' => 'root'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'HOME' => '/Users/nicola.puddu'
+    'SHLVL' => '1'
+    'RA_DB_USR' => 'root'
+    'RA_SMTP_HOST' => 'smtp.gmail.com'
+    'LOGNAME' => 'nicola.puddu'
+    'RA_CDN_URL' => 'http://cdn.restassured.loc/index-test.php/'
+    'RA_DB_HOST' => 'localhost'
+    'RA_SESSION_DOMAIN' => '.restassured.loc'
+    'SECURITYSESSIONID' => '186a6'
+    '_' => '/usr/bin/codecept'
+    'OLDPWD' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager'
+    'PHP_SELF' => '/usr/bin/codecept'
+    'PATH_TRANSLATED' => '/usr/bin/codecept'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1422444874.4646
+    'REQUEST_TIME' => 1422444874
+    'argv' => [
+        0 => '/usr/bin/codecept'
+        1 => 'run'
+    ]
+    'argc' => 2
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => 8080
+]
+2015-01-28 11:37:54 [][-][-][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Call to undefined method Mock_ContactForm_b219d0e4::contact()' in /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/unit/models/ContactFormTest.php:39
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2015-01-28 11:37:52 [][-][-][info][application] $_SERVER = [
+    'SCRIPT_FILENAME' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/web/index-test.php'
+    'SCRIPT_NAME' => '/index-test.php'
+    'RA_GIV' => 's6Hdwl8fWHC1_t|P'
+    'TERM_PROGRAM' => 'Apple_Terminal'
+    'RA_SMTP_USR' => 'no-reply@beg-for-keys.com'
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/nj/87nq3v6x2534mm930q6kbzgh0000gq/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.gGqpLjt2JT/Render'
+    'TERM_PROGRAM_VERSION' => '343'
+    'RA_GP' => 'vS4Y334_!dTj2'
+    'TERM_SESSION_ID' => 'E7FDF372-92E6-43EF-9BE0-DF74AAA0B879'
+    'USER' => 'nicola.puddu'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.b1MLtaQTBE/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F7:0x0:0x0'
+    'RA_SMTP_PSW' => 'ranchanucchan89'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin'
+    'RA_DB_NAME' => 'rest_assured'
+    'RA_SALT' => 'gewerVewa432SfE3478'
+    'PWD' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests'
+    'LANG' => 'en_GB.UTF-8'
+    'RA_DB_PSW' => 'root'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'HOME' => '/Users/nicola.puddu'
+    'SHLVL' => '1'
+    'RA_DB_USR' => 'root'
+    'RA_SMTP_HOST' => 'smtp.gmail.com'
+    'LOGNAME' => 'nicola.puddu'
+    'RA_CDN_URL' => 'http://cdn.restassured.loc/index-test.php/'
+    'RA_DB_HOST' => 'localhost'
+    'RA_SESSION_DOMAIN' => '.restassured.loc'
+    'SECURITYSESSIONID' => '186a6'
+    '_' => '/usr/bin/codecept'
+    'OLDPWD' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager'
+    'PHP_SELF' => '/usr/bin/codecept'
+    'PATH_TRANSLATED' => '/usr/bin/codecept'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1422445072.0333
+    'REQUEST_TIME' => 1422445072
+    'argv' => [
+        0 => '/usr/bin/codecept'
+        1 => 'run'
+    ]
+    'argc' => 2
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => 8080
+]
+2015-01-28 11:41:29 [][-][-][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Call to undefined method Mock_ContactForm_0fe6026c::contact()' in /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/unit/models/ContactFormTest.php:39
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2015-01-28 11:41:28 [][-][-][info][application] $_SERVER = [
+    'SCRIPT_FILENAME' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/web/index-test.php'
+    'SCRIPT_NAME' => '/index-test.php'
+    'RA_GIV' => 's6Hdwl8fWHC1_t|P'
+    'TERM_PROGRAM' => 'Apple_Terminal'
+    'RA_SMTP_USR' => 'no-reply@beg-for-keys.com'
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/nj/87nq3v6x2534mm930q6kbzgh0000gq/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.gGqpLjt2JT/Render'
+    'TERM_PROGRAM_VERSION' => '343'
+    'RA_GP' => 'vS4Y334_!dTj2'
+    'TERM_SESSION_ID' => 'E7FDF372-92E6-43EF-9BE0-DF74AAA0B879'
+    'USER' => 'nicola.puddu'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.b1MLtaQTBE/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F7:0x0:0x0'
+    'RA_SMTP_PSW' => 'ranchanucchan89'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin'
+    'RA_DB_NAME' => 'rest_assured'
+    'RA_SALT' => 'gewerVewa432SfE3478'
+    'PWD' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests'
+    'LANG' => 'en_GB.UTF-8'
+    'RA_DB_PSW' => 'root'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'HOME' => '/Users/nicola.puddu'
+    'SHLVL' => '1'
+    'RA_DB_USR' => 'root'
+    'RA_SMTP_HOST' => 'smtp.gmail.com'
+    'LOGNAME' => 'nicola.puddu'
+    'RA_CDN_URL' => 'http://cdn.restassured.loc/index-test.php/'
+    'RA_DB_HOST' => 'localhost'
+    'RA_SESSION_DOMAIN' => '.restassured.loc'
+    'SECURITYSESSIONID' => '186a6'
+    '_' => '/usr/bin/codecept'
+    'OLDPWD' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager'
+    'PHP_SELF' => '/usr/bin/codecept'
+    'PATH_TRANSLATED' => '/usr/bin/codecept'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1422445288.0333
+    'REQUEST_TIME' => 1422445288
+    'argv' => [
+        0 => '/usr/bin/codecept'
+        1 => 'run'
+    ]
+    'argc' => 2
+    'SERVER_NAME' => 'yii2-nickcv.test'
+    'SERVER_PORT' => '80'
+]
+2015-01-28 11:43:21 [][-][-][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Call to undefined method Mock_ContactForm_39ef7bf6::contact()' in /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/unit/models/ContactFormTest.php:39
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2015-01-28 11:43:19 [][-][-][info][application] $_SERVER = [
+    'SCRIPT_FILENAME' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/web/index-test.php'
+    'SCRIPT_NAME' => '/index-test.php'
+    'RA_GIV' => 's6Hdwl8fWHC1_t|P'
+    'TERM_PROGRAM' => 'Apple_Terminal'
+    'RA_SMTP_USR' => 'no-reply@beg-for-keys.com'
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/nj/87nq3v6x2534mm930q6kbzgh0000gq/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.gGqpLjt2JT/Render'
+    'TERM_PROGRAM_VERSION' => '343'
+    'RA_GP' => 'vS4Y334_!dTj2'
+    'TERM_SESSION_ID' => 'E7FDF372-92E6-43EF-9BE0-DF74AAA0B879'
+    'USER' => 'nicola.puddu'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.b1MLtaQTBE/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F7:0x0:0x0'
+    'RA_SMTP_PSW' => 'ranchanucchan89'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin'
+    'RA_DB_NAME' => 'rest_assured'
+    'RA_SALT' => 'gewerVewa432SfE3478'
+    'PWD' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests'
+    'LANG' => 'en_GB.UTF-8'
+    'RA_DB_PSW' => 'root'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'HOME' => '/Users/nicola.puddu'
+    'SHLVL' => '1'
+    'RA_DB_USR' => 'root'
+    'RA_SMTP_HOST' => 'smtp.gmail.com'
+    'LOGNAME' => 'nicola.puddu'
+    'RA_CDN_URL' => 'http://cdn.restassured.loc/index-test.php/'
+    'RA_DB_HOST' => 'localhost'
+    'RA_SESSION_DOMAIN' => '.restassured.loc'
+    'SECURITYSESSIONID' => '186a6'
+    '_' => '/usr/bin/codecept'
+    'OLDPWD' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager'
+    'PHP_SELF' => '/usr/bin/codecept'
+    'PATH_TRANSLATED' => '/usr/bin/codecept'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1422445399.6897
+    'REQUEST_TIME' => 1422445399
+    'argv' => [
+        0 => '/usr/bin/codecept'
+        1 => 'run'
+    ]
+    'argc' => 2
+    'SERVER_NAME' => 'yii2-nickcv.test'
+    'SERVER_PORT' => '80'
+]
+2015-01-28 11:45:02 [][-][-][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Call to undefined method Mock_ContactForm_d84655b6::contact()' in /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/unit/models/ContactFormTest.php:39
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2015-01-28 11:45:00 [][-][-][info][application] $_SERVER = [
+    'SCRIPT_FILENAME' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/web/index-test.php'
+    'SCRIPT_NAME' => '/index-test.php'
+    'RA_GIV' => 's6Hdwl8fWHC1_t|P'
+    'TERM_PROGRAM' => 'Apple_Terminal'
+    'RA_SMTP_USR' => 'no-reply@beg-for-keys.com'
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/nj/87nq3v6x2534mm930q6kbzgh0000gq/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.gGqpLjt2JT/Render'
+    'TERM_PROGRAM_VERSION' => '343'
+    'RA_GP' => 'vS4Y334_!dTj2'
+    'TERM_SESSION_ID' => 'E7FDF372-92E6-43EF-9BE0-DF74AAA0B879'
+    'USER' => 'nicola.puddu'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.b1MLtaQTBE/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F7:0x0:0x0'
+    'RA_SMTP_PSW' => 'ranchanucchan89'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin'
+    'RA_DB_NAME' => 'rest_assured'
+    'RA_SALT' => 'gewerVewa432SfE3478'
+    'PWD' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests'
+    'LANG' => 'en_GB.UTF-8'
+    'RA_DB_PSW' => 'root'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'HOME' => '/Users/nicola.puddu'
+    'SHLVL' => '1'
+    'RA_DB_USR' => 'root'
+    'RA_SMTP_HOST' => 'smtp.gmail.com'
+    'LOGNAME' => 'nicola.puddu'
+    'RA_CDN_URL' => 'http://cdn.restassured.loc/index-test.php/'
+    'RA_DB_HOST' => 'localhost'
+    'RA_SESSION_DOMAIN' => '.restassured.loc'
+    'SECURITYSESSIONID' => '186a6'
+    '_' => '/usr/bin/codecept'
+    'OLDPWD' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager'
+    'PHP_SELF' => '/usr/bin/codecept'
+    'PATH_TRANSLATED' => '/usr/bin/codecept'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1422445500.3082
+    'REQUEST_TIME' => 1422445500
+    'argv' => [
+        0 => '/usr/bin/codecept'
+        1 => 'run'
+    ]
+    'argc' => 2
+    'SERVER_NAME' => 'yii2-nickcv.test'
+    'SERVER_PORT' => '80'
+]
+2015-01-28 11:45:30 [][-][-][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Call to undefined method Mock_ContactForm_d50579f4::contact()' in /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/unit/models/ContactFormTest.php:39
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2015-01-28 11:45:30 [][-][-][info][application] $_SERVER = [
+    'RA_GIV' => 's6Hdwl8fWHC1_t|P'
+    'TERM_PROGRAM' => 'Apple_Terminal'
+    'RA_SMTP_USR' => 'no-reply@beg-for-keys.com'
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/nj/87nq3v6x2534mm930q6kbzgh0000gq/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.gGqpLjt2JT/Render'
+    'TERM_PROGRAM_VERSION' => '343'
+    'RA_GP' => 'vS4Y334_!dTj2'
+    'TERM_SESSION_ID' => 'E7FDF372-92E6-43EF-9BE0-DF74AAA0B879'
+    'USER' => 'nicola.puddu'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.b1MLtaQTBE/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F7:0x0:0x0'
+    'RA_SMTP_PSW' => 'ranchanucchan89'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin'
+    'RA_DB_NAME' => 'rest_assured'
+    'RA_SALT' => 'gewerVewa432SfE3478'
+    'PWD' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests'
+    'LANG' => 'en_GB.UTF-8'
+    'RA_DB_PSW' => 'root'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'HOME' => '/Users/nicola.puddu'
+    'SHLVL' => '1'
+    'RA_DB_USR' => 'root'
+    'RA_SMTP_HOST' => 'smtp.gmail.com'
+    'LOGNAME' => 'nicola.puddu'
+    'RA_CDN_URL' => 'http://cdn.restassured.loc/index-test.php/'
+    'RA_DB_HOST' => 'localhost'
+    'RA_SESSION_DOMAIN' => '.restassured.loc'
+    'SECURITYSESSIONID' => '186a6'
+    '_' => '/usr/bin/codecept'
+    'OLDPWD' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager'
+    'PHP_SELF' => '/usr/bin/codecept'
+    'SCRIPT_NAME' => '/index-test.php'
+    'SCRIPT_FILENAME' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/web/index-test.php'
+    'PATH_TRANSLATED' => '/usr/bin/codecept'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1422445530.6386
+    'REQUEST_TIME' => 1422445530
+    'argv' => [
+        0 => '/usr/bin/codecept'
+        1 => 'run'
+        2 => 'unit'
+    ]
+    'argc' => 3
+    'SERVER_NAME' => 'yii2-nickcv.test'
+    'SERVER_PORT' => '80'
+]
+2015-01-28 11:46:34 [][-][-][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Call to undefined method Mock_ContactForm_125bfd87::contact()' in /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/unit/models/ContactFormTest.php:39
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2015-01-28 11:46:34 [][-][-][info][application] $_SERVER = [
+    'RA_GIV' => 's6Hdwl8fWHC1_t|P'
+    'TERM_PROGRAM' => 'Apple_Terminal'
+    'RA_SMTP_USR' => 'no-reply@beg-for-keys.com'
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/nj/87nq3v6x2534mm930q6kbzgh0000gq/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.gGqpLjt2JT/Render'
+    'TERM_PROGRAM_VERSION' => '343'
+    'RA_GP' => 'vS4Y334_!dTj2'
+    'TERM_SESSION_ID' => 'E7FDF372-92E6-43EF-9BE0-DF74AAA0B879'
+    'USER' => 'nicola.puddu'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.b1MLtaQTBE/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F7:0x0:0x0'
+    'RA_SMTP_PSW' => 'ranchanucchan89'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin'
+    'RA_DB_NAME' => 'rest_assured'
+    'RA_SALT' => 'gewerVewa432SfE3478'
+    'PWD' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests'
+    'LANG' => 'en_GB.UTF-8'
+    'RA_DB_PSW' => 'root'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'HOME' => '/Users/nicola.puddu'
+    'SHLVL' => '1'
+    'RA_DB_USR' => 'root'
+    'RA_SMTP_HOST' => 'smtp.gmail.com'
+    'LOGNAME' => 'nicola.puddu'
+    'RA_CDN_URL' => 'http://cdn.restassured.loc/index-test.php/'
+    'RA_DB_HOST' => 'localhost'
+    'RA_SESSION_DOMAIN' => '.restassured.loc'
+    'SECURITYSESSIONID' => '186a6'
+    '_' => '/usr/bin/codecept'
+    'OLDPWD' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager'
+    'PHP_SELF' => '/usr/bin/codecept'
+    'SCRIPT_NAME' => '/index-test.php'
+    'SCRIPT_FILENAME' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/web/index-test.php'
+    'PATH_TRANSLATED' => '/usr/bin/codecept'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1422445594.4173
+    'REQUEST_TIME' => 1422445594
+    'argv' => [
+        0 => '/usr/bin/codecept'
+        1 => 'run'
+        2 => 'unit'
+    ]
+    'argc' => 3
+    'SERVER_NAME' => 'yii2-nickcv.test'
+    'SERVER_PORT' => '80'
+]
+2015-01-28 11:47:23 [][-][-][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Call to undefined method Mock_ContactForm_0286d7df::contact()' in /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/unit/models/ContactFormTest.php:39
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2015-01-28 11:47:23 [][-][-][info][application] $_SERVER = [
+    'RA_GIV' => 's6Hdwl8fWHC1_t|P'
+    'TERM_PROGRAM' => 'Apple_Terminal'
+    'RA_SMTP_USR' => 'no-reply@beg-for-keys.com'
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/nj/87nq3v6x2534mm930q6kbzgh0000gq/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.gGqpLjt2JT/Render'
+    'TERM_PROGRAM_VERSION' => '343'
+    'RA_GP' => 'vS4Y334_!dTj2'
+    'TERM_SESSION_ID' => 'E7FDF372-92E6-43EF-9BE0-DF74AAA0B879'
+    'USER' => 'nicola.puddu'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.b1MLtaQTBE/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F7:0x0:0x0'
+    'RA_SMTP_PSW' => 'ranchanucchan89'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin'
+    'RA_DB_NAME' => 'rest_assured'
+    'RA_SALT' => 'gewerVewa432SfE3478'
+    'PWD' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests'
+    'LANG' => 'en_GB.UTF-8'
+    'RA_DB_PSW' => 'root'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'HOME' => '/Users/nicola.puddu'
+    'SHLVL' => '1'
+    'RA_DB_USR' => 'root'
+    'RA_SMTP_HOST' => 'smtp.gmail.com'
+    'LOGNAME' => 'nicola.puddu'
+    'RA_CDN_URL' => 'http://cdn.restassured.loc/index-test.php/'
+    'RA_DB_HOST' => 'localhost'
+    'RA_SESSION_DOMAIN' => '.restassured.loc'
+    'SECURITYSESSIONID' => '186a6'
+    '_' => '/usr/bin/codecept'
+    'OLDPWD' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager'
+    'PHP_SELF' => '/usr/bin/codecept'
+    'SCRIPT_NAME' => '/index-test.php'
+    'SCRIPT_FILENAME' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/web/index-test.php'
+    'PATH_TRANSLATED' => '/usr/bin/codecept'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1422445642.9866
+    'REQUEST_TIME' => 1422445642
+    'argv' => [
+        0 => '/usr/bin/codecept'
+        1 => 'run'
+        2 => 'unit'
+    ]
+    'argc' => 3
+    'SERVER_NAME' => 'yii2-nickcv.test'
+    'SERVER_PORT' => '80'
+]
+2015-01-28 11:48:21 [][-][-][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Class 'app\models\LoginForm' not found' in /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/unit/models/LoginFormTest.php:22
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2015-01-28 11:48:21 [][-][-][info][application] $_SERVER = [
+    'RA_GIV' => 's6Hdwl8fWHC1_t|P'
+    'TERM_PROGRAM' => 'Apple_Terminal'
+    'RA_SMTP_USR' => 'no-reply@beg-for-keys.com'
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/nj/87nq3v6x2534mm930q6kbzgh0000gq/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.gGqpLjt2JT/Render'
+    'TERM_PROGRAM_VERSION' => '343'
+    'RA_GP' => 'vS4Y334_!dTj2'
+    'TERM_SESSION_ID' => 'E7FDF372-92E6-43EF-9BE0-DF74AAA0B879'
+    'USER' => 'nicola.puddu'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.b1MLtaQTBE/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F7:0x0:0x0'
+    'RA_SMTP_PSW' => 'ranchanucchan89'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin'
+    'RA_DB_NAME' => 'rest_assured'
+    'RA_SALT' => 'gewerVewa432SfE3478'
+    'PWD' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests'
+    'LANG' => 'en_GB.UTF-8'
+    'RA_DB_PSW' => 'root'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'HOME' => '/Users/nicola.puddu'
+    'SHLVL' => '1'
+    'RA_DB_USR' => 'root'
+    'RA_SMTP_HOST' => 'smtp.gmail.com'
+    'LOGNAME' => 'nicola.puddu'
+    'RA_CDN_URL' => 'http://cdn.restassured.loc/index-test.php/'
+    'RA_DB_HOST' => 'localhost'
+    'RA_SESSION_DOMAIN' => '.restassured.loc'
+    'SECURITYSESSIONID' => '186a6'
+    '_' => '/usr/bin/codecept'
+    'OLDPWD' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager'
+    'PHP_SELF' => '/usr/bin/codecept'
+    'SCRIPT_NAME' => '/index-test.php'
+    'SCRIPT_FILENAME' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/web/index-test.php'
+    'PATH_TRANSLATED' => '/usr/bin/codecept'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1422445701.737
+    'REQUEST_TIME' => 1422445701
+    'argv' => [
+        0 => '/usr/bin/codecept'
+        1 => 'run'
+        2 => 'unit'
+    ]
+    'argc' => 3
+    'SERVER_NAME' => 'yii2-nickcv.test'
+    'SERVER_PORT' => '80'
+]
+2015-01-28 11:48:44 [][-][-][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Class 'app\models\LoginForm' not found' in /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/unit/models/LoginFormTest.php:22
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2015-01-28 11:48:44 [][-][-][info][application] $_SERVER = [
+    'RA_GIV' => 's6Hdwl8fWHC1_t|P'
+    'TERM_PROGRAM' => 'Apple_Terminal'
+    'RA_SMTP_USR' => 'no-reply@beg-for-keys.com'
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/nj/87nq3v6x2534mm930q6kbzgh0000gq/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.gGqpLjt2JT/Render'
+    'TERM_PROGRAM_VERSION' => '343'
+    'RA_GP' => 'vS4Y334_!dTj2'
+    'TERM_SESSION_ID' => 'E7FDF372-92E6-43EF-9BE0-DF74AAA0B879'
+    'USER' => 'nicola.puddu'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.b1MLtaQTBE/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F7:0x0:0x0'
+    'RA_SMTP_PSW' => 'ranchanucchan89'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin'
+    'RA_DB_NAME' => 'rest_assured'
+    'RA_SALT' => 'gewerVewa432SfE3478'
+    'PWD' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests'
+    'LANG' => 'en_GB.UTF-8'
+    'RA_DB_PSW' => 'root'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'HOME' => '/Users/nicola.puddu'
+    'SHLVL' => '1'
+    'RA_DB_USR' => 'root'
+    'RA_SMTP_HOST' => 'smtp.gmail.com'
+    'LOGNAME' => 'nicola.puddu'
+    'RA_CDN_URL' => 'http://cdn.restassured.loc/index-test.php/'
+    'RA_DB_HOST' => 'localhost'
+    'RA_SESSION_DOMAIN' => '.restassured.loc'
+    'SECURITYSESSIONID' => '186a6'
+    '_' => '/usr/bin/codecept'
+    'OLDPWD' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager'
+    'PHP_SELF' => '/usr/bin/codecept'
+    'SCRIPT_NAME' => '/index-test.php'
+    'SCRIPT_FILENAME' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/web/index-test.php'
+    'PATH_TRANSLATED' => '/usr/bin/codecept'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1422445724.3973
+    'REQUEST_TIME' => 1422445724
+    'argv' => [
+        0 => '/usr/bin/codecept'
+        1 => 'run'
+        2 => 'unit'
+    ]
+    'argc' => 3
+    'SERVER_NAME' => 'yii2-nickcv.test'
+    'SERVER_PORT' => '80'
+]
+2015-01-28 11:51:42 [][-][-][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Call to undefined method nickcv\usermanager\models\User::findByUsername()' in /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/models/LoginForm.php:74
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2015-01-28 11:51:42 [][-][-][info][application] $_SERVER = [
+    'RA_GIV' => 's6Hdwl8fWHC1_t|P'
+    'TERM_PROGRAM' => 'Apple_Terminal'
+    'RA_SMTP_USR' => 'no-reply@beg-for-keys.com'
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/nj/87nq3v6x2534mm930q6kbzgh0000gq/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.gGqpLjt2JT/Render'
+    'TERM_PROGRAM_VERSION' => '343'
+    'RA_GP' => 'vS4Y334_!dTj2'
+    'TERM_SESSION_ID' => 'E7FDF372-92E6-43EF-9BE0-DF74AAA0B879'
+    'USER' => 'nicola.puddu'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.b1MLtaQTBE/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F7:0x0:0x0'
+    'RA_SMTP_PSW' => 'ranchanucchan89'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin'
+    'RA_DB_NAME' => 'rest_assured'
+    'RA_SALT' => 'gewerVewa432SfE3478'
+    'PWD' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests'
+    'LANG' => 'en_GB.UTF-8'
+    'RA_DB_PSW' => 'root'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'HOME' => '/Users/nicola.puddu'
+    'SHLVL' => '1'
+    'RA_DB_USR' => 'root'
+    'RA_SMTP_HOST' => 'smtp.gmail.com'
+    'LOGNAME' => 'nicola.puddu'
+    'RA_CDN_URL' => 'http://cdn.restassured.loc/index-test.php/'
+    'RA_DB_HOST' => 'localhost'
+    'RA_SESSION_DOMAIN' => '.restassured.loc'
+    'SECURITYSESSIONID' => '186a6'
+    '_' => '/usr/bin/codecept'
+    'OLDPWD' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager'
+    'PHP_SELF' => '/usr/bin/codecept'
+    'SCRIPT_NAME' => '/index-test.php'
+    'SCRIPT_FILENAME' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/web/index-test.php'
+    'PATH_TRANSLATED' => '/usr/bin/codecept'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1422445902.2004
+    'REQUEST_TIME' => 1422445902
+    'argv' => [
+        0 => '/usr/bin/codecept'
+        1 => 'run'
+        2 => 'unit'
+    ]
+    'argc' => 3
+    'SERVER_NAME' => 'yii2-nickcv.test'
+    'SERVER_PORT' => '80'
+]
+2015-01-28 14:53:54 [][-][-][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Call to a member function filterXPath() on a non-object' in /Users/nicola.puddu/.composer/vendor/codeception/codeception/src/Codeception/Lib/InnerBrowser.php:666
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2015-01-28 14:53:54 [][-][-][info][application] $_SERVER = [
+    'RA_GIV' => 's6Hdwl8fWHC1_t|P'
+    'TERM_PROGRAM' => 'Apple_Terminal'
+    'RA_SMTP_USR' => 'no-reply@beg-for-keys.com'
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/nj/87nq3v6x2534mm930q6kbzgh0000gq/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.RmxhHsZPXS/Render'
+    'TERM_PROGRAM_VERSION' => '343.6'
+    'RA_GP' => 'vS4Y334_!dTj2'
+    'TERM_SESSION_ID' => 'E7FDF372-92E6-43EF-9BE0-DF74AAA0B879'
+    'USER' => 'nicola.puddu'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.OtrkBwUXNM/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F7:0x0:0x0'
+    'RA_SMTP_PSW' => 'ranchanucchan89'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin'
+    'RA_DB_NAME' => 'rest_assured'
+    'RA_SALT' => 'gewerVewa432SfE3478'
+    'PWD' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests'
+    'LANG' => 'en_GB.UTF-8'
+    'RA_DB_PSW' => 'root'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'HOME' => '/Users/nicola.puddu'
+    'SHLVL' => '1'
+    'RA_DB_USR' => 'root'
+    'RA_SMTP_HOST' => 'smtp.gmail.com'
+    'LOGNAME' => 'nicola.puddu'
+    'RA_CDN_URL' => 'http://cdn.restassured.loc/index-test.php/'
+    'RA_DB_HOST' => 'localhost'
+    'RA_SESSION_DOMAIN' => '.restassured.loc'
+    'SECURITYSESSIONID' => '186a5'
+    '_' => '/usr/bin/codecept'
+    'OLDPWD' => '/Users/nicola.puddu/www-data/yii2/tests'
+    'PHP_SELF' => '/usr/bin/codecept'
+    'SCRIPT_NAME' => '/index-test.php'
+    'SCRIPT_FILENAME' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/../web/index-test.php'
+    'PATH_TRANSLATED' => '/usr/bin/codecept'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1422456834.5207
+    'REQUEST_TIME' => 1422456834
+    'argv' => [
+        0 => '/usr/bin/codecept'
+        1 => 'run'
+        2 => 'functional'
+    ]
+    'argc' => 3
+    'SERVER_NAME' => 'yii2-nickcv.test'
+    'SERVER_PORT' => '80'
+]
+2015-01-28 14:54:11 [][-][-][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Call to a member function filterXPath() on a non-object' in /Users/nicola.puddu/.composer/vendor/codeception/codeception/src/Codeception/Lib/InnerBrowser.php:666
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2015-01-28 14:54:11 [][-][-][info][application] $_SERVER = [
+    'RA_GIV' => 's6Hdwl8fWHC1_t|P'
+    'TERM_PROGRAM' => 'Apple_Terminal'
+    'RA_SMTP_USR' => 'no-reply@beg-for-keys.com'
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/nj/87nq3v6x2534mm930q6kbzgh0000gq/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.RmxhHsZPXS/Render'
+    'TERM_PROGRAM_VERSION' => '343.6'
+    'RA_GP' => 'vS4Y334_!dTj2'
+    'TERM_SESSION_ID' => 'E7FDF372-92E6-43EF-9BE0-DF74AAA0B879'
+    'USER' => 'nicola.puddu'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.OtrkBwUXNM/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F7:0x0:0x0'
+    'RA_SMTP_PSW' => 'ranchanucchan89'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin'
+    'RA_DB_NAME' => 'rest_assured'
+    'RA_SALT' => 'gewerVewa432SfE3478'
+    'PWD' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests'
+    'LANG' => 'en_GB.UTF-8'
+    'RA_DB_PSW' => 'root'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'HOME' => '/Users/nicola.puddu'
+    'SHLVL' => '1'
+    'RA_DB_USR' => 'root'
+    'RA_SMTP_HOST' => 'smtp.gmail.com'
+    'LOGNAME' => 'nicola.puddu'
+    'RA_CDN_URL' => 'http://cdn.restassured.loc/index-test.php/'
+    'RA_DB_HOST' => 'localhost'
+    'RA_SESSION_DOMAIN' => '.restassured.loc'
+    'SECURITYSESSIONID' => '186a5'
+    '_' => '/usr/bin/codecept'
+    'OLDPWD' => '/Users/nicola.puddu/www-data/yii2/tests'
+    'PHP_SELF' => '/usr/bin/codecept'
+    'SCRIPT_NAME' => '/index-test.php'
+    'SCRIPT_FILENAME' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/../web/index-test.php'
+    'PATH_TRANSLATED' => '/usr/bin/codecept'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1422456851.835
+    'REQUEST_TIME' => 1422456851
+    'argv' => [
+        0 => '/usr/bin/codecept'
+        1 => 'run'
+        2 => 'functional'
+    ]
+    'argc' => 3
+    'SERVER_NAME' => 'yii2-nickcv.test'
+    'SERVER_PORT' => '80'
+]
+2015-01-28 14:54:27 [][-][-][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Call to a member function filterXPath() on a non-object' in /Users/nicola.puddu/.composer/vendor/codeception/codeception/src/Codeception/Lib/InnerBrowser.php:666
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2015-01-28 14:54:27 [][-][-][info][application] $_SERVER = [
+    'RA_GIV' => 's6Hdwl8fWHC1_t|P'
+    'TERM_PROGRAM' => 'Apple_Terminal'
+    'RA_SMTP_USR' => 'no-reply@beg-for-keys.com'
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/nj/87nq3v6x2534mm930q6kbzgh0000gq/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.RmxhHsZPXS/Render'
+    'TERM_PROGRAM_VERSION' => '343.6'
+    'RA_GP' => 'vS4Y334_!dTj2'
+    'TERM_SESSION_ID' => 'E7FDF372-92E6-43EF-9BE0-DF74AAA0B879'
+    'USER' => 'nicola.puddu'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.OtrkBwUXNM/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F7:0x0:0x0'
+    'RA_SMTP_PSW' => 'ranchanucchan89'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin'
+    'RA_DB_NAME' => 'rest_assured'
+    'RA_SALT' => 'gewerVewa432SfE3478'
+    'PWD' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests'
+    'LANG' => 'en_GB.UTF-8'
+    'RA_DB_PSW' => 'root'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'HOME' => '/Users/nicola.puddu'
+    'SHLVL' => '1'
+    'RA_DB_USR' => 'root'
+    'RA_SMTP_HOST' => 'smtp.gmail.com'
+    'LOGNAME' => 'nicola.puddu'
+    'RA_CDN_URL' => 'http://cdn.restassured.loc/index-test.php/'
+    'RA_DB_HOST' => 'localhost'
+    'RA_SESSION_DOMAIN' => '.restassured.loc'
+    'SECURITYSESSIONID' => '186a5'
+    '_' => '/usr/bin/codecept'
+    'OLDPWD' => '/Users/nicola.puddu/www-data/yii2/tests'
+    'PHP_SELF' => '/usr/bin/codecept'
+    'SCRIPT_NAME' => '/index-test.php'
+    'SCRIPT_FILENAME' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/../web/index-test.php'
+    'PATH_TRANSLATED' => '/usr/bin/codecept'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1422456867.6464
+    'REQUEST_TIME' => 1422456867
+    'argv' => [
+        0 => '/usr/bin/codecept'
+        1 => 'run'
+        2 => 'functional'
+    ]
+    'argc' => 3
+    'SERVER_NAME' => 'yii2-nickcv.test'
+    'SERVER_PORT' => '80'
+]
+2015-01-28 14:54:45 [][-][-][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Call to a member function filterXPath() on a non-object' in /Users/nicola.puddu/.composer/vendor/codeception/codeception/src/Codeception/Lib/InnerBrowser.php:666
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2015-01-28 14:54:45 [][-][-][info][application] $_SERVER = [
+    'RA_GIV' => 's6Hdwl8fWHC1_t|P'
+    'TERM_PROGRAM' => 'Apple_Terminal'
+    'RA_SMTP_USR' => 'no-reply@beg-for-keys.com'
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/nj/87nq3v6x2534mm930q6kbzgh0000gq/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.RmxhHsZPXS/Render'
+    'TERM_PROGRAM_VERSION' => '343.6'
+    'RA_GP' => 'vS4Y334_!dTj2'
+    'TERM_SESSION_ID' => 'E7FDF372-92E6-43EF-9BE0-DF74AAA0B879'
+    'USER' => 'nicola.puddu'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.OtrkBwUXNM/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F7:0x0:0x0'
+    'RA_SMTP_PSW' => 'ranchanucchan89'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin'
+    'RA_DB_NAME' => 'rest_assured'
+    'RA_SALT' => 'gewerVewa432SfE3478'
+    'PWD' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests'
+    'LANG' => 'en_GB.UTF-8'
+    'RA_DB_PSW' => 'root'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'HOME' => '/Users/nicola.puddu'
+    'SHLVL' => '1'
+    'RA_DB_USR' => 'root'
+    'RA_SMTP_HOST' => 'smtp.gmail.com'
+    'LOGNAME' => 'nicola.puddu'
+    'RA_CDN_URL' => 'http://cdn.restassured.loc/index-test.php/'
+    'RA_DB_HOST' => 'localhost'
+    'RA_SESSION_DOMAIN' => '.restassured.loc'
+    'SECURITYSESSIONID' => '186a5'
+    '_' => '/usr/bin/codecept'
+    'OLDPWD' => '/Users/nicola.puddu/www-data/yii2/tests'
+    'PHP_SELF' => '/usr/bin/codecept'
+    'SCRIPT_NAME' => '/index-test.php'
+    'SCRIPT_FILENAME' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/../web/index-test.php'
+    'PATH_TRANSLATED' => '/usr/bin/codecept'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1422456885.8097
+    'REQUEST_TIME' => 1422456885
+    'argv' => [
+        0 => '/usr/bin/codecept'
+        1 => 'run'
+        2 => 'functional'
+    ]
+    'argc' => 3
+    'SERVER_NAME' => 'yii2-nickcv.test'
+    'SERVER_PORT' => '80'
+]
+2015-01-28 14:54:55 [][-][-][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Call to a member function filterXPath() on a non-object' in /Users/nicola.puddu/.composer/vendor/codeception/codeception/src/Codeception/Lib/InnerBrowser.php:666
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2015-01-28 14:54:55 [][-][-][info][application] $_SERVER = [
+    'RA_GIV' => 's6Hdwl8fWHC1_t|P'
+    'TERM_PROGRAM' => 'Apple_Terminal'
+    'RA_SMTP_USR' => 'no-reply@beg-for-keys.com'
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/nj/87nq3v6x2534mm930q6kbzgh0000gq/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.RmxhHsZPXS/Render'
+    'TERM_PROGRAM_VERSION' => '343.6'
+    'RA_GP' => 'vS4Y334_!dTj2'
+    'TERM_SESSION_ID' => 'E7FDF372-92E6-43EF-9BE0-DF74AAA0B879'
+    'USER' => 'nicola.puddu'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.OtrkBwUXNM/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F7:0x0:0x0'
+    'RA_SMTP_PSW' => 'ranchanucchan89'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin'
+    'RA_DB_NAME' => 'rest_assured'
+    'RA_SALT' => 'gewerVewa432SfE3478'
+    'PWD' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests'
+    'LANG' => 'en_GB.UTF-8'
+    'RA_DB_PSW' => 'root'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'HOME' => '/Users/nicola.puddu'
+    'SHLVL' => '1'
+    'RA_DB_USR' => 'root'
+    'RA_SMTP_HOST' => 'smtp.gmail.com'
+    'LOGNAME' => 'nicola.puddu'
+    'RA_CDN_URL' => 'http://cdn.restassured.loc/index-test.php/'
+    'RA_DB_HOST' => 'localhost'
+    'RA_SESSION_DOMAIN' => '.restassured.loc'
+    'SECURITYSESSIONID' => '186a5'
+    '_' => '/usr/bin/codecept'
+    'OLDPWD' => '/Users/nicola.puddu/www-data/yii2/tests'
+    'PHP_SELF' => '/usr/bin/codecept'
+    'SCRIPT_NAME' => '/index-test.php'
+    'SCRIPT_FILENAME' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/../web/index-test.php'
+    'PATH_TRANSLATED' => '/usr/bin/codecept'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1422456894.9774
+    'REQUEST_TIME' => 1422456894
+    'argv' => [
+        0 => '/usr/bin/codecept'
+        1 => 'run'
+        2 => 'functional'
+    ]
+    'argc' => 3
+    'SERVER_NAME' => 'yii2-nickcv.test'
+    'SERVER_PORT' => '80'
+]
+2015-01-28 14:57:28 [][-][-][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Call to a member function filterXPath() on a non-object' in /Users/nicola.puddu/.composer/vendor/codeception/codeception/src/Codeception/Lib/InnerBrowser.php:666
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2015-01-28 14:57:28 [][-][-][info][application] $_SERVER = [
+    'RA_GIV' => 's6Hdwl8fWHC1_t|P'
+    'TERM_PROGRAM' => 'Apple_Terminal'
+    'RA_SMTP_USR' => 'no-reply@beg-for-keys.com'
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/nj/87nq3v6x2534mm930q6kbzgh0000gq/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.RmxhHsZPXS/Render'
+    'TERM_PROGRAM_VERSION' => '343.6'
+    'RA_GP' => 'vS4Y334_!dTj2'
+    'TERM_SESSION_ID' => 'E7FDF372-92E6-43EF-9BE0-DF74AAA0B879'
+    'USER' => 'nicola.puddu'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.OtrkBwUXNM/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F7:0x0:0x0'
+    'RA_SMTP_PSW' => 'ranchanucchan89'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin'
+    'RA_DB_NAME' => 'rest_assured'
+    'RA_SALT' => 'gewerVewa432SfE3478'
+    'PWD' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests'
+    'LANG' => 'en_GB.UTF-8'
+    'RA_DB_PSW' => 'root'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'HOME' => '/Users/nicola.puddu'
+    'SHLVL' => '1'
+    'RA_DB_USR' => 'root'
+    'RA_SMTP_HOST' => 'smtp.gmail.com'
+    'LOGNAME' => 'nicola.puddu'
+    'RA_CDN_URL' => 'http://cdn.restassured.loc/index-test.php/'
+    'RA_DB_HOST' => 'localhost'
+    'RA_SESSION_DOMAIN' => '.restassured.loc'
+    'SECURITYSESSIONID' => '186a5'
+    '_' => '/usr/bin/codecept'
+    'OLDPWD' => '/Users/nicola.puddu/www-data/yii2/tests'
+    'PHP_SELF' => '/usr/bin/codecept'
+    'SCRIPT_NAME' => '/index-test.php'
+    'SCRIPT_FILENAME' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/../web/index-test.php'
+    'PATH_TRANSLATED' => '/usr/bin/codecept'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1422457048.2889
+    'REQUEST_TIME' => 1422457048
+    'argv' => [
+        0 => '/usr/bin/codecept'
+        1 => 'run'
+        2 => 'functional'
+    ]
+    'argc' => 3
+    'SERVER_NAME' => 'yii2-nickcv.test'
+    'SERVER_PORT' => '80'
+]
+2015-01-28 14:57:51 [][-][-][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Call to a member function filterXPath() on a non-object' in /Users/nicola.puddu/.composer/vendor/codeception/codeception/src/Codeception/Lib/InnerBrowser.php:666
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2015-01-28 14:57:51 [][-][-][info][application] $_SERVER = [
+    'RA_GIV' => 's6Hdwl8fWHC1_t|P'
+    'TERM_PROGRAM' => 'Apple_Terminal'
+    'RA_SMTP_USR' => 'no-reply@beg-for-keys.com'
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/nj/87nq3v6x2534mm930q6kbzgh0000gq/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.RmxhHsZPXS/Render'
+    'TERM_PROGRAM_VERSION' => '343.6'
+    'RA_GP' => 'vS4Y334_!dTj2'
+    'TERM_SESSION_ID' => 'E7FDF372-92E6-43EF-9BE0-DF74AAA0B879'
+    'USER' => 'nicola.puddu'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.OtrkBwUXNM/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F7:0x0:0x0'
+    'RA_SMTP_PSW' => 'ranchanucchan89'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin'
+    'RA_DB_NAME' => 'rest_assured'
+    'RA_SALT' => 'gewerVewa432SfE3478'
+    'PWD' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests'
+    'LANG' => 'en_GB.UTF-8'
+    'RA_DB_PSW' => 'root'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'HOME' => '/Users/nicola.puddu'
+    'SHLVL' => '1'
+    'RA_DB_USR' => 'root'
+    'RA_SMTP_HOST' => 'smtp.gmail.com'
+    'LOGNAME' => 'nicola.puddu'
+    'RA_CDN_URL' => 'http://cdn.restassured.loc/index-test.php/'
+    'RA_DB_HOST' => 'localhost'
+    'RA_SESSION_DOMAIN' => '.restassured.loc'
+    'SECURITYSESSIONID' => '186a5'
+    '_' => '/usr/bin/codecept'
+    'OLDPWD' => '/Users/nicola.puddu/www-data/yii2/tests'
+    'PHP_SELF' => '/usr/bin/codecept'
+    'SCRIPT_NAME' => '/index-test.php'
+    'SCRIPT_FILENAME' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/../web/index-test.php'
+    'PATH_TRANSLATED' => '/usr/bin/codecept'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1422457070.9881
+    'REQUEST_TIME' => 1422457070
+    'argv' => [
+        0 => '/usr/bin/codecept'
+        1 => 'run'
+        2 => 'functional'
+    ]
+    'argc' => 3
+    'SERVER_NAME' => 'yii2-nickcv.test'
+    'SERVER_PORT' => '80'
+]
+2015-01-28 14:58:13 [][-][-][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Call to a member function filterXPath() on a non-object' in /Users/nicola.puddu/.composer/vendor/codeception/codeception/src/Codeception/Lib/InnerBrowser.php:666
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2015-01-28 14:58:13 [][-][-][info][application] $_SERVER = [
+    'RA_GIV' => 's6Hdwl8fWHC1_t|P'
+    'TERM_PROGRAM' => 'Apple_Terminal'
+    'RA_SMTP_USR' => 'no-reply@beg-for-keys.com'
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/nj/87nq3v6x2534mm930q6kbzgh0000gq/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.RmxhHsZPXS/Render'
+    'TERM_PROGRAM_VERSION' => '343.6'
+    'RA_GP' => 'vS4Y334_!dTj2'
+    'TERM_SESSION_ID' => 'E7FDF372-92E6-43EF-9BE0-DF74AAA0B879'
+    'USER' => 'nicola.puddu'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.OtrkBwUXNM/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F7:0x0:0x0'
+    'RA_SMTP_PSW' => 'ranchanucchan89'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin'
+    'RA_DB_NAME' => 'rest_assured'
+    'RA_SALT' => 'gewerVewa432SfE3478'
+    'PWD' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests'
+    'LANG' => 'en_GB.UTF-8'
+    'RA_DB_PSW' => 'root'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'HOME' => '/Users/nicola.puddu'
+    'SHLVL' => '1'
+    'RA_DB_USR' => 'root'
+    'RA_SMTP_HOST' => 'smtp.gmail.com'
+    'LOGNAME' => 'nicola.puddu'
+    'RA_CDN_URL' => 'http://cdn.restassured.loc/index-test.php/'
+    'RA_DB_HOST' => 'localhost'
+    'RA_SESSION_DOMAIN' => '.restassured.loc'
+    'SECURITYSESSIONID' => '186a5'
+    '_' => '/usr/bin/codecept'
+    'OLDPWD' => '/Users/nicola.puddu/www-data/yii2/tests'
+    'PHP_SELF' => '/usr/bin/codecept'
+    'SCRIPT_NAME' => '/index-test.php'
+    'SCRIPT_FILENAME' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/../web/index-test.php'
+    'PATH_TRANSLATED' => '/usr/bin/codecept'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1422457093.8316
+    'REQUEST_TIME' => 1422457093
+    'argv' => [
+        0 => '/usr/bin/codecept'
+        1 => 'run'
+        2 => 'functional'
+    ]
+    'argc' => 3
+    'SERVER_NAME' => 'yii2-nickcv.test'
+    'SERVER_PORT' => '80'
+]
