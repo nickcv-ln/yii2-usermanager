@@ -30,6 +30,13 @@ class User extends \yii\db\ActiveRecord
         return Database::USER_TABLE;
     }
     
+    public function behaviors()
+    {
+        return [
+            'user' => '\nickcv\usermanager\behaviors\UserBehavior',
+        ];
+    }
+    
     /**
      * @inheritdoc
      */
@@ -49,6 +56,7 @@ class User extends \yii\db\ActiveRecord
         return [
             [['firstname', 'lastname', 'email', 'password'], 'required'],
             ['email', 'email'],
+            ['email', 'unique'],
             [['status'], 'integer'],
             [['registration_date'], 'safe'],
             [['email', 'lastname', 'token'], 'string', 'max' => 130],

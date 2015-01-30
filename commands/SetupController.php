@@ -9,7 +9,6 @@
  * @package nickcv/yii2-usermanager
  * @author Nicola Puddu <n.puddu@outlook.com>
  */
-
 namespace nickcv\usermanager\commands;
 
 use yii\console\Controller;
@@ -18,7 +17,9 @@ use yii\helpers\Console;
 use nickcv\usermanager\enums\Permissions;
 use nickcv\usermanager\enums\Roles;
 use nickcv\usermanager\enums\Scenarios;
+use nickcv\usermanager\helpers\StringHelper;
 use nickcv\usermanager\models\User;
+use nickcv\usermanager\services\ConfigFilesService;
 
 /**
  * This command is used to manage the usermanager module.
@@ -47,8 +48,12 @@ class SetupController extends Controller
         $this->stdout('usermanager/install', Console::FG_YELLOW);
         $this->stdout("\t\t".'Install the module.'."\n");
         
+        $this->stdout(' - ');
+        $this->stdout('usermanager/create-admin', Console::FG_YELLOW);
+        $this->stdout("\t".'Creates an admin.'."\n");
+        
         $this->stdout("\n");
-            
+        return 0;
     }
     
     /**
@@ -68,16 +73,42 @@ class SetupController extends Controller
         }
 
         $this->createRoles();
-        $this->createAdmin();
-        
-        return;
-        $configFile = \Yii::getAlias('@app').DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'encrypter.php';
-        file_put_contents($configFile, $this->getConfigFileContent());
-        $this->stdout("\nconfig file generated in '$configFile'.", Console::FG_GREEN);
-        $this->stdout("\nadd this line in your web config file inside the components array:");
-        echo $this->ansiFormat("\n\t'encrypter' => require(__DIR__ . DIRECTORY_SEPARATOR . 'encrypter.php'),\n", Console::BOLD, Console::FG_PURPLE);
+        $this->createConfigFile();
+        return 0;
     }
     
+    /**
+     * This action creates an admin.
+     */
+    public function actionCreateAdmin()
+    {
+        $this->stdout("\nAdmin Creation.\n", Console::FG_YELLOW);
+        $admin = new User(['scenario' => Scenarios::ADMIN_CREATION]);
+        
+        $requiredField = [
+            'required' => true,
+            'error' => 'Required field.'
+        ];
+        
+        $admin->firstname = $this->prompt("\nFirstname:", $requiredField);
+        $admin->lastname = $this->prompt("Lastname:", $requiredField);
+        $admin->email = $this->prompt("Email:", $requiredField);
+        $admin->password = $this->prompt("Password:", $requiredField);
+        
+        if (!$admin->validate()) {
+            $additionalMessage = $this->ansiFormat("\nTo create an admin simply run the ./yii usermanager/create-admin command\n\n", Console::FG_CYAN);
+            $this->printOutValidationErrors($admin->errors, $additionalMessage);
+        }
+            
+        
+        $admin->save();
+        
+        return 0;
+    }
+    
+    /**
+     * Installs the database tables using migration
+     */
     private function installDatabaseTables()
     {
         if ($this->confirm("install RBAC tables", true)) {
@@ -98,6 +129,9 @@ class SetupController extends Controller
         ]);
     }
     
+    /**
+     * Creates the roles inside the database.
+     */
     private function createRoles()
     {
         $this->stdout("\nCreating Roles and Permissions.\n", Console::FG_YELLOW);
@@ -151,24 +185,71 @@ class SetupController extends Controller
         $this->stdout("\nBasic Roles and Permissions created.", Console::FG_GREEN);
     }
     
-    private function createAdmin()
+    /**
+     * Creates the configuration file to be used in the app.
+     */
+    private function createConfigFile()
     {
-        $admin = new User(['scenario' => Scenarios::ADMIN_CREATION]);
         
-        $requiredField = [
-            'required' => true,
-            'error' => 'Required field.'
+        $this->stdout("\nCreating the config file.\n", Console::FG_YELLOW);
+        
+        $filename = 'usermanager.php';
+        
+        $data = [
+            'class'=>'\nickcv\usermanager\Module',
+            'salt' => StringHelper::randomString(),
         ];
         
-        $admin->firstname = $this->prompt("\nFirstname:", $requiredField);
-        $admin->lastname = $this->prompt("\nLastname:", $requiredField);
-        $admin->email = $this->prompt("\nEmail:", $requiredField);
-        $admin->password = $this->prompt("\nPassword:", $requiredField);
+        if (ConfigFilesService::init()->createFile($filename, $data) === false) {
+            if (strpos(ConfigFilesService::init()->errors()['message'], 'already exists') !== false) {
+                $this->updateConfigFile($filename, $data);
+            } else {
+                $this->stdout("\n" . ConfigFilesService::init()->errors()['details']['message'], Console::FG_RED);
+                \Yii::$app->end(1);
+            }
+        }
         
-        if (!$admin->validate())
-            $this->printOutValidationErrors($admin->errors);
+        $this->printConfigFileSuccessMessage($filename);
+    }
+    
+    /**
+     * Update the existing configuration file.
+     * 
+     * @param string $filename
+     * @param array $data
+     */
+    private function updateConfigFile($filename, $data)
+    {
+        $this->stdout("\nThe configuration file already exists, but it can be updated.");
+        $this->stdout("\nIf you desire to continue the existing file will be analized and you'll be notified if any data is going to be overwritten.", Console::BOLD);
+        if ($this->confirm("\nDo you wish to continue?") === false) {
+            \Yii::$app->end();
+        }
         
+        if (ConfigFilesService::init()->updateFile($filename, $data) === false) {
+            $this->stdout("\nThe following keys will be edited:\n" . print_r(ConfigFilesService::init()->errors()['details'], true));
+            if ($this->confirm("\nDo you wish to continue?") === false) {
+                \Yii::$app->end();
+            }
+            
+            ConfigFilesService::init()->updateFile($filename, $data, true);
+        }
         
+        $this->printConfigFileSuccessMessage($filename);
+        
+        \Yii::$app->end();
+    }
+    
+    /**
+     * Print out the istruction on how to embed the configuration file in the
+     * app.
+     */
+    private function printConfigFileSuccessMessage($filename)
+    {
+        $filePath = ConfigFilesService::init()->getPath($filename);
+        $this->stdout("\nconfig file generated in '$filePath'.", Console::FG_GREEN);
+        $this->stdout("\nadd this line in your web config file inside the components array and update the console config file as well:");
+        echo $this->ansiFormat("\n\t'usermanager' => require(__DIR__ . DIRECTORY_SEPARATOR . 'usermanager.php'),\n\n", Console::BOLD, Console::FG_PURPLE);
     }
     
     /**
@@ -176,7 +257,7 @@ class SetupController extends Controller
      * 
      * @param array $errors the error list
      */
-    private function printOutValidationErrors($errors)
+    private function printOutValidationErrors($errors, $additionalMessage = null)
     {
         echo $this->ansiFormat("\n\nthe following errors occurred:\n", Console::BOLD, Console::FG_RED);
         foreach ($errors as $attribute) {
@@ -187,47 +268,10 @@ class SetupController extends Controller
         
         $this->stdout("\n\n");
         
+        if ($additionalMessage) {
+            echo $additionalMessage;
+        }
+        
         \Yii::$app->end(1);
-    }
-    
-    /**
-     * Returns the content of the config file that will be generated in the
-     * config directory.
-     * 
-     * @return string the config file content
-     */
-    private function getConfigFileContent()
-    {
-        $view = new View();
-        return $view->renderFile(__DIR__ .DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'config.php', [
-            'password'=>$this->getRandomPassword(),
-            'iv'=>$this->getRandomPassword(\nickcv\encrypter\components\Encrypter::IV_LENGTH),
-        ], $this);
-    }
-    
-    /**
-     * Returns a randomly generated string with uppercase letter, lowercase
-     * letters, numbers and special characters.
-     * 
-     * @param integer $length length of the randomly generated string
-     * @return string random string
-     */
-    private function getRandomPassword($length = 12)
-    {
-        $stringWithNoSpecialChars = substr(str_shuffle(MD5(microtime())), 0, $length - 3);
-        
-        return str_shuffle(str_shuffle($stringWithNoSpecialChars.$this->getSpecialCharacters()));
-    }
-    
-    /**
-     * Returns a random selection of 3 special characters
-     * 
-     * @return string 3 special characters
-     */
-    private function getSpecialCharacters()
-    {
-        $specialCharacters = '!-_?.:;,/';
-        
-        return substr(str_shuffle($specialCharacters), 0, 3);   
     }
 }
