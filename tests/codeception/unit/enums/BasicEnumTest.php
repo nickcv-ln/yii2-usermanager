@@ -1,11 +1,11 @@
 <?php
-namespace nickcv\usermanager\tests\codeception\unit;
+namespace nickcv\usermanager\tests\codeception\unit\enums;
 
 use yii\codeception\TestCase;
 use nickcv\usermanager\enums;
 
 
-class EnumsTest extends TestCase
+class BasicEnumTest extends TestCase
 {
     /**
      * @var \UnitTester
@@ -50,6 +50,18 @@ class EnumsTest extends TestCase
     public function testGetLabelOfConstantValue()
     {
         $this->assertEquals('LOGIN', enums\Scenarios::getLabel(enums\Scenarios::LOGIN));
+    }
+    
+    public function testGetConstantDeclaration()
+    {
+        $this->assertNull(enums\Scenarios::getConstantDeclaration('madeup'));
+        $this->assertEquals('\nickcv\usermanager\enums\Scenarios::LOGIN', enums\Scenarios::getConstantDeclaration(enums\Scenarios::LOGIN));
+    }
+    
+    public function testKnowIfEnumHasConstantWithValue()
+    {
+        $this->assertFalse(enums\Scenarios::hasConstantWithValue('madeup'));
+        $this->assertTrue(enums\Scenarios::hasConstantWithValue(enums\Scenarios::LOGIN));
     }
 
 }

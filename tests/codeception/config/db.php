@@ -2,8 +2,5 @@
 
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=127.0.0.1;dbname=yii2',
-    'username' => 'root',
-    'password' => 'root',
-    'charset' => 'utf8',
+    'dsn' => 'sqlite:' . dirname(__DIR__) . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'testdb.sqlite',
 ];

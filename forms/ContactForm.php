@@ -1,6 +1,6 @@
 <?php
 
-namespace nickcv\usermanager\models;
+namespace nickcv\usermanager\forms;
 
 use Yii;
 use yii\base\Model;

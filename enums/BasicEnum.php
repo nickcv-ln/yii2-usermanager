@@ -44,6 +44,32 @@ abstract class BasicEnum
     }
     
     /**
+     * Checks whether the called class has a constant with the given value.
+     * 
+     * @param mixed $value
+     * @return boolean
+     */
+    final public static function hasConstantWithValue($value)
+    {
+        if (array_search($value, self::getList()) === false) {
+            return false;
+        }
+        
+        return true;
+    }
+    
+    final public static function getConstantDeclaration($value)
+    {
+        $key = array_search($value, self::getList());
+        
+        if (!$key) {
+            return null;
+        }
+        
+        return '\\' . get_called_class() . '::' . $key;
+    }
+    
+    /**
      * Retrieve the list of constant for the called class from the
      * private static array. If the array does not contain the list for the
      * called class a reflection class will be used to retrieve it.

@@ -48,6 +48,9 @@ $config = [
         ],
         'db' => require(__DIR__ . DIRECTORY_SEPARATOR . 'db.php'),
     ],
+    'modules' => [
+        'usermanager' => require(__DIR__ . DIRECTORY_SEPARATOR . 'usermanager.php'),
+    ],
     'params' => $params,
 ];
 

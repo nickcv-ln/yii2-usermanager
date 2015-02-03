@@ -7,6 +7,7 @@
             'three' => 'variable',
             'level3' => [
                 'yetagain' => 'go',
+                'phpContent' => \nickcv\usermanager\enums\Scenarios::LOGIN,
             ],
         ],
     ],

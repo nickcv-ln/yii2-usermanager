@@ -66,6 +66,8 @@ class UserBehavior extends Behavior
             $this->owner->status = UserStatus::ACTIVE;
         }
         
+        $this->owner->password = \Yii::$app->security->generatePasswordHash($this->owner->password);
+        
         $this->owner->registration_date = date('Y-m-d H:i:s');
     }
 

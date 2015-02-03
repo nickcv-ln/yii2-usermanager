@@ -61,6 +61,7 @@ class User extends \yii\db\ActiveRecord
             [['registration_date'], 'safe'],
             [['email', 'lastname', 'token'], 'string', 'max' => 130],
             [['password'], 'string', 'max' => 220],
+            ['password', '\nickcv\usermanager\validators\PasswordStrength'],
             [['firstname'], 'string', 'max' => 64]
         ];
     }

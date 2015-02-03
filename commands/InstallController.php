@@ -1,6 +1,6 @@
 <?php
 /**
- * Contains the controller class triggered by the ```./yii usermanager```
+ * Contains the controller class triggered by the ```./yii usermanager/install```
  * console command.
  * 
  * @link http://www.creationgears.com/
@@ -12,60 +12,33 @@
 namespace nickcv\usermanager\commands;
 
 use yii\console\Controller;
-use yii\web\View;
 use yii\helpers\Console;
 use nickcv\usermanager\enums\Permissions;
 use nickcv\usermanager\enums\Roles;
-use nickcv\usermanager\enums\Scenarios;
-use nickcv\usermanager\helpers\StringHelper;
-use nickcv\usermanager\models\User;
 use nickcv\usermanager\services\ConfigFilesService;
+use nickcv\usermanager\enums\PasswordStrength;
+use nickcv\usermanager\helpers\ArrayHelper;
 
 /**
- * This command is used to manage the usermanager module.
+ * Installs the usermanager module.
  * 
  * @author Nicola Puddu <n.puddu@outlook.com>
  * @version 1.0
  */
-class SetupController extends Controller
+class InstallController extends Controller
 {
-    public $defaultAction = 'help';
     
     /**
-     * This action displays the list of commands available to manage the module.
+     * Installs the usermanager module.
      */
-    public function actionHelp()
-    {
-        $this->stdout("\nthe following commands are available for ", Console::BOLD);
-        echo $this->ansiFormat('./yii usermanager', Console::FG_CYAN, Console::BOLD);
-        $this->stdout(":\n\n", Console::BOLD);
-        
-        $this->stdout(' - ');
-        $this->stdout('usermanager/help', Console::FG_YELLOW);
-        $this->stdout("\t\t".'Display this list.'."\n");
-        
-        $this->stdout(' - ');
-        $this->stdout('usermanager/install', Console::FG_YELLOW);
-        $this->stdout("\t\t".'Install the module.'."\n");
-        
-        $this->stdout(' - ');
-        $this->stdout('usermanager/create-admin', Console::FG_YELLOW);
-        $this->stdout("\t".'Creates an admin.'."\n");
-        
-        $this->stdout("\n");
-        return 0;
-    }
-    
-    /**
-     * This action installs the module.
-     */
-    public function actionInstall()
+    public function actionIndex()
     {
         echo $this->ansiFormat("\n" . $this->id . " installation\n\n", Console::BOLD, Console::FG_YELLOW);
         
         try {
             $this->installDatabaseTables();
         } catch (\Exception $exc) {
+            echo $exc->getTraceAsString();
             echo $this->ansiFormat("An error occurred while trying to install the database tables.\n", Console::BOLD, Console::FG_RED);
             $this->stdout("\n\t" . $exc->getMessage() . "\n", Console::FG_RED);
             echo $this->ansiFormat("\nPlease check your database configuration in the db.php file.\n\n", Console::BOLD, Console::FG_RED);
@@ -74,35 +47,6 @@ class SetupController extends Controller
 
         $this->createRoles();
         $this->createConfigFile();
-        return 0;
-    }
-    
-    /**
-     * This action creates an admin.
-     */
-    public function actionCreateAdmin()
-    {
-        $this->stdout("\nAdmin Creation.\n", Console::FG_YELLOW);
-        $admin = new User(['scenario' => Scenarios::ADMIN_CREATION]);
-        
-        $requiredField = [
-            'required' => true,
-            'error' => 'Required field.'
-        ];
-        
-        $admin->firstname = $this->prompt("\nFirstname:", $requiredField);
-        $admin->lastname = $this->prompt("Lastname:", $requiredField);
-        $admin->email = $this->prompt("Email:", $requiredField);
-        $admin->password = $this->prompt("Password:", $requiredField);
-        
-        if (!$admin->validate()) {
-            $additionalMessage = $this->ansiFormat("\nTo create an admin simply run the ./yii usermanager/create-admin command\n\n", Console::FG_CYAN);
-            $this->printOutValidationErrors($admin->errors, $additionalMessage);
-        }
-            
-        
-        $admin->save();
-        
         return 0;
     }
     
@@ -124,7 +68,7 @@ class SetupController extends Controller
         $this->stdout("\nInstalling user tables.\n", Console::FG_YELLOW);
         
         \Yii::$app->runAction('migrate', [
-            'migrationPath' => '@nickcv/migrations',
+            'migrationPath' => '@nickcv/usermanager/migrations',
             'interactive' => false,
         ]);
     }
@@ -195,9 +139,16 @@ class SetupController extends Controller
         
         $filename = 'usermanager.php';
         
+        $strength = PasswordStrength::getConstantDeclaration($this->select('Choose the minimum password strength', [
+            PasswordStrength::SECURE => PasswordStrength::getLabel(PasswordStrength::SECURE),
+            PasswordStrength::STRONG => PasswordStrength::getLabel(PasswordStrength::STRONG),
+            PasswordStrength::MEDIUM => PasswordStrength::getLabel(PasswordStrength::MEDIUM),
+            PasswordStrength::WEAK => PasswordStrength::getLabel(PasswordStrength::WEAK),
+        ]));
+        
         $data = [
             'class'=>'\nickcv\usermanager\Module',
-            'salt' => StringHelper::randomString(),
+            'passwordStrength' => ArrayHelper::PHP_CONTENT . $strength,
         ];
         
         if (ConfigFilesService::init()->createFile($filename, $data) === false) {
@@ -250,28 +201,5 @@ class SetupController extends Controller
         $this->stdout("\nconfig file generated in '$filePath'.", Console::FG_GREEN);
         $this->stdout("\nadd this line in your web config file inside the components array and update the console config file as well:");
         echo $this->ansiFormat("\n\t'usermanager' => require(__DIR__ . DIRECTORY_SEPARATOR . 'usermanager.php'),\n\n", Console::BOLD, Console::FG_PURPLE);
-    }
-    
-    /**
-     * Prints on screen the list of errors returned by a Model.
-     * 
-     * @param array $errors the error list
-     */
-    private function printOutValidationErrors($errors, $additionalMessage = null)
-    {
-        echo $this->ansiFormat("\n\nthe following errors occurred:\n", Console::BOLD, Console::FG_RED);
-        foreach ($errors as $attribute) {
-            foreach ($attribute as $message) {
-                $this->stdout("\n\t - " . $message, Console::FG_RED);
-            }
-        }
-        
-        $this->stdout("\n\n");
-        
-        if ($additionalMessage) {
-            echo $additionalMessage;
-        }
-        
-        \Yii::$app->end(1);
     }
 }

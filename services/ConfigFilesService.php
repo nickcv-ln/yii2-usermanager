@@ -219,7 +219,7 @@ class ConfigFilesService extends BasicService
             if (array_key_exists($key, $existingConfiguration) && $value !== $existingConfiguration[$key]) {
                 $overrides[$key] = [
                     'current' => $existingConfiguration[$key],
-                    'afterUpdate' => $value
+                    'afterUpdate' => $this->cleanValue($value)
                 ];
             }
         }
@@ -230,5 +230,25 @@ class ConfigFilesService extends BasicService
         }
         
         return true;
+    }
+    
+    /**
+     * Removes placeholders from every possible value
+     * 
+     * @param string|array $value
+     * @return string|array
+     */
+    private function cleanValue($value) {
+        if (is_array($value)) {
+            foreach ($value as $key => $v) {
+                $value[$key] = $this->cleanValue($v);
+            }
+        } else {
+            if (strpos($value, ArrayHelper::PHP_CONTENT) === 0) {
+                $value = substr($value, strlen(ArrayHelper::PHP_CONTENT));
+            }
+        }
+        
+        return $value;
     }
 }

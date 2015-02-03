@@ -18,7 +18,7 @@ class ArrayHelperTest extends TestCase
     protected function _after()
     {
     }
-
+    
     public function testGeneratesThePrintableVersionOfAnArray()
     {
         $printableVersion = ArrayHelper::printForFile([
@@ -30,6 +30,7 @@ class ArrayHelperTest extends TestCase
                    'three' => 'variable',
                    'level3' => [
                        'yetagain' => 'go',
+                       'phpContent' => ArrayHelper::PHP_CONTENT . '\nickcv\usermanager\enums\Scenarios::LOGIN',
                    ],
                ],
            ] 

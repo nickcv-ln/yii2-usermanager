@@ -45,7 +45,7 @@ class ConfigFilesServiceTest extends TestCase
     public function testCannotCreateFileIfMissingPermissions()
     {
         $this->assertFalse(ConfigFilesService::init()->createFile('madeup.php', [
-            'salt' => 12,
+            'passwordSecurity' => 12,
         ], '/var'));
         $errors = ConfigFilesService::init()->errors();
         $this->assertArrayHasKey('message', $errors);
@@ -66,7 +66,7 @@ class ConfigFilesServiceTest extends TestCase
     {
         $this->assertTrue(ConfigFilesService::init()->createFile('madeup.php', [
             'class'=>'\nickcv\usermanager\Module',
-            'salt' => '12',
+            'passwordSecurity' => '12',
         ]));
         $this->assertFileExists(\Yii::getAlias('@app/config/madeup.php'));
         $this->assertFileEquals(\Yii::getAlias('@app/data/configFileServiceTest.php'), \Yii::getAlias('@app/config/madeup.php'));
@@ -84,11 +84,11 @@ class ConfigFilesServiceTest extends TestCase
     public function testDoesNotUpdateIfOverridesValues()
     {
         ConfigFilesService::init()->createFile('madeup.php', [
-            'salt' => '12',
+            'passwordSecurity' => '12',
         ]);
         
         $this->assertFalse(ConfigFilesService::init()->updateFile('madeup.php', [
-            'salt' => 40,
+            'passwordSecurity' => 40,
         ]));
         
         unlink(\Yii::getAlias('@app/config/madeup.php'));
@@ -97,17 +97,17 @@ class ConfigFilesServiceTest extends TestCase
         $this->assertArrayHasKey('message', $errors);
         $this->assertEquals('Several values would be overridden. Check Details for a complete list.', $errors['message']);
         $this->assertArrayHasKey('details', $errors);
-        $this->assertArrayHasKey('salt', $errors['details']);
-        $this->assertArrayHasKey('current', $errors['details']['salt']);
-        $this->assertEquals(12, $errors['details']['salt']['current']);
-        $this->assertArrayHasKey('afterUpdate', $errors['details']['salt']);
-        $this->assertEquals(40, $errors['details']['salt']['afterUpdate']);
+        $this->assertArrayHasKey('passwordSecurity', $errors['details']);
+        $this->assertArrayHasKey('current', $errors['details']['passwordSecurity']);
+        $this->assertEquals(12, $errors['details']['passwordSecurity']['current']);
+        $this->assertArrayHasKey('afterUpdate', $errors['details']['passwordSecurity']);
+        $this->assertEquals(40, $errors['details']['passwordSecurity']['afterUpdate']);
     }
     
     public function testUpdatesIfDoesNotOverridesValues()
     {
         ConfigFilesService::init()->createFile('madeup.php', [
-            'salt' => '12',
+            'passwordSecurity' => '12',
         ]);
         
         $this->assertTrue(ConfigFilesService::init()->updateFile('madeup.php', [
@@ -118,8 +118,8 @@ class ConfigFilesServiceTest extends TestCase
         
         unlink(\Yii::getAlias('@app/config/madeup.php'));
 
-        $this->assertArrayHasKey('salt', $newConfig);
-        $this->assertEquals(12, $newConfig['salt']);
+        $this->assertArrayHasKey('passwordSecurity', $newConfig);
+        $this->assertEquals(12, $newConfig['passwordSecurity']);
         $this->assertArrayHasKey('other', $newConfig);
         $this->assertEquals('test', $newConfig['other']);
     }
@@ -127,19 +127,19 @@ class ConfigFilesServiceTest extends TestCase
     public function testUpdateIfCheckIsSkipped()
     {
         ConfigFilesService::init()->createFile('madeup.php', [
-            'salt' => '12',
+            'passwordSecurity' => '12',
         ]);
         
         $this->assertTrue(ConfigFilesService::init()->updateFile('madeup.php', [
-            'salt' => '40',
+            'passwordSecurity' => '40',
         ], true));
         
         $newConfig = require(\Yii::getAlias('@app/config/madeup.php'));
         
         unlink(\Yii::getAlias('@app/config/madeup.php'));
 
-        $this->assertArrayHasKey('salt', $newConfig);
-        $this->assertEquals(40, $newConfig['salt']);
+        $this->assertArrayHasKey('passwordSecurity', $newConfig);
+        $this->assertEquals(40, $newConfig['passwordSecurity']);
     }
 
 }

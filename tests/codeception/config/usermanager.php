@@ -2,5 +2,5 @@
 
 return [
     'class' => '\nickcv\usermanager\Module',
-    'passwordSecurity' => 12,
+    'passwordStrength' => 2,
 ];

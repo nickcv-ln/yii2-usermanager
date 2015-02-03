@@ -1238,3 +1238,166 @@ Stack trace:
     'SERVER_NAME' => 'yii2-nickcv.test'
     'SERVER_PORT' => '80'
 ]
+2015-02-03 11:57:29 [][-][-][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Undefined class constant 'WEAK'' in /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/validators/PasswordStrength.php:72
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2015-02-03 11:57:29 [][-][-][info][application] $_SERVER = [
+    'RA_GIV' => 's6Hdwl8fWHC1_t|P'
+    'TERM_PROGRAM' => 'Apple_Terminal'
+    'RA_SMTP_USR' => 'no-reply@beg-for-keys.com'
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/nj/87nq3v6x2534mm930q6kbzgh0000gq/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.RmxhHsZPXS/Render'
+    'TERM_PROGRAM_VERSION' => '343.6'
+    'RA_GP' => 'vS4Y334_!dTj2'
+    'OLDPWD' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception'
+    'TERM_SESSION_ID' => '013FAF20-E463-445F-A884-14AFB01DC124'
+    'USER' => 'nicola.puddu'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.OtrkBwUXNM/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F7:0x0:0x0'
+    'RA_SMTP_PSW' => 'ranchanucchan89'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin'
+    'RA_DB_NAME' => 'rest_assured'
+    'RA_SALT' => 'gewerVewa432SfE3478'
+    'PWD' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests'
+    'LANG' => 'en_GB.UTF-8'
+    'RA_DB_PSW' => 'root'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'HOME' => '/Users/nicola.puddu'
+    'SHLVL' => '1'
+    'RA_DB_USR' => 'root'
+    'RA_SMTP_HOST' => 'smtp.gmail.com'
+    'LOGNAME' => 'nicola.puddu'
+    'RA_CDN_URL' => 'http://cdn.restassured.loc/index-test.php/'
+    'RA_DB_HOST' => 'localhost'
+    'RA_SESSION_DOMAIN' => '.restassured.loc'
+    'SECURITYSESSIONID' => '186a5'
+    '_' => '/usr/bin/codecept'
+    'PHP_SELF' => '/usr/bin/codecept'
+    'SCRIPT_NAME' => '/index-test.php'
+    'SCRIPT_FILENAME' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web/index-test.php'
+    'PATH_TRANSLATED' => '/usr/bin/codecept'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1422964649.2642
+    'REQUEST_TIME' => 1422964649
+    'argv' => [
+        0 => '/usr/bin/codecept'
+        1 => 'run'
+        2 => 'unit'
+        3 => '-vvv'
+    ]
+    'argc' => 4
+    'SERVER_NAME' => 'yii2-nickcv.test'
+    'SERVER_PORT' => '80'
+]
+2015-02-03 11:58:03 [][-][-][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Undefined class constant 'WEAK'' in /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/validators/PasswordStrength.php:72
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2015-02-03 11:58:03 [][-][-][info][application] $_SERVER = [
+    'RA_GIV' => 's6Hdwl8fWHC1_t|P'
+    'TERM_PROGRAM' => 'Apple_Terminal'
+    'RA_SMTP_USR' => 'no-reply@beg-for-keys.com'
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/nj/87nq3v6x2534mm930q6kbzgh0000gq/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.RmxhHsZPXS/Render'
+    'TERM_PROGRAM_VERSION' => '343.6'
+    'RA_GP' => 'vS4Y334_!dTj2'
+    'OLDPWD' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception'
+    'TERM_SESSION_ID' => '013FAF20-E463-445F-A884-14AFB01DC124'
+    'USER' => 'nicola.puddu'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.OtrkBwUXNM/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F7:0x0:0x0'
+    'RA_SMTP_PSW' => 'ranchanucchan89'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin'
+    'RA_DB_NAME' => 'rest_assured'
+    'RA_SALT' => 'gewerVewa432SfE3478'
+    'PWD' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests'
+    'LANG' => 'en_GB.UTF-8'
+    'RA_DB_PSW' => 'root'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'HOME' => '/Users/nicola.puddu'
+    'SHLVL' => '1'
+    'RA_DB_USR' => 'root'
+    'RA_SMTP_HOST' => 'smtp.gmail.com'
+    'LOGNAME' => 'nicola.puddu'
+    'RA_CDN_URL' => 'http://cdn.restassured.loc/index-test.php/'
+    'RA_DB_HOST' => 'localhost'
+    'RA_SESSION_DOMAIN' => '.restassured.loc'
+    'SECURITYSESSIONID' => '186a5'
+    '_' => '/usr/bin/codecept'
+    'PHP_SELF' => '/usr/bin/codecept'
+    'SCRIPT_NAME' => '/index-test.php'
+    'SCRIPT_FILENAME' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web/index-test.php'
+    'PATH_TRANSLATED' => '/usr/bin/codecept'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1422964682.989
+    'REQUEST_TIME' => 1422964682
+    'argv' => [
+        0 => '/usr/bin/codecept'
+        1 => 'run'
+        2 => 'unit'
+        3 => '-vvv'
+    ]
+    'argc' => 4
+    'SERVER_NAME' => 'yii2-nickcv.test'
+    'SERVER_PORT' => '80'
+]
+2015-02-03 17:15:44 [][-][-][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Call to undefined method Mock_ContactForm_4cb08ec6::contact()' in /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/unit/models/ContactFormTest.php:39
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2015-02-03 17:15:37 [][-][-][info][application] $_SERVER = [
+    'SCRIPT_FILENAME' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web/index-test.php'
+    'SCRIPT_NAME' => '/index-test.php'
+    'RA_GIV' => 's6Hdwl8fWHC1_t|P'
+    'TERM_PROGRAM' => 'Apple_Terminal'
+    'RA_SMTP_USR' => 'no-reply@beg-for-keys.com'
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/nj/87nq3v6x2534mm930q6kbzgh0000gq/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.RmxhHsZPXS/Render'
+    'TERM_PROGRAM_VERSION' => '343.6'
+    'RA_GP' => 'vS4Y334_!dTj2'
+    'OLDPWD' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception'
+    'TERM_SESSION_ID' => '013FAF20-E463-445F-A884-14AFB01DC124'
+    'USER' => 'nicola.puddu'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.OtrkBwUXNM/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F7:0x0:0x0'
+    'RA_SMTP_PSW' => 'ranchanucchan89'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin'
+    'RA_DB_NAME' => 'rest_assured'
+    'RA_SALT' => 'gewerVewa432SfE3478'
+    'PWD' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests'
+    'LANG' => 'en_GB.UTF-8'
+    'RA_DB_PSW' => 'root'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'HOME' => '/Users/nicola.puddu'
+    'SHLVL' => '1'
+    'RA_DB_USR' => 'root'
+    'RA_SMTP_HOST' => 'smtp.gmail.com'
+    'LOGNAME' => 'nicola.puddu'
+    'RA_CDN_URL' => 'http://cdn.restassured.loc/index-test.php/'
+    'RA_DB_HOST' => 'localhost'
+    'RA_SESSION_DOMAIN' => '.restassured.loc'
+    'SECURITYSESSIONID' => '186a5'
+    '_' => '/usr/bin/codecept'
+    'PHP_SELF' => '/usr/bin/codecept'
+    'PATH_TRANSLATED' => '/usr/bin/codecept'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1422983736.735
+    'REQUEST_TIME' => 1422983736
+    'argv' => [
+        0 => '/usr/bin/codecept'
+        1 => 'run'
+    ]
+    'argc' => 2
+    'SERVER_NAME' => 'yii2-nickcv.test'
+    'SERVER_PORT' => '80'
+]
