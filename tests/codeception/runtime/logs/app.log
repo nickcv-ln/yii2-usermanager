@@ -1401,3 +1401,979 @@ Stack trace:
     'SERVER_NAME' => 'yii2-nickcv.test'
     'SERVER_PORT' => '80'
 ]
+2015-02-04 11:21:20 [][-][-][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Call to undefined method Mock_ContactForm_2aa6f082::contact()' in /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/unit/models/ContactFormTest.php:39
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2015-02-04 11:21:19 [][-][-][info][application] $_SERVER = [
+    'RA_GIV' => 's6Hdwl8fWHC1_t|P'
+    'TERM_PROGRAM' => 'Apple_Terminal'
+    'RA_SMTP_USR' => 'no-reply@beg-for-keys.com'
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/nj/87nq3v6x2534mm930q6kbzgh0000gq/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.RmxhHsZPXS/Render'
+    'TERM_PROGRAM_VERSION' => '343.6'
+    'RA_GP' => 'vS4Y334_!dTj2'
+    'OLDPWD' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception'
+    'TERM_SESSION_ID' => '013FAF20-E463-445F-A884-14AFB01DC124'
+    'USER' => 'nicola.puddu'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.OtrkBwUXNM/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F7:0x0:0x0'
+    'RA_SMTP_PSW' => 'ranchanucchan89'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin'
+    'RA_DB_NAME' => 'rest_assured'
+    'RA_SALT' => 'gewerVewa432SfE3478'
+    'PWD' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests'
+    'LANG' => 'en_GB.UTF-8'
+    'RA_DB_PSW' => 'root'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'HOME' => '/Users/nicola.puddu'
+    'SHLVL' => '1'
+    'RA_DB_USR' => 'root'
+    'RA_SMTP_HOST' => 'smtp.gmail.com'
+    'LOGNAME' => 'nicola.puddu'
+    'RA_CDN_URL' => 'http://cdn.restassured.loc/index-test.php/'
+    'RA_DB_HOST' => 'localhost'
+    'RA_SESSION_DOMAIN' => '.restassured.loc'
+    'SECURITYSESSIONID' => '186a5'
+    '_' => '/usr/bin/codecept'
+    'PHP_SELF' => '/usr/bin/codecept'
+    'SCRIPT_NAME' => '/index-test.php'
+    'SCRIPT_FILENAME' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web/index-test.php'
+    'PATH_TRANSLATED' => '/usr/bin/codecept'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1423048879.0529
+    'REQUEST_TIME' => 1423048879
+    'argv' => [
+        0 => '/usr/bin/codecept'
+        1 => 'run'
+        2 => 'unit'
+    ]
+    'argc' => 3
+    'SERVER_NAME' => 'yii2-nickcv.test'
+    'SERVER_PORT' => '80'
+]
+2015-02-04 11:22:38 [][-][-][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Class 'nickcv\usermanager\forms\OldUser' not found' in /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/forms/LoginForm.php:71
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2015-02-04 11:22:38 [][-][-][info][application] $_SERVER = [
+    'RA_GIV' => 's6Hdwl8fWHC1_t|P'
+    'TERM_PROGRAM' => 'Apple_Terminal'
+    'RA_SMTP_USR' => 'no-reply@beg-for-keys.com'
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/nj/87nq3v6x2534mm930q6kbzgh0000gq/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.RmxhHsZPXS/Render'
+    'TERM_PROGRAM_VERSION' => '343.6'
+    'RA_GP' => 'vS4Y334_!dTj2'
+    'OLDPWD' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception'
+    'TERM_SESSION_ID' => '013FAF20-E463-445F-A884-14AFB01DC124'
+    'USER' => 'nicola.puddu'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.OtrkBwUXNM/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F7:0x0:0x0'
+    'RA_SMTP_PSW' => 'ranchanucchan89'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin'
+    'RA_DB_NAME' => 'rest_assured'
+    'RA_SALT' => 'gewerVewa432SfE3478'
+    'PWD' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests'
+    'LANG' => 'en_GB.UTF-8'
+    'RA_DB_PSW' => 'root'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'HOME' => '/Users/nicola.puddu'
+    'SHLVL' => '1'
+    'RA_DB_USR' => 'root'
+    'RA_SMTP_HOST' => 'smtp.gmail.com'
+    'LOGNAME' => 'nicola.puddu'
+    'RA_CDN_URL' => 'http://cdn.restassured.loc/index-test.php/'
+    'RA_DB_HOST' => 'localhost'
+    'RA_SESSION_DOMAIN' => '.restassured.loc'
+    'SECURITYSESSIONID' => '186a5'
+    '_' => '/usr/bin/codecept'
+    'PHP_SELF' => '/usr/bin/codecept'
+    'SCRIPT_NAME' => '/index-test.php'
+    'SCRIPT_FILENAME' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web/index-test.php'
+    'PATH_TRANSLATED' => '/usr/bin/codecept'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1423048958.5318
+    'REQUEST_TIME' => 1423048958
+    'argv' => [
+        0 => '/usr/bin/codecept'
+        1 => 'run'
+        2 => 'unit'
+    ]
+    'argc' => 3
+    'SERVER_NAME' => 'yii2-nickcv.test'
+    'SERVER_PORT' => '80'
+]
+2015-02-04 15:07:55 [][-][-][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Call to undefined method nickcv\usermanager\models\OldUser::findByEmail()' in /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/forms/LoginForm.php:72
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2015-02-04 15:07:53 [][-][-][info][application] $_SERVER = [
+    'RA_GIV' => 's6Hdwl8fWHC1_t|P'
+    'TERM_PROGRAM' => 'Apple_Terminal'
+    'RA_SMTP_USR' => 'no-reply@beg-for-keys.com'
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/nj/87nq3v6x2534mm930q6kbzgh0000gq/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.RmxhHsZPXS/Render'
+    'TERM_PROGRAM_VERSION' => '343.6'
+    'RA_GP' => 'vS4Y334_!dTj2'
+    'OLDPWD' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception'
+    'TERM_SESSION_ID' => '013FAF20-E463-445F-A884-14AFB01DC124'
+    'USER' => 'nicola.puddu'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.OtrkBwUXNM/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F7:0x0:0x0'
+    'RA_SMTP_PSW' => 'ranchanucchan89'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin'
+    'RA_DB_NAME' => 'rest_assured'
+    'RA_SALT' => 'gewerVewa432SfE3478'
+    'PWD' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests'
+    'LANG' => 'en_GB.UTF-8'
+    'RA_DB_PSW' => 'root'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'HOME' => '/Users/nicola.puddu'
+    'SHLVL' => '1'
+    'RA_DB_USR' => 'root'
+    'RA_SMTP_HOST' => 'smtp.gmail.com'
+    'LOGNAME' => 'nicola.puddu'
+    'RA_CDN_URL' => 'http://cdn.restassured.loc/index-test.php/'
+    'RA_DB_HOST' => 'localhost'
+    'RA_SESSION_DOMAIN' => '.restassured.loc'
+    'SECURITYSESSIONID' => '186a5'
+    '_' => '/usr/bin/codecept'
+    'PHP_SELF' => '/usr/bin/codecept'
+    'SCRIPT_NAME' => '/index-test.php'
+    'SCRIPT_FILENAME' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web/index-test.php'
+    'PATH_TRANSLATED' => '/usr/bin/codecept'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1423062472.8826
+    'REQUEST_TIME' => 1423062472
+    'argv' => [
+        0 => '/usr/bin/codecept'
+        1 => 'run'
+        2 => 'unit'
+    ]
+    'argc' => 3
+    'SERVER_NAME' => 'yii2-nickcv.test'
+    'SERVER_PORT' => '80'
+]
+2015-02-04 15:08:23 [][-][-][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Class 'nickcv\usermanager\User' not found' in /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/test/ActiveFixture.php:143
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2015-02-04 15:08:23 [][-][-][info][application] $_SERVER = [
+    'RA_GIV' => 's6Hdwl8fWHC1_t|P'
+    'TERM_PROGRAM' => 'Apple_Terminal'
+    'RA_SMTP_USR' => 'no-reply@beg-for-keys.com'
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/nj/87nq3v6x2534mm930q6kbzgh0000gq/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.RmxhHsZPXS/Render'
+    'TERM_PROGRAM_VERSION' => '343.6'
+    'RA_GP' => 'vS4Y334_!dTj2'
+    'OLDPWD' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception'
+    'TERM_SESSION_ID' => '013FAF20-E463-445F-A884-14AFB01DC124'
+    'USER' => 'nicola.puddu'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.OtrkBwUXNM/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F7:0x0:0x0'
+    'RA_SMTP_PSW' => 'ranchanucchan89'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin'
+    'RA_DB_NAME' => 'rest_assured'
+    'RA_SALT' => 'gewerVewa432SfE3478'
+    'PWD' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests'
+    'LANG' => 'en_GB.UTF-8'
+    'RA_DB_PSW' => 'root'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'HOME' => '/Users/nicola.puddu'
+    'SHLVL' => '1'
+    'RA_DB_USR' => 'root'
+    'RA_SMTP_HOST' => 'smtp.gmail.com'
+    'LOGNAME' => 'nicola.puddu'
+    'RA_CDN_URL' => 'http://cdn.restassured.loc/index-test.php/'
+    'RA_DB_HOST' => 'localhost'
+    'RA_SESSION_DOMAIN' => '.restassured.loc'
+    'SECURITYSESSIONID' => '186a5'
+    '_' => '/usr/bin/codecept'
+    'PHP_SELF' => '/usr/bin/codecept'
+    'SCRIPT_NAME' => '/index-test.php'
+    'SCRIPT_FILENAME' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web/index-test.php'
+    'PATH_TRANSLATED' => '/usr/bin/codecept'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1423062503.2554
+    'REQUEST_TIME' => 1423062503
+    'argv' => [
+        0 => '/usr/bin/codecept'
+        1 => 'run'
+        2 => 'unit'
+    ]
+    'argc' => 3
+    'SERVER_NAME' => 'yii2-nickcv.test'
+    'SERVER_PORT' => '80'
+]
+2015-02-04 15:21:30 [][-][-][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Class 'nickcv\usermanager\tests\codeception\unit\models\UserFixture' not found' in /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/unit/models/LoginFormTest.php:17
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2015-02-04 15:21:30 [][-][-][info][application] $_SERVER = [
+    'RA_GIV' => 's6Hdwl8fWHC1_t|P'
+    'TERM_PROGRAM' => 'Apple_Terminal'
+    'RA_SMTP_USR' => 'no-reply@beg-for-keys.com'
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/nj/87nq3v6x2534mm930q6kbzgh0000gq/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.RmxhHsZPXS/Render'
+    'TERM_PROGRAM_VERSION' => '343.6'
+    'RA_GP' => 'vS4Y334_!dTj2'
+    'OLDPWD' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception'
+    'TERM_SESSION_ID' => '013FAF20-E463-445F-A884-14AFB01DC124'
+    'USER' => 'nicola.puddu'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.OtrkBwUXNM/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F7:0x0:0x0'
+    'RA_SMTP_PSW' => 'ranchanucchan89'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin'
+    'RA_DB_NAME' => 'rest_assured'
+    'RA_SALT' => 'gewerVewa432SfE3478'
+    'PWD' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests'
+    'LANG' => 'en_GB.UTF-8'
+    'RA_DB_PSW' => 'root'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'HOME' => '/Users/nicola.puddu'
+    'SHLVL' => '1'
+    'RA_DB_USR' => 'root'
+    'RA_SMTP_HOST' => 'smtp.gmail.com'
+    'LOGNAME' => 'nicola.puddu'
+    'RA_CDN_URL' => 'http://cdn.restassured.loc/index-test.php/'
+    'RA_DB_HOST' => 'localhost'
+    'RA_SESSION_DOMAIN' => '.restassured.loc'
+    'SECURITYSESSIONID' => '186a5'
+    '_' => '/usr/bin/codecept'
+    'PHP_SELF' => '/usr/bin/codecept'
+    'SCRIPT_NAME' => '/index-test.php'
+    'SCRIPT_FILENAME' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web/index-test.php'
+    'PATH_TRANSLATED' => '/usr/bin/codecept'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1423063290.3055
+    'REQUEST_TIME' => 1423063290
+    'argv' => [
+        0 => '/usr/bin/codecept'
+        1 => 'run'
+        2 => 'unit'
+    ]
+    'argc' => 3
+    'SERVER_NAME' => 'yii2-nickcv.test'
+    'SERVER_PORT' => '80'
+]
+2015-02-04 17:18:40 [127.0.0.1][-][-][error][yii\base\InvalidParamException] exception 'yii\base\InvalidParamException' with message 'The file or directory to be published does not exist: /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/vendor/bower/bootstrap/dist' in /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/AssetManager.php:385
+Stack trace:
+#0 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/AssetBundle.php(162): yii\web\AssetManager->publish('/Users/nicola.p...', Array)
+#1 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/AssetManager.php(221): yii\web\AssetBundle->publish(Object(yii\web\AssetManager))
+#2 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/AssetManager.php(192): yii\web\AssetManager->loadBundle('yii\bootstrap\B...', Array, true)
+#3 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/View.php(284): yii\web\AssetManager->getBundle('yii\bootstrap\B...')
+#4 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/View.php(289): yii\web\View->registerAssetBundle('yii\bootstrap\B...', NULL)
+#5 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/AssetBundle.php(118): yii\web\View->registerAssetBundle('nickcv\usermana...')
+#6 /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/views/default/login.php(10): yii\web\AssetBundle::register(Object(yii\web\View))
+#7 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/View.php(325): require('/Users/nicola.p...')
+#8 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/View.php(247): yii\base\View->renderPhpFile('/Users/nicola.p...', Array)
+#9 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/View.php(149): yii\base\View->renderFile('/Users/nicola.p...', Array, Object(nickcv\usermanager\controllers\DefaultController))
+#10 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/Controller.php(367): yii\base\View->render('login', Array, Object(nickcv\usermanager\controllers\DefaultController))
+#11 /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/controllers/DefaultController.php(47): yii\base\Controller->render('login', Array)
+#12 [internal function]: nickcv\usermanager\controllers\DefaultController->actionLogin()
+#13 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#14 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#15 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('', Array)
+#16 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('usermanager', Array)
+#17 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#18 /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web/index-test.php(17): yii\base\Application->run()
+#19 {main}
+2015-02-04 17:18:40 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    '_csrf' => 'c221bc58f3da577c633d7ac299425dc1731b0c00b16f19236b16dd7bc90176c4s:32:\"FzR9rtA2RsQy5TK5ojhlS8Fw8jiEeB-1\";'
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'yii2-nickcv.test'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:35.0) Gecko/20100101 Firefox/35.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_COOKIE' => '_csrf=c221bc58f3da577c633d7ac299425dc1731b0c00b16f19236b16dd7bc90176c4s%3A32%3A%22FzR9rtA2RsQy5TK5ojhlS8Fw8jiEeB-1%22%3B'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'PATH' => '/usr/bin:/bin:/usr/sbin:/sbin'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.2.23 (Unix) mod_ssl/2.2.23 OpenSSL/0.9.8zc DAV/2 PHP/5.4.10'
+    'SERVER_NAME' => 'yii2-nickcv.test'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web'
+    'SERVER_ADMIN' => 'you@example.com'
+    'SCRIPT_FILENAME' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web/index-test.php'
+    'REMOTE_PORT' => '58259'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/index-test.php/usermanager'
+    'SCRIPT_NAME' => '/index-test.php'
+    'PATH_INFO' => '/usermanager'
+    'PATH_TRANSLATED' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web/usermanager'
+    'PHP_SELF' => '/index-test.php/usermanager'
+    'REQUEST_TIME_FLOAT' => 1423066720.36
+    'REQUEST_TIME' => 1423066720
+    'argv' => []
+    'argc' => 0
+]
+2015-02-04 17:21:01 [127.0.0.1][-][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "".' in /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/Module.php:461
+Stack trace:
+#0 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('', Array)
+#1 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web/index-test.php(17): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/Application.php:96
+Stack trace:
+#0 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web/index-test.php(17): yii\base\Application->run()
+#2 {main}
+2015-02-04 17:21:01 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    '_csrf' => 'c221bc58f3da577c633d7ac299425dc1731b0c00b16f19236b16dd7bc90176c4s:32:\"FzR9rtA2RsQy5TK5ojhlS8Fw8jiEeB-1\";'
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'yii2-nickcv.test'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:35.0) Gecko/20100101 Firefox/35.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_COOKIE' => '_csrf=c221bc58f3da577c633d7ac299425dc1731b0c00b16f19236b16dd7bc90176c4s%3A32%3A%22FzR9rtA2RsQy5TK5ojhlS8Fw8jiEeB-1%22%3B'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'PATH' => '/usr/bin:/bin:/usr/sbin:/sbin'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.2.23 (Unix) mod_ssl/2.2.23 OpenSSL/0.9.8zc DAV/2 PHP/5.4.10'
+    'SERVER_NAME' => 'yii2-nickcv.test'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web'
+    'SERVER_ADMIN' => 'you@example.com'
+    'SCRIPT_FILENAME' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web/index-test.php'
+    'REMOTE_PORT' => '58434'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/index-test.php'
+    'SCRIPT_NAME' => '/index-test.php'
+    'PHP_SELF' => '/index-test.php'
+    'REQUEST_TIME_FLOAT' => 1423066861.44
+    'REQUEST_TIME' => 1423066861
+    'argv' => []
+    'argc' => 0
+]
+2015-02-04 17:21:15 [127.0.0.1][-][-][error][yii\base\InvalidParamException] exception 'yii\base\InvalidParamException' with message 'The file or directory to be published does not exist: /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/vendor/bower/bootstrap/dist' in /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/AssetManager.php:385
+Stack trace:
+#0 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/AssetBundle.php(162): yii\web\AssetManager->publish('/Users/nicola.p...', Array)
+#1 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/AssetManager.php(221): yii\web\AssetBundle->publish(Object(yii\web\AssetManager))
+#2 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/AssetManager.php(192): yii\web\AssetManager->loadBundle('yii\bootstrap\B...', Array, true)
+#3 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/View.php(284): yii\web\AssetManager->getBundle('yii\bootstrap\B...')
+#4 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/View.php(289): yii\web\View->registerAssetBundle('yii\bootstrap\B...', NULL)
+#5 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/AssetBundle.php(118): yii\web\View->registerAssetBundle('nickcv\usermana...')
+#6 /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/views/default/login.php(10): yii\web\AssetBundle::register(Object(yii\web\View))
+#7 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/View.php(325): require('/Users/nicola.p...')
+#8 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/View.php(247): yii\base\View->renderPhpFile('/Users/nicola.p...', Array)
+#9 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/View.php(149): yii\base\View->renderFile('/Users/nicola.p...', Array, Object(nickcv\usermanager\controllers\DefaultController))
+#10 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/Controller.php(367): yii\base\View->render('login', Array, Object(nickcv\usermanager\controllers\DefaultController))
+#11 /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/controllers/DefaultController.php(47): yii\base\Controller->render('login', Array)
+#12 [internal function]: nickcv\usermanager\controllers\DefaultController->actionLogin()
+#13 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#14 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#15 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('', Array)
+#16 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('usermanager', Array)
+#17 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#18 /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web/index-test.php(17): yii\base\Application->run()
+#19 {main}
+2015-02-04 17:21:15 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    '_csrf' => 'c221bc58f3da577c633d7ac299425dc1731b0c00b16f19236b16dd7bc90176c4s:32:\"FzR9rtA2RsQy5TK5ojhlS8Fw8jiEeB-1\";'
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'yii2-nickcv.test'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:35.0) Gecko/20100101 Firefox/35.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_COOKIE' => '_csrf=c221bc58f3da577c633d7ac299425dc1731b0c00b16f19236b16dd7bc90176c4s%3A32%3A%22FzR9rtA2RsQy5TK5ojhlS8Fw8jiEeB-1%22%3B'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'PATH' => '/usr/bin:/bin:/usr/sbin:/sbin'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.2.23 (Unix) mod_ssl/2.2.23 OpenSSL/0.9.8zc DAV/2 PHP/5.4.10'
+    'SERVER_NAME' => 'yii2-nickcv.test'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web'
+    'SERVER_ADMIN' => 'you@example.com'
+    'SCRIPT_FILENAME' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web/index-test.php'
+    'REMOTE_PORT' => '58451'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/index-test.php/usermanager'
+    'SCRIPT_NAME' => '/index-test.php'
+    'PATH_INFO' => '/usermanager'
+    'PATH_TRANSLATED' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web/usermanager'
+    'PHP_SELF' => '/index-test.php/usermanager'
+    'REQUEST_TIME_FLOAT' => 1423066875.91
+    'REQUEST_TIME' => 1423066875
+    'argv' => []
+    'argc' => 0
+]
+2015-02-04 17:22:22 [127.0.0.1][-][-][error][yii\base\InvalidParamException] exception 'yii\base\InvalidParamException' with message 'The file or directory to be published does not exist: /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/vendor/bower/bootstrap/dist' in /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/AssetManager.php:385
+Stack trace:
+#0 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/AssetBundle.php(162): yii\web\AssetManager->publish('/Users/nicola.p...', Array)
+#1 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/AssetManager.php(221): yii\web\AssetBundle->publish(Object(yii\web\AssetManager))
+#2 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/AssetManager.php(192): yii\web\AssetManager->loadBundle('yii\bootstrap\B...', Array, true)
+#3 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/View.php(284): yii\web\AssetManager->getBundle('yii\bootstrap\B...')
+#4 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/View.php(289): yii\web\View->registerAssetBundle('yii\bootstrap\B...', NULL)
+#5 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/AssetBundle.php(118): yii\web\View->registerAssetBundle('nickcv\usermana...')
+#6 /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/views/default/login.php(10): yii\web\AssetBundle::register(Object(yii\web\View))
+#7 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/View.php(325): require('/Users/nicola.p...')
+#8 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/View.php(247): yii\base\View->renderPhpFile('/Users/nicola.p...', Array)
+#9 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/View.php(149): yii\base\View->renderFile('/Users/nicola.p...', Array, Object(nickcv\usermanager\controllers\DefaultController))
+#10 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/Controller.php(367): yii\base\View->render('login', Array, Object(nickcv\usermanager\controllers\DefaultController))
+#11 /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/controllers/DefaultController.php(47): yii\base\Controller->render('login', Array)
+#12 [internal function]: nickcv\usermanager\controllers\DefaultController->actionLogin()
+#13 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#14 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#15 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('', Array)
+#16 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('usermanager', Array)
+#17 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#18 /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web/index-test.php(17): yii\base\Application->run()
+#19 {main}
+2015-02-04 17:22:22 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    '_csrf' => 'c221bc58f3da577c633d7ac299425dc1731b0c00b16f19236b16dd7bc90176c4s:32:\"FzR9rtA2RsQy5TK5ojhlS8Fw8jiEeB-1\";'
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'yii2-nickcv.test'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:35.0) Gecko/20100101 Firefox/35.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_COOKIE' => '_csrf=c221bc58f3da577c633d7ac299425dc1731b0c00b16f19236b16dd7bc90176c4s%3A32%3A%22FzR9rtA2RsQy5TK5ojhlS8Fw8jiEeB-1%22%3B'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'PATH' => '/usr/bin:/bin:/usr/sbin:/sbin'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.2.23 (Unix) mod_ssl/2.2.23 OpenSSL/0.9.8zc DAV/2 PHP/5.4.10'
+    'SERVER_NAME' => 'yii2-nickcv.test'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web'
+    'SERVER_ADMIN' => 'you@example.com'
+    'SCRIPT_FILENAME' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web/index-test.php'
+    'REMOTE_PORT' => '58554'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/index-test.php/usermanager'
+    'SCRIPT_NAME' => '/index-test.php'
+    'PATH_INFO' => '/usermanager'
+    'PATH_TRANSLATED' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web/usermanager'
+    'PHP_SELF' => '/index-test.php/usermanager'
+    'REQUEST_TIME_FLOAT' => 1423066942.33
+    'REQUEST_TIME' => 1423066942
+    'argv' => []
+    'argc' => 0
+]
+2015-02-04 17:22:23 [127.0.0.1][-][-][error][yii\base\InvalidParamException] exception 'yii\base\InvalidParamException' with message 'The file or directory to be published does not exist: /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/vendor/bower/bootstrap/dist' in /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/AssetManager.php:385
+Stack trace:
+#0 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/AssetBundle.php(162): yii\web\AssetManager->publish('/Users/nicola.p...', Array)
+#1 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/AssetManager.php(221): yii\web\AssetBundle->publish(Object(yii\web\AssetManager))
+#2 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/AssetManager.php(192): yii\web\AssetManager->loadBundle('yii\bootstrap\B...', Array, true)
+#3 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/View.php(284): yii\web\AssetManager->getBundle('yii\bootstrap\B...')
+#4 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/View.php(289): yii\web\View->registerAssetBundle('yii\bootstrap\B...', NULL)
+#5 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/AssetBundle.php(118): yii\web\View->registerAssetBundle('nickcv\usermana...')
+#6 /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/views/default/login.php(10): yii\web\AssetBundle::register(Object(yii\web\View))
+#7 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/View.php(325): require('/Users/nicola.p...')
+#8 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/View.php(247): yii\base\View->renderPhpFile('/Users/nicola.p...', Array)
+#9 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/View.php(149): yii\base\View->renderFile('/Users/nicola.p...', Array, Object(nickcv\usermanager\controllers\DefaultController))
+#10 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/Controller.php(367): yii\base\View->render('login', Array, Object(nickcv\usermanager\controllers\DefaultController))
+#11 /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/controllers/DefaultController.php(47): yii\base\Controller->render('login', Array)
+#12 [internal function]: nickcv\usermanager\controllers\DefaultController->actionLogin()
+#13 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#14 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#15 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('', Array)
+#16 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('usermanager', Array)
+#17 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#18 /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web/index-test.php(17): yii\base\Application->run()
+#19 {main}
+2015-02-04 17:22:23 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    '_csrf' => 'c221bc58f3da577c633d7ac299425dc1731b0c00b16f19236b16dd7bc90176c4s:32:\"FzR9rtA2RsQy5TK5ojhlS8Fw8jiEeB-1\";'
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'yii2-nickcv.test'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:35.0) Gecko/20100101 Firefox/35.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_COOKIE' => '_csrf=c221bc58f3da577c633d7ac299425dc1731b0c00b16f19236b16dd7bc90176c4s%3A32%3A%22FzR9rtA2RsQy5TK5ojhlS8Fw8jiEeB-1%22%3B'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'PATH' => '/usr/bin:/bin:/usr/sbin:/sbin'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.2.23 (Unix) mod_ssl/2.2.23 OpenSSL/0.9.8zc DAV/2 PHP/5.4.10'
+    'SERVER_NAME' => 'yii2-nickcv.test'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web'
+    'SERVER_ADMIN' => 'you@example.com'
+    'SCRIPT_FILENAME' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web/index-test.php'
+    'REMOTE_PORT' => '58563'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/index-test.php/usermanager'
+    'SCRIPT_NAME' => '/index-test.php'
+    'PATH_INFO' => '/usermanager'
+    'PATH_TRANSLATED' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web/usermanager'
+    'PHP_SELF' => '/index-test.php/usermanager'
+    'REQUEST_TIME_FLOAT' => 1423066943.14
+    'REQUEST_TIME' => 1423066943
+    'argv' => []
+    'argc' => 0
+]
+2015-02-04 17:22:23 [127.0.0.1][-][-][error][yii\base\InvalidParamException] exception 'yii\base\InvalidParamException' with message 'The file or directory to be published does not exist: /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/vendor/bower/bootstrap/dist' in /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/AssetManager.php:385
+Stack trace:
+#0 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/AssetBundle.php(162): yii\web\AssetManager->publish('/Users/nicola.p...', Array)
+#1 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/AssetManager.php(221): yii\web\AssetBundle->publish(Object(yii\web\AssetManager))
+#2 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/AssetManager.php(192): yii\web\AssetManager->loadBundle('yii\bootstrap\B...', Array, true)
+#3 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/View.php(284): yii\web\AssetManager->getBundle('yii\bootstrap\B...')
+#4 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/View.php(289): yii\web\View->registerAssetBundle('yii\bootstrap\B...', NULL)
+#5 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/AssetBundle.php(118): yii\web\View->registerAssetBundle('nickcv\usermana...')
+#6 /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/views/default/login.php(10): yii\web\AssetBundle::register(Object(yii\web\View))
+#7 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/View.php(325): require('/Users/nicola.p...')
+#8 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/View.php(247): yii\base\View->renderPhpFile('/Users/nicola.p...', Array)
+#9 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/View.php(149): yii\base\View->renderFile('/Users/nicola.p...', Array, Object(nickcv\usermanager\controllers\DefaultController))
+#10 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/Controller.php(367): yii\base\View->render('login', Array, Object(nickcv\usermanager\controllers\DefaultController))
+#11 /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/controllers/DefaultController.php(47): yii\base\Controller->render('login', Array)
+#12 [internal function]: nickcv\usermanager\controllers\DefaultController->actionLogin()
+#13 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#14 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#15 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('', Array)
+#16 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('usermanager', Array)
+#17 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#18 /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web/index-test.php(17): yii\base\Application->run()
+#19 {main}
+2015-02-04 17:22:23 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    '_csrf' => 'c221bc58f3da577c633d7ac299425dc1731b0c00b16f19236b16dd7bc90176c4s:32:\"FzR9rtA2RsQy5TK5ojhlS8Fw8jiEeB-1\";'
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'yii2-nickcv.test'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:35.0) Gecko/20100101 Firefox/35.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_COOKIE' => '_csrf=c221bc58f3da577c633d7ac299425dc1731b0c00b16f19236b16dd7bc90176c4s%3A32%3A%22FzR9rtA2RsQy5TK5ojhlS8Fw8jiEeB-1%22%3B'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'PATH' => '/usr/bin:/bin:/usr/sbin:/sbin'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.2.23 (Unix) mod_ssl/2.2.23 OpenSSL/0.9.8zc DAV/2 PHP/5.4.10'
+    'SERVER_NAME' => 'yii2-nickcv.test'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web'
+    'SERVER_ADMIN' => 'you@example.com'
+    'SCRIPT_FILENAME' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web/index-test.php'
+    'REMOTE_PORT' => '58572'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/index-test.php/usermanager'
+    'SCRIPT_NAME' => '/index-test.php'
+    'PATH_INFO' => '/usermanager'
+    'PATH_TRANSLATED' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web/usermanager'
+    'PHP_SELF' => '/index-test.php/usermanager'
+    'REQUEST_TIME_FLOAT' => 1423066943.8
+    'REQUEST_TIME' => 1423066943
+    'argv' => []
+    'argc' => 0
+]
+2015-02-04 17:22:37 [127.0.0.1][-][-][error][yii\base\InvalidParamException] exception 'yii\base\InvalidParamException' with message 'The file or directory to be published does not exist: /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/vendor/bower/bootstrap/dist' in /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/AssetManager.php:385
+Stack trace:
+#0 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/AssetBundle.php(162): yii\web\AssetManager->publish('/Users/nicola.p...', Array)
+#1 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/AssetManager.php(221): yii\web\AssetBundle->publish(Object(yii\web\AssetManager))
+#2 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/AssetManager.php(192): yii\web\AssetManager->loadBundle('yii\bootstrap\B...', Array, true)
+#3 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/View.php(284): yii\web\AssetManager->getBundle('yii\bootstrap\B...')
+#4 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/View.php(289): yii\web\View->registerAssetBundle('yii\bootstrap\B...', NULL)
+#5 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/AssetBundle.php(118): yii\web\View->registerAssetBundle('nickcv\usermana...')
+#6 /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/views/default/login.php(10): yii\web\AssetBundle::register(Object(yii\web\View))
+#7 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/View.php(325): require('/Users/nicola.p...')
+#8 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/View.php(247): yii\base\View->renderPhpFile('/Users/nicola.p...', Array)
+#9 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/View.php(149): yii\base\View->renderFile('/Users/nicola.p...', Array, Object(nickcv\usermanager\controllers\DefaultController))
+#10 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/Controller.php(367): yii\base\View->render('login', Array, Object(nickcv\usermanager\controllers\DefaultController))
+#11 /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/controllers/DefaultController.php(47): yii\base\Controller->render('login', Array)
+#12 [internal function]: nickcv\usermanager\controllers\DefaultController->actionLogin()
+#13 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#14 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#15 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('', Array)
+#16 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('usermanager', Array)
+#17 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#18 /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web/index-test.php(17): yii\base\Application->run()
+#19 {main}
+2015-02-04 17:22:37 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    '_csrf' => 'c221bc58f3da577c633d7ac299425dc1731b0c00b16f19236b16dd7bc90176c4s:32:\"FzR9rtA2RsQy5TK5ojhlS8Fw8jiEeB-1\";'
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'yii2-nickcv.test'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:35.0) Gecko/20100101 Firefox/35.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_COOKIE' => '_csrf=c221bc58f3da577c633d7ac299425dc1731b0c00b16f19236b16dd7bc90176c4s%3A32%3A%22FzR9rtA2RsQy5TK5ojhlS8Fw8jiEeB-1%22%3B'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'PATH' => '/usr/bin:/bin:/usr/sbin:/sbin'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.2.23 (Unix) mod_ssl/2.2.23 OpenSSL/0.9.8zc DAV/2 PHP/5.4.10'
+    'SERVER_NAME' => 'yii2-nickcv.test'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web'
+    'SERVER_ADMIN' => 'you@example.com'
+    'SCRIPT_FILENAME' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web/index-test.php'
+    'REMOTE_PORT' => '58594'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/index-test.php/usermanager'
+    'SCRIPT_NAME' => '/index-test.php'
+    'PATH_INFO' => '/usermanager'
+    'PATH_TRANSLATED' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web/usermanager'
+    'PHP_SELF' => '/index-test.php/usermanager'
+    'REQUEST_TIME_FLOAT' => 1423066957.83
+    'REQUEST_TIME' => 1423066957
+    'argv' => []
+    'argc' => 0
+]
+2015-02-04 17:22:38 [127.0.0.1][-][-][error][yii\base\InvalidParamException] exception 'yii\base\InvalidParamException' with message 'The file or directory to be published does not exist: /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/vendor/bower/bootstrap/dist' in /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/AssetManager.php:385
+Stack trace:
+#0 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/AssetBundle.php(162): yii\web\AssetManager->publish('/Users/nicola.p...', Array)
+#1 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/AssetManager.php(221): yii\web\AssetBundle->publish(Object(yii\web\AssetManager))
+#2 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/AssetManager.php(192): yii\web\AssetManager->loadBundle('yii\bootstrap\B...', Array, true)
+#3 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/View.php(284): yii\web\AssetManager->getBundle('yii\bootstrap\B...')
+#4 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/View.php(289): yii\web\View->registerAssetBundle('yii\bootstrap\B...', NULL)
+#5 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/AssetBundle.php(118): yii\web\View->registerAssetBundle('nickcv\usermana...')
+#6 /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/views/default/login.php(10): yii\web\AssetBundle::register(Object(yii\web\View))
+#7 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/View.php(325): require('/Users/nicola.p...')
+#8 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/View.php(247): yii\base\View->renderPhpFile('/Users/nicola.p...', Array)
+#9 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/View.php(149): yii\base\View->renderFile('/Users/nicola.p...', Array, Object(nickcv\usermanager\controllers\DefaultController))
+#10 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/Controller.php(367): yii\base\View->render('login', Array, Object(nickcv\usermanager\controllers\DefaultController))
+#11 /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/controllers/DefaultController.php(47): yii\base\Controller->render('login', Array)
+#12 [internal function]: nickcv\usermanager\controllers\DefaultController->actionLogin()
+#13 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#14 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#15 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('', Array)
+#16 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('usermanager', Array)
+#17 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#18 /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web/index-test.php(17): yii\base\Application->run()
+#19 {main}
+2015-02-04 17:22:38 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    '_csrf' => 'c221bc58f3da577c633d7ac299425dc1731b0c00b16f19236b16dd7bc90176c4s:32:\"FzR9rtA2RsQy5TK5ojhlS8Fw8jiEeB-1\";'
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'yii2-nickcv.test'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:35.0) Gecko/20100101 Firefox/35.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_COOKIE' => '_csrf=c221bc58f3da577c633d7ac299425dc1731b0c00b16f19236b16dd7bc90176c4s%3A32%3A%22FzR9rtA2RsQy5TK5ojhlS8Fw8jiEeB-1%22%3B'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'PATH' => '/usr/bin:/bin:/usr/sbin:/sbin'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.2.23 (Unix) mod_ssl/2.2.23 OpenSSL/0.9.8zc DAV/2 PHP/5.4.10'
+    'SERVER_NAME' => 'yii2-nickcv.test'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web'
+    'SERVER_ADMIN' => 'you@example.com'
+    'SCRIPT_FILENAME' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web/index-test.php'
+    'REMOTE_PORT' => '58602'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/index-test.php/usermanager'
+    'SCRIPT_NAME' => '/index-test.php'
+    'PATH_INFO' => '/usermanager'
+    'PATH_TRANSLATED' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web/usermanager'
+    'PHP_SELF' => '/index-test.php/usermanager'
+    'REQUEST_TIME_FLOAT' => 1423066958.75
+    'REQUEST_TIME' => 1423066958
+    'argv' => []
+    'argc' => 0
+]
+2015-02-04 17:22:57 [127.0.0.1][-][-][error][yii\base\InvalidParamException] exception 'yii\base\InvalidParamException' with message 'The file or directory to be published does not exist: /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/vendor/bower/bootstrap/dist' in /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/AssetManager.php:385
+Stack trace:
+#0 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/AssetBundle.php(162): yii\web\AssetManager->publish('/Users/nicola.p...', Array)
+#1 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/AssetManager.php(221): yii\web\AssetBundle->publish(Object(yii\web\AssetManager))
+#2 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/AssetManager.php(192): yii\web\AssetManager->loadBundle('yii\bootstrap\B...', Array, true)
+#3 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/View.php(284): yii\web\AssetManager->getBundle('yii\bootstrap\B...')
+#4 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/View.php(289): yii\web\View->registerAssetBundle('yii\bootstrap\B...', NULL)
+#5 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/AssetBundle.php(118): yii\web\View->registerAssetBundle('nickcv\usermana...')
+#6 /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/views/default/login.php(10): yii\web\AssetBundle::register(Object(yii\web\View))
+#7 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/View.php(325): require('/Users/nicola.p...')
+#8 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/View.php(247): yii\base\View->renderPhpFile('/Users/nicola.p...', Array)
+#9 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/View.php(149): yii\base\View->renderFile('/Users/nicola.p...', Array, Object(nickcv\usermanager\controllers\DefaultController))
+#10 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/Controller.php(367): yii\base\View->render('login', Array, Object(nickcv\usermanager\controllers\DefaultController))
+#11 /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/controllers/DefaultController.php(47): yii\base\Controller->render('login', Array)
+#12 [internal function]: nickcv\usermanager\controllers\DefaultController->actionLogin()
+#13 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#14 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#15 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('', Array)
+#16 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('usermanager', Array)
+#17 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#18 /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web/index-test.php(17): yii\base\Application->run()
+#19 {main}
+2015-02-04 17:22:57 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    '_csrf' => 'c221bc58f3da577c633d7ac299425dc1731b0c00b16f19236b16dd7bc90176c4s:32:\"FzR9rtA2RsQy5TK5ojhlS8Fw8jiEeB-1\";'
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'yii2-nickcv.test'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:35.0) Gecko/20100101 Firefox/35.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_COOKIE' => '_csrf=c221bc58f3da577c633d7ac299425dc1731b0c00b16f19236b16dd7bc90176c4s%3A32%3A%22FzR9rtA2RsQy5TK5ojhlS8Fw8jiEeB-1%22%3B'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'PATH' => '/usr/bin:/bin:/usr/sbin:/sbin'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.2.23 (Unix) mod_ssl/2.2.23 OpenSSL/0.9.8zc DAV/2 PHP/5.4.10'
+    'SERVER_NAME' => 'yii2-nickcv.test'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web'
+    'SERVER_ADMIN' => 'you@example.com'
+    'SCRIPT_FILENAME' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web/index-test.php'
+    'REMOTE_PORT' => '58630'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/index-test.php/usermanager'
+    'SCRIPT_NAME' => '/index-test.php'
+    'PATH_INFO' => '/usermanager'
+    'PATH_TRANSLATED' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web/usermanager'
+    'PHP_SELF' => '/index-test.php/usermanager'
+    'REQUEST_TIME_FLOAT' => 1423066977.87
+    'REQUEST_TIME' => 1423066977
+    'argv' => []
+    'argc' => 0
+]
+2015-02-04 17:22:59 [127.0.0.1][-][-][error][yii\base\InvalidParamException] exception 'yii\base\InvalidParamException' with message 'The file or directory to be published does not exist: /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/vendor/bower/bootstrap/dist' in /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/AssetManager.php:385
+Stack trace:
+#0 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/AssetBundle.php(162): yii\web\AssetManager->publish('/Users/nicola.p...', Array)
+#1 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/AssetManager.php(221): yii\web\AssetBundle->publish(Object(yii\web\AssetManager))
+#2 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/AssetManager.php(192): yii\web\AssetManager->loadBundle('yii\bootstrap\B...', Array, true)
+#3 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/View.php(284): yii\web\AssetManager->getBundle('yii\bootstrap\B...')
+#4 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/View.php(289): yii\web\View->registerAssetBundle('yii\bootstrap\B...', NULL)
+#5 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/AssetBundle.php(118): yii\web\View->registerAssetBundle('nickcv\usermana...')
+#6 /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/views/default/login.php(10): yii\web\AssetBundle::register(Object(yii\web\View))
+#7 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/View.php(325): require('/Users/nicola.p...')
+#8 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/View.php(247): yii\base\View->renderPhpFile('/Users/nicola.p...', Array)
+#9 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/View.php(149): yii\base\View->renderFile('/Users/nicola.p...', Array, Object(nickcv\usermanager\controllers\DefaultController))
+#10 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/Controller.php(367): yii\base\View->render('login', Array, Object(nickcv\usermanager\controllers\DefaultController))
+#11 /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/controllers/DefaultController.php(47): yii\base\Controller->render('login', Array)
+#12 [internal function]: nickcv\usermanager\controllers\DefaultController->actionLogin()
+#13 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#14 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#15 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('', Array)
+#16 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('usermanager', Array)
+#17 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#18 /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web/index-test.php(17): yii\base\Application->run()
+#19 {main}
+2015-02-04 17:22:58 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    '_csrf' => 'c221bc58f3da577c633d7ac299425dc1731b0c00b16f19236b16dd7bc90176c4s:32:\"FzR9rtA2RsQy5TK5ojhlS8Fw8jiEeB-1\";'
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'yii2-nickcv.test'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:35.0) Gecko/20100101 Firefox/35.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_COOKIE' => '_csrf=c221bc58f3da577c633d7ac299425dc1731b0c00b16f19236b16dd7bc90176c4s%3A32%3A%22FzR9rtA2RsQy5TK5ojhlS8Fw8jiEeB-1%22%3B'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'PATH' => '/usr/bin:/bin:/usr/sbin:/sbin'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.2.23 (Unix) mod_ssl/2.2.23 OpenSSL/0.9.8zc DAV/2 PHP/5.4.10'
+    'SERVER_NAME' => 'yii2-nickcv.test'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web'
+    'SERVER_ADMIN' => 'you@example.com'
+    'SCRIPT_FILENAME' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web/index-test.php'
+    'REMOTE_PORT' => '58640'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/index-test.php/usermanager'
+    'SCRIPT_NAME' => '/index-test.php'
+    'PATH_INFO' => '/usermanager'
+    'PATH_TRANSLATED' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web/usermanager'
+    'PHP_SELF' => '/index-test.php/usermanager'
+    'REQUEST_TIME_FLOAT' => 1423066978.96
+    'REQUEST_TIME' => 1423066978
+    'argv' => []
+    'argc' => 0
+]
+2015-02-04 17:23:15 [127.0.0.1][-][-][error][yii\base\InvalidParamException] exception 'yii\base\InvalidParamException' with message 'The file or directory to be published does not exist: /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/vendor/bower/bootstrap/dist' in /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/AssetManager.php:385
+Stack trace:
+#0 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/AssetBundle.php(162): yii\web\AssetManager->publish('/Users/nicola.p...', Array)
+#1 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/AssetManager.php(221): yii\web\AssetBundle->publish(Object(yii\web\AssetManager))
+#2 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/AssetManager.php(192): yii\web\AssetManager->loadBundle('yii\bootstrap\B...', Array, true)
+#3 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/View.php(284): yii\web\AssetManager->getBundle('yii\bootstrap\B...')
+#4 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/View.php(289): yii\web\View->registerAssetBundle('yii\bootstrap\B...', NULL)
+#5 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/AssetBundle.php(118): yii\web\View->registerAssetBundle('nickcv\usermana...')
+#6 /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/views/default/login.php(10): yii\web\AssetBundle::register(Object(yii\web\View))
+#7 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/View.php(325): require('/Users/nicola.p...')
+#8 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/View.php(247): yii\base\View->renderPhpFile('/Users/nicola.p...', Array)
+#9 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/View.php(149): yii\base\View->renderFile('/Users/nicola.p...', Array, Object(nickcv\usermanager\controllers\DefaultController))
+#10 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/Controller.php(367): yii\base\View->render('login', Array, Object(nickcv\usermanager\controllers\DefaultController))
+#11 /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/controllers/DefaultController.php(47): yii\base\Controller->render('login', Array)
+#12 [internal function]: nickcv\usermanager\controllers\DefaultController->actionLogin()
+#13 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#14 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#15 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('', Array)
+#16 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('usermanager', Array)
+#17 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#18 /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web/index-test.php(17): yii\base\Application->run()
+#19 {main}
+2015-02-04 17:23:15 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    '_csrf' => 'c221bc58f3da577c633d7ac299425dc1731b0c00b16f19236b16dd7bc90176c4s:32:\"FzR9rtA2RsQy5TK5ojhlS8Fw8jiEeB-1\";'
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'yii2-nickcv.test'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:35.0) Gecko/20100101 Firefox/35.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_COOKIE' => '_csrf=c221bc58f3da577c633d7ac299425dc1731b0c00b16f19236b16dd7bc90176c4s%3A32%3A%22FzR9rtA2RsQy5TK5ojhlS8Fw8jiEeB-1%22%3B'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'PATH' => '/usr/bin:/bin:/usr/sbin:/sbin'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.2.23 (Unix) mod_ssl/2.2.23 OpenSSL/0.9.8zc DAV/2 PHP/5.4.10'
+    'SERVER_NAME' => 'yii2-nickcv.test'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web'
+    'SERVER_ADMIN' => 'you@example.com'
+    'SCRIPT_FILENAME' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web/index-test.php'
+    'REMOTE_PORT' => '58665'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/index-test.php/usermanager'
+    'SCRIPT_NAME' => '/index-test.php'
+    'PATH_INFO' => '/usermanager'
+    'PATH_TRANSLATED' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web/usermanager'
+    'PHP_SELF' => '/index-test.php/usermanager'
+    'REQUEST_TIME_FLOAT' => 1423066995.63
+    'REQUEST_TIME' => 1423066995
+    'argv' => []
+    'argc' => 0
+]
+2015-02-04 17:23:27 [127.0.0.1][-][-][error][yii\base\InvalidParamException] exception 'yii\base\InvalidParamException' with message 'The file or directory to be published does not exist: /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/vendor/bower/bootstrap/dist' in /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/AssetManager.php:385
+Stack trace:
+#0 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/AssetBundle.php(162): yii\web\AssetManager->publish('/Users/nicola.p...', Array)
+#1 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/AssetManager.php(221): yii\web\AssetBundle->publish(Object(yii\web\AssetManager))
+#2 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/AssetManager.php(192): yii\web\AssetManager->loadBundle('yii\bootstrap\B...', Array, true)
+#3 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/View.php(284): yii\web\AssetManager->getBundle('yii\bootstrap\B...')
+#4 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/View.php(289): yii\web\View->registerAssetBundle('yii\bootstrap\B...', NULL)
+#5 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/AssetBundle.php(118): yii\web\View->registerAssetBundle('nickcv\usermana...')
+#6 /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/views/default/login.php(10): yii\web\AssetBundle::register(Object(yii\web\View))
+#7 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/View.php(325): require('/Users/nicola.p...')
+#8 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/View.php(247): yii\base\View->renderPhpFile('/Users/nicola.p...', Array)
+#9 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/View.php(149): yii\base\View->renderFile('/Users/nicola.p...', Array, Object(nickcv\usermanager\controllers\DefaultController))
+#10 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/Controller.php(367): yii\base\View->render('login', Array, Object(nickcv\usermanager\controllers\DefaultController))
+#11 /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/controllers/DefaultController.php(47): yii\base\Controller->render('login', Array)
+#12 [internal function]: nickcv\usermanager\controllers\DefaultController->actionLogin()
+#13 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#14 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#15 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('', Array)
+#16 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('usermanager', Array)
+#17 /Users/nicola.puddu/www-data/yii2/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#18 /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web/index-test.php(20): yii\base\Application->run()
+#19 {main}
+2015-02-04 17:23:27 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    '_csrf' => 'c221bc58f3da577c633d7ac299425dc1731b0c00b16f19236b16dd7bc90176c4s:32:\"FzR9rtA2RsQy5TK5ojhlS8Fw8jiEeB-1\";'
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'yii2-nickcv.test'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:35.0) Gecko/20100101 Firefox/35.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_COOKIE' => '_csrf=c221bc58f3da577c633d7ac299425dc1731b0c00b16f19236b16dd7bc90176c4s%3A32%3A%22FzR9rtA2RsQy5TK5ojhlS8Fw8jiEeB-1%22%3B'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'PATH' => '/usr/bin:/bin:/usr/sbin:/sbin'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.2.23 (Unix) mod_ssl/2.2.23 OpenSSL/0.9.8zc DAV/2 PHP/5.4.10'
+    'SERVER_NAME' => 'yii2-nickcv.test'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web'
+    'SERVER_ADMIN' => 'you@example.com'
+    'SCRIPT_FILENAME' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web/index-test.php'
+    'REMOTE_PORT' => '58687'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/index-test.php/usermanager'
+    'SCRIPT_NAME' => '/index-test.php'
+    'PATH_INFO' => '/usermanager'
+    'PATH_TRANSLATED' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web/usermanager'
+    'PHP_SELF' => '/index-test.php/usermanager'
+    'REQUEST_TIME_FLOAT' => 1423067007.42
+    'REQUEST_TIME' => 1423067007
+    'argv' => []
+    'argc' => 0
+]

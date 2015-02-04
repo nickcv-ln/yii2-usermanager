@@ -4,6 +4,7 @@ namespace nickcv\usermanager\models;
 
 use nickcv\usermanager\enums\Database;
 use nickcv\usermanager\enums\Scenarios;
+use yii\web\IdentityInterface;
 
 /**
  * This is the model class for table "usermanager_user".
@@ -15,12 +16,13 @@ use nickcv\usermanager\enums\Scenarios;
  * @property string $lastname
  * @property integer $status
  * @property string $token
+ * @property string $authkey
  * @property string $registration_date
  *
  * @property UserBans[] $userBans
  * @property UserLogs[] $userLogs
  */
-class User extends \yii\db\ActiveRecord
+class User extends \yii\db\ActiveRecord implements IdentityInterface
 {
     /**
      * @inheritdoc
@@ -98,4 +100,73 @@ class User extends \yii\db\ActiveRecord
     {
         return $this->hasMany(UserLogs::className(), ['id_user' => 'id']);
     }
+    
+    /**
+     * @inheritdoc
+     * @return \nickcv\usermanager\models\User;
+     */
+    public static function findIdentity($id)
+    {
+        return static::findOne($id);
+    }
+    
+    /**
+     * @inheritdoc
+     */
+    public static function findIdentityByAccessToken($token, $type = null)
+    {
+        return null;
+    }
+
+    /**
+     * Find a user by email
+     * 
+     * @param string $email
+     * @return \nickcv\usermanager\models\User
+     */
+    public static function findByEmail($email)
+    {
+        return static::findOne(['email' => $email]);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getId()
+    {
+        return $this->getPrimaryKey();
+    }
+    
+    public function getUsername()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getAuthKey()
+    {
+        return $this->authkey;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function validateAuthKey($authKey)
+    {
+        return $this->getAuthKey() === $authKey;
+    }
+    
+    /**
+     * Validates the given password against the current user.
+     * 
+     * @param string $password
+     * @return boolean
+     */
+    public function validatePassword($password)
+    {
+        return \Yii::$app->security->validatePassword($password, $this->password);
+    }
+
 }

@@ -17,6 +17,7 @@ use yii\base\Behavior;
 use yii\base\InvalidCallException;
 use nickcv\usermanager\enums\Scenarios;
 use nickcv\usermanager\enums\UserStatus;
+use nickcv\usermanager\enums\Roles;
 
 /**
  * This Behavior is used to pre-populate some attributes when creating a new
@@ -49,6 +50,7 @@ class UserBehavior extends Behavior
     {
         return [
             ActiveRecord::EVENT_BEFORE_INSERT => 'prepopulateBeforeCreation',
+            ActiveRecord::EVENT_AFTER_INSERT => 'updateRoles',
         ];
     }
 
@@ -64,11 +66,35 @@ class UserBehavior extends Behavior
         
         if ($this->owner->scenario === Scenarios::ADMIN_CREATION) {
             $this->owner->status = UserStatus::ACTIVE;
+        } else {
+            $this->owner->status = UserStatus::PENDING;
         }
         
         $this->owner->password = \Yii::$app->security->generatePasswordHash($this->owner->password);
+        $this->owner->authkey = \Yii::$app->security->generateRandomString();
         
         $this->owner->registration_date = date('Y-m-d H:i:s');
+    }
+    
+    /**
+     * Update roles for current user
+     * 
+     * @param Event $event
+     */
+    public function updateRoles(Event $event)
+    {
+        \Yii::$app->authManager->revokeAll($this->owner->id);
+        
+        switch ($this->owner->scenario) {
+            case Scenarios::ADMIN_CREATION:
+                $role = \Yii::$app->authManager->getRole(Roles::ADMIN);
+                break;
+            default:
+                $role = \Yii::$app->authManager->getRole(Roles::STANDARD_USER);
+                break;
+        }
+        
+        \Yii::$app->authManager->assign($role, $this->owner->id);
     }
 
     /**
