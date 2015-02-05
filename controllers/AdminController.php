@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Contains the controller class for the module administration.
  * 
@@ -8,14 +9,17 @@
  * @package nickcv/yii2-usermanager
  * @author Nicola Puddu <n.puddu@outlook.com>
  */
+
 namespace nickcv\usermanager\controllers;
 
 use yii\web\Controller;
 use nickcv\usermanager\enums\Scenarios;
 use nickcv\usermanager\models\User;
+use yii\filters\AccessControl;
+use nickcv\usermanager\enums\Roles;
 
 /**
- * Creates an Admin user for the usermanager module.
+ * Controller class containing the actions for the core module administration.
  * 
  * @author Nicola Puddu <n.puddu@outlook.com>
  * @version 1.0
@@ -24,9 +28,29 @@ use nickcv\usermanager\models\User;
  */
 class AdminController extends Controller
 {
-    
-    
-    
+
+    /**
+     * Add the AccessControl behavior to the controller.
+     * 
+     * @return array behaviors in use
+     */
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['index'],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'actions' => ['index'],
+                        'roles' => [Roles::ADMIN],
+                    ],
+                ],
+            ],
+        ];
+    }
+
     /**
      * Creates an Admin user for the usermanager module.
      */
@@ -34,5 +58,5 @@ class AdminController extends Controller
     {
         echo 'ciao';
     }
-    
+
 }

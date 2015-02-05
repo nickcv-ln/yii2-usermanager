@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Contains the module class used by the whole yii2-usermanager module.
  * 
@@ -8,11 +9,13 @@
  * @package nickcv/yii2-usermanager
  * @author Nicola Puddu <n.puddu@outlook.com>
  */
+
 namespace nickcv\usermanager;
 
 use yii\base\BootstrapInterface;
 use nickcv\usermanager\enums\PasswordStrength;
 use yii\base\InvalidConfigException;
+use yii\web\GroupUrlRule;
 
 /**
  * This class defines the usermanager module.
@@ -23,14 +26,15 @@ use yii\base\InvalidConfigException;
  * @property integer $passwordStrength
  */
 class Module extends \yii\base\Module implements BootstrapInterface
-{   
+{
+
     /**
      * Check \nickcv\usermanager\enums\PasswordStrength for possible values.
      *
      * @var integer
      */
     private $_passwordStrength;
-    
+
     /**
      * Register defaults without use of magic numbers and magic letters.
      * 
@@ -41,17 +45,24 @@ class Module extends \yii\base\Module implements BootstrapInterface
         $this->_passwordStrength = PasswordStrength::SECURE;
         parent::__construct($id, $parent, $config);
     }
-    
+
     /**
      * @inheritdoc
      */
     public function init()
     {
         $this->setAliases([
-            '@nickcv/usermanager' =>  dirname(__FILE__),
+            '@nickcv/usermanager' => dirname(__FILE__),
         ]);
+        
         parent::init();
     }
+    
+    public $urlPrefix = 'usermanager';
+    
+    public $urlRules = [
+        'login' => 'default/login',
+    ];
 
     /**
      * Sets a new password strength.
@@ -63,10 +74,10 @@ class Module extends \yii\base\Module implements BootstrapInterface
         if (!PasswordStrength::hasConstantWithValue($value)) {
             throw new InvalidConfigException('Only constants values of \nickcv\usermanager\enums\PasswordStrength are allowed for the $passwordStrength, "' . $value . '" given.');
         }
-        
+
         $this->_passwordStrength = $value;
     }
-    
+
     /**
      * Returns the current password strenght configuration.
      * 
@@ -76,9 +87,7 @@ class Module extends \yii\base\Module implements BootstrapInterface
     {
         return $this->_passwordStrength;
     }
-    
-    
-    
+
     /**
      * @param \yii\base\Application $app
      */
@@ -86,11 +95,18 @@ class Module extends \yii\base\Module implements BootstrapInterface
     {
         if ($app instanceof \yii\console\Application) {
             $this->controllerNamespace = 'nickcv\usermanager\commands';
-            
+
             $this->setAliases([
-                '@nickcv/usermanager' =>  dirname(__FILE__),
+                '@nickcv/usermanager' => dirname(__FILE__),
             ]);
-            
+        } elseif ($app instanceof \yii\web\Application) {
+            $app->urlManager->rules[] = new GroupUrlRule([
+                'prefix' => 'usermanager',
+                'rules' => [
+                    'login' => 'default/login',
+                ],
+            ]);
         }
     }
+
 }

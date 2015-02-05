@@ -37,12 +37,13 @@ Before executing the command you will have to apply the following changes to a f
 ___
 **Required changes to ```web.php```**
 
-The ```user``` component must use the identity class that comes with the module:
+The ```user``` component must use the identity class that comes with the module and you have to change the loginUrl as follows:
 
 ```
 'user' => [
     'identityClass' => 'nickcv\usermanager\models\User',
     'enableAutoLogin' => true,
+    'loginUrl' => ['/usermanager/login'],
 ],
 ```
 
