@@ -12,7 +12,7 @@ namespace nickcv\usermanager\enums;
 
 /**
  * This enums contains a constant for each of the module's roles.
- * Each contant contains the role unique name.
+ * Each constant contains the role unique name.
  * 
  * @author Nicola Puddu <n.puddu@outlook.com>
  * @version 1.0

@@ -12,7 +12,7 @@ namespace nickcv\usermanager\enums;
 
 /**
  * This enums contains a constant for each of the possible user status.
- * Each contant contains the status unique identifier.
+ * Each constant contains the status unique identifier.
  * 
  * @author Nicola Puddu <n.puddu@outlook.com>
  * @version 1.0

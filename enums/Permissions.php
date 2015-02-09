@@ -12,7 +12,7 @@ namespace nickcv\usermanager\enums;
 
 /**
  * This enums contains a constant for each of the module's permissions.
- * Each contant contains the permission unique name.
+ * Each constant contains the permission unique name.
  * 
  * @author Nicola Puddu <n.puddu@outlook.com>
  * @version 1.0

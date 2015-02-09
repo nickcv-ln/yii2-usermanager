@@ -13,7 +13,7 @@ namespace nickcv\usermanager\enums;
 /**
  * This enums contains a constant for each of the possible password strenght
  * validator settings.
- * Each contant contains a security setting.
+ * Each constant contains a security setting.
  * 
  * @author Nicola Puddu <n.puddu@outlook.com>
  * @version 1.0

@@ -12,7 +12,7 @@ namespace nickcv\usermanager\enums;
 
 /**
  * This enums contains a constant for each of the module's tables.
- * Each contant contains that table name.
+ * Each constant contains that table name.
  * 
  * @author Nicola Puddu <n.puddu@outlook.com>
  * @version 1.0
