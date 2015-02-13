@@ -52,6 +52,17 @@ class BasicEnumTest extends TestCase
         $this->assertEquals('LOGIN', enums\Scenarios::getLabel(enums\Scenarios::LOGIN));
     }
     
+    public function testGetLabelsOfAllConstants()
+    {
+        $labels = enums\Scenarios::getLabels();
+        
+        $this->assertCount(4, $labels);
+        $this->assertEquals('LOGIN', $labels[enums\Scenarios::LOGIN]);
+        $this->assertEquals('USER_REGISTRATION', $labels[enums\Scenarios::USER_REGISTRATION]);
+        $this->assertEquals('USER_CREATION', $labels[enums\Scenarios::USER_CREATION]);
+        $this->assertEquals('ADMIN_CREATION', $labels[enums\Scenarios::ADMIN_CREATION]);
+    }
+    
     public function testGetConstantDeclaration()
     {
         $this->assertNull(enums\Scenarios::getConstantDeclaration('madeup'));

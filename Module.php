@@ -14,6 +14,8 @@ namespace nickcv\usermanager;
 
 use yii\base\BootstrapInterface;
 use nickcv\usermanager\enums\PasswordStrength;
+use nickcv\usermanager\enums\GeneralSettings;
+use nickcv\usermanager\enums\Registration;
 use yii\base\InvalidConfigException;
 use yii\web\GroupUrlRule;
 
@@ -24,9 +26,14 @@ use yii\web\GroupUrlRule;
  * @version 1.0
  * 
  * @property integer $passwordStrength
+ * @property mixed $registration
+ * @property boolean $passwordRecovery
+ * @property boolean $activation
  */
 class Module extends \yii\base\Module implements BootstrapInterface
 {
+    
+    const CONFIG_FILENAME = 'usermanager.php';
 
     /**
      * Check \nickcv\usermanager\enums\PasswordStrength for possible values.
@@ -34,6 +41,20 @@ class Module extends \yii\base\Module implements BootstrapInterface
      * @var integer
      */
     private $_passwordStrength;
+    /**
+     * Check \nickcv\usermanager\enums\Registration for possible values.
+     * 
+     * @var mixed
+     */
+    private $_registration;
+    /**
+     * @var boolean
+     */
+    private $_passwordRecovery;
+    /**
+     * @var boolean
+     */
+    private $_activation;
 
     /**
      * Register defaults without use of magic numbers and magic letters.
@@ -43,6 +64,9 @@ class Module extends \yii\base\Module implements BootstrapInterface
     public function __construct($id, $parent = null, $config = [])
     {
         $this->_passwordStrength = PasswordStrength::SECURE;
+        $this->_passwordRecovery = GeneralSettings::ENABLED;
+        $this->_activation = GeneralSettings::ENABLED;
+        $this->_registration = Registration::CAPTCHA;
         parent::__construct($id, $parent, $config);
     }
 
@@ -66,8 +90,10 @@ class Module extends \yii\base\Module implements BootstrapInterface
 
     /**
      * Sets a new password strength.
+     * Check \nickcv\usermanager\enums\PasswordStrength for possible values.
      * 
      * @param integer $value
+     * @throws InvalidConfigException
      */
     public function setPasswordStrength($value)
     {
@@ -86,6 +112,82 @@ class Module extends \yii\base\Module implements BootstrapInterface
     public function getPasswordStrength()
     {
         return $this->_passwordStrength;
+    }
+    
+    /**
+     * Sets the registration configuration.
+     * Check \nickcv\usermanager\enums\Registration for possible values.
+     * 
+     * @param mixed $value
+     * @throws InvalidConfigException
+     */
+    public function setRegistration($value)
+    {
+        if (!Registration::hasConstantWithValue($value)) {
+            throw new InvalidConfigException('Only constants values of \nickcv\usermanager\enums\Registration are allowed for $registration, "' . $value . '" given.');
+        }
+        
+        $this->_registration = $value;
+    }
+    
+    /**
+     * Returns the current registration configuration.
+     * 
+     * @return mixed
+     */
+    public function getRegistration()
+    {
+        return $this->_registration;
+    }
+    
+    /**
+     * Sets the password recovery configuration.
+     * 
+     * @param boolean $value
+     * @throws InvalidConfigException
+     */
+    public function setPasswordRecovery($value)
+    {
+        if (!GeneralSettings::hasConstantWithValue($value)) {
+            throw new InvalidConfigException('Only constants values of \nickcv\usermanager\enums\GeneralSettings are allowed for $passwordRecovery, "' . $value . '" given.');
+        }
+        
+        $this->_passwordRecovery = $value;
+    }
+    
+    /**
+     * Returns the current passwordRecovery configuration.
+     * 
+     * @return boolean
+     */
+    public function getPasswordRecovery()
+    {
+        return $this->_passwordRecovery;
+    }
+    
+    /**
+     * Sets the activation configuration.
+     * 
+     * @param boolean $value
+     * @throws InvalidConfigException
+     */
+    public function setActivation($value)
+    {
+        if (!GeneralSettings::hasConstantWithValue($value)) {
+            throw new InvalidConfigException('Only constants values of \nickcv\usermanager\enums\GeneralSettings are allowed for $activation, "' . $value . '" given.');
+        }
+        
+        $this->_activation = $value;
+    }
+    
+    /**
+     * Returns the current activation configuration.
+     * 
+     * @return boolean
+     */
+    public function getActivation()
+    {
+        return $this->_activation;
     }
 
     /**

@@ -42,6 +42,23 @@ class ConfigFilesService extends BasicService
     }
     
     /**
+     * Returns the array contained in the given config file in the given scope.
+     * The \Yii::getAlias() method will be used on the $scope variable.
+     * 
+     * @param string $filename the file name including the extension
+     * @param string $scope the scope, defaults to "@app"
+     * @return array
+     */
+    public function getConfigFile($filename, $scope = '@app')
+    {
+        if (!$this->fileExists($filename, $scope)) {
+            return [];
+        }
+        
+        return require $this->getConfigFilePath($filename, $scope);
+    }
+    
+    /**
      * This method returns the given config file path in the given scope.
      * The \Yii::getAlias() method will be used on the $scope variable.
      * 

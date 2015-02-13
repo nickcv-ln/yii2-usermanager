@@ -17,7 +17,10 @@ use nickcv\usermanager\enums\Permissions;
 use nickcv\usermanager\enums\Roles;
 use nickcv\usermanager\services\ConfigFilesService;
 use nickcv\usermanager\enums\PasswordStrength;
+use nickcv\usermanager\enums\GeneralSettings;
+use nickcv\usermanager\enums\Registration;
 use nickcv\usermanager\helpers\ArrayHelper;
+use nickcv\usermanager\Module;
 
 /**
  * Installs the usermanager module.
@@ -137,39 +140,40 @@ class InstallController extends Controller
         
         $this->stdout("\nCreating the config file.\n", Console::FG_YELLOW);
         
-        $filename = 'usermanager.php';
+        $strength = PasswordStrength::getConstantDeclaration($this->select('Choose the minimum password strength', PasswordStrength::getLabels()));
         
-        $strength = PasswordStrength::getConstantDeclaration($this->select('Choose the minimum password strength', [
-            PasswordStrength::SECURE => PasswordStrength::getLabel(PasswordStrength::SECURE),
-            PasswordStrength::STRONG => PasswordStrength::getLabel(PasswordStrength::STRONG),
-            PasswordStrength::MEDIUM => PasswordStrength::getLabel(PasswordStrength::MEDIUM),
-            PasswordStrength::WEAK => PasswordStrength::getLabel(PasswordStrength::WEAK),
-        ]));
+        $registration = Registration::getConstantDeclaration($this->select('Do you want to enable manual user registration?', Registration::getLabels()));
+        
+        $activation = GeneralSettings::getConstantDeclaration($this->select('Do you want to enable account activation?', GeneralSettings::getLabels()));
+        
+        $passwordRecovery = GeneralSettings::getConstantDeclaration($this->select('Do you want to enable manual password recovery?', GeneralSettings::getLabels()));
         
         $data = [
             'class'=>'\nickcv\usermanager\Module',
             'passwordStrength' => ArrayHelper::PHP_CONTENT . $strength,
+            'registration' => ArrayHelper::PHP_CONTENT . $registration,
+            'activation' => ArrayHelper::PHP_CONTENT . $activation,
+            'passwordRecovery' => ArrayHelper::PHP_CONTENT . $passwordRecovery,
         ];
         
-        if (ConfigFilesService::init()->createFile($filename, $data) === false) {
+        if (ConfigFilesService::init()->createFile(Module::CONFIG_FILENAME, $data) === false) {
             if (strpos(ConfigFilesService::init()->errors()['message'], 'already exists') !== false) {
-                $this->updateConfigFile($filename, $data);
+                $this->updateConfigFile($data);
             } else {
                 $this->stdout("\n" . ConfigFilesService::init()->errors()['details']['message'], Console::FG_RED);
                 \Yii::$app->end(1);
             }
         }
         
-        $this->printConfigFileSuccessMessage($filename);
+        $this->printConfigFileSuccessMessage();
     }
     
     /**
      * Update the existing configuration file.
-     * 
-     * @param string $filename
+     *
      * @param array $data
      */
-    private function updateConfigFile($filename, $data)
+    private function updateConfigFile($data)
     {
         $this->stdout("\nThe configuration file already exists, but it can be updated.");
         $this->stdout("\nIf you desire to continue the existing file will be analized and you'll be notified if any data is going to be overwritten.", Console::BOLD);
@@ -177,16 +181,16 @@ class InstallController extends Controller
             \Yii::$app->end();
         }
         
-        if (ConfigFilesService::init()->updateFile($filename, $data) === false) {
+        if (ConfigFilesService::init()->updateFile(Module::CONFIG_FILENAME, $data) === false) {
             $this->stdout("\nThe following keys will be edited:\n" . print_r(ConfigFilesService::init()->errors()['details'], true));
             if ($this->confirm("\nDo you wish to continue?") === false) {
                 \Yii::$app->end();
             }
             
-            ConfigFilesService::init()->updateFile($filename, $data, true);
+            ConfigFilesService::init()->updateFile(Module::CONFIG_FILENAME, $data, true);
         }
         
-        $this->printConfigFileSuccessMessage($filename);
+        $this->printConfigFileSuccessMessage();
         
         \Yii::$app->end();
     }
@@ -195,11 +199,11 @@ class InstallController extends Controller
      * Print out the istruction on how to embed the configuration file in the
      * app.
      */
-    private function printConfigFileSuccessMessage($filename)
+    private function printConfigFileSuccessMessage()
     {
-        $filePath = ConfigFilesService::init()->getPath($filename);
+        $filePath = ConfigFilesService::init()->getPath(Module::CONFIG_FILENAME);
         $this->stdout("\nconfig file generated in '$filePath'.", Console::FG_GREEN);
         $this->stdout("\nadd this line in your web config file inside the components array and update the console config file as well:");
-        echo $this->ansiFormat("\n\t'usermanager' => require(__DIR__ . DIRECTORY_SEPARATOR . 'usermanager.php'),\n\n", Console::BOLD, Console::FG_PURPLE);
+        echo $this->ansiFormat("\n\t'usermanager' => require(__DIR__ . DIRECTORY_SEPARATOR . '" . Module::CONFIG_FILENAME . "'),\n\n", Console::BOLD, Console::FG_PURPLE);
     }
 }

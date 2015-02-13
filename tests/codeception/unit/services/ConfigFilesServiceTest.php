@@ -42,24 +42,24 @@ class ConfigFilesServiceTest extends TestCase
         $this->assertEquals('The configuration file "web.php" already exists in the given scope "@app". To update a file please use the nickcv\usermanager\services\ConfigFilesService::updateFile() method.', $errors['message']);
     }
     
-    public function testCannotCreateFileIfMissingPermissions()
+    public function testCannotCreateFileIfDirectoryDoesNotExist()
     {
         $this->assertFalse(ConfigFilesService::init()->createFile('madeup.php', [
             'passwordSecurity' => 12,
-        ], '/var'));
+        ], '/etc'));
         $errors = ConfigFilesService::init()->errors();
         $this->assertArrayHasKey('message', $errors);
-        $this->assertEquals('The file "/var/config/madeup.php" could not be written. For more informations check the details.', $errors['message']);
+        $this->assertEquals('The file "/etc/config/madeup.php" could not be written. For more informations check the details.', $errors['message']);
         $this->assertArrayHasKey('details', $errors);
         $this->assertArrayHasKey('message', $errors['details']);
-        $this->assertEquals('file_put_contents(/var/config/madeup.php): failed to open stream: Permission denied', $errors['details']['message']);
+        $this->assertEquals('file_put_contents(/etc/config/madeup.php): failed to open stream: No such file or directory', $errors['details']['message']);
         $this->assertArrayHasKey('file', $errors['details']);
         
         $serviceClassPath = dirname(dirname(dirname(dirname(__DIR__)))) . DIRECTORY_SEPARATOR . 'services' . DIRECTORY_SEPARATOR . 'ConfigFilesService.php';
         
         $this->assertEquals($serviceClassPath, $errors['details']['file']);
         $this->assertArrayHasKey('line', $errors['details']);
-        $this->assertEquals('191', $errors['details']['line']);
+        $this->assertEquals('208', $errors['details']['line']);
     }
     
     public function testCreateConfigFile()
@@ -140,6 +140,20 @@ class ConfigFilesServiceTest extends TestCase
 
         $this->assertArrayHasKey('passwordSecurity', $newConfig);
         $this->assertEquals(40, $newConfig['passwordSecurity']);
+    }
+    
+    public function testGetNotExistingConfigFile()
+    {
+        $this->assertEquals([], ConfigFilesService::init()->getConfigFile('madeup.php'));
+    }
+    
+    public function testGetExistingConfigFile()
+    {
+        $array = [
+            'class' => '\nickcv\usermanager\Module',
+            'passwordStrength' => 2,
+        ];
+        $this->assertEquals($array, ConfigFilesService::init()->getConfigFile('usermanager.php'));
     }
 
 }

@@ -44,6 +44,23 @@ abstract class BasicEnum
     }
     
     /**
+     * Returns an array list of all the constants where the key is the constant
+     * value and the value is the constant label returned by static::getLabel.
+     * 
+     * @return array
+     */
+    final public static function getLabels()
+    {
+        $labels = [];
+        
+        foreach (self::getList() as $constantValue) {
+            $labels[$constantValue] = static::getLabel($constantValue);
+        }
+            
+        return $labels;
+    }
+    
+    /**
      * Checks whether the called class has a constant with the given value.
      * 
      * @param mixed $value

@@ -13,10 +13,11 @@
 namespace nickcv\usermanager\controllers;
 
 use yii\web\Controller;
-use nickcv\usermanager\enums\Scenarios;
-use nickcv\usermanager\models\User;
 use yii\filters\AccessControl;
+use nickcv\usermanager\Module;
 use nickcv\usermanager\enums\Roles;
+use nickcv\usermanager\forms\ConfigurationForm;
+use nickcv\usermanager\services\ConfigFilesService;
 
 /**
  * Controller class containing the actions for the core module administration.
@@ -39,24 +40,34 @@ class AdminController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['index'],
+                'only' => ['configuration'],
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['index'],
+                        'actions' => ['configuration'],
                         'roles' => [Roles::ADMIN],
                     ],
                 ],
             ],
         ];
     }
+    
+    public $defaultAction = 'configuration';
 
     /**
      * Creates an Admin user for the usermanager module.
      */
-    public function actionIndex()
+    public function actionConfiguration()
     {
-        echo 'ciao';
+        $model = new ConfigurationForm();
+        $model->attributes = ConfigFilesService::init()->getConfigFile(Module::CONFIG_FILENAME);
+        if ($model->load(\Yii::$app->request->post()) && $model->validate() && ConfigFilesService::init()->updateFile(Module::CONFIG_FILENAME, $model->getDefinedAttributesAsconstants(), true)) {
+            \Yii::$app->session->setFlash('success', 'Configuration updated.');
+            return $this->refresh();
+        }
+        return $this->render('configuration', [
+            'model' => $model,
+        ]);
     }
 
 }

@@ -19,6 +19,6 @@ namespace nickcv\usermanager\enums;
  */
 class GeneralSettings extends BasicEnum
 {
-    const ENABLED = true;
-    const DISABLED = false;
+    const ENABLED = 'enabled';
+    const DISABLED = 'disabled';
 }
