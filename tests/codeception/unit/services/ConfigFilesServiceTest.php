@@ -152,6 +152,9 @@ class ConfigFilesServiceTest extends TestCase
         $array = [
             'class' => '\nickcv\usermanager\Module',
             'passwordStrength' => 2,
+            'registration' => 'captcha',
+            'activation' => 'enabled',
+            'passwordRecovery' => 'enabled',
         ];
         $this->assertEquals($array, ConfigFilesService::init()->getConfigFile('usermanager.php'));
     }

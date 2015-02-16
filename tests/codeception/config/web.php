@@ -5,7 +5,7 @@ $params = require(__DIR__ . DIRECTORY_SEPARATOR . 'params.php');
 $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'],
+    'bootstrap' => ['log','usermanager'],
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -16,6 +16,7 @@ $config = [
         ],
         'user' => [
             'identityClass' => 'nickcv\usermanager\models\User',
+            'loginUrl' => ['/usermanager/login'],
             'enableAutoLogin' => true,
         ],
         'errorHandler' => [

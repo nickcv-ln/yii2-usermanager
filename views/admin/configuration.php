@@ -11,10 +11,8 @@ use nickcv\usermanager\Module;
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $model nickcv\usermanager\forms\ConfigurationForm */
 
-AssetBundle::register($this);
-
 $this->title = 'Admin Panel | '.\Yii::$app->name;
-$this->params['breadcrumbs'][] = $this->title;
+$this->params['breadcrumbs'][] = 'Admin Panel';
 
 echo $this->render('_heroUnit');
 ?>

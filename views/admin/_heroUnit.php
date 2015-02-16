@@ -6,9 +6,6 @@ use yii\bootstrap\Alert;
 /* @var $this yii\web\View */
 
 AssetBundle::register($this);
-
-$this->title = 'Admin Panel | '.\Yii::$app->name;
-$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="jumbotron usermanager">
     <h1>Admin Panel</h1>
