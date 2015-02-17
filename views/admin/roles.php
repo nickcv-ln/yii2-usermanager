@@ -34,6 +34,7 @@ $this->params['breadcrumbs'][] = 'Roles';
                     return Html::a($key, ['admin/roles/' . $key]);
                 }
             ],
+            'description',
             [
                 'attribute' => 'createdAt',
                 'format' => ['date', 'php:Y-m-d'],

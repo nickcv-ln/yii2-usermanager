@@ -126,17 +126,27 @@ class InstallController extends Controller
         
         if ($auth->getRole(Roles::STANDARD_USER) === null) {
             $standardUser = $auth->createRole(Roles::STANDARD_USER);
+            $standardUser->description = 'Standard User';
             $auth->add($standardUser);
             $auth->addChild($standardUser, $profileEditing);
         }
 
         if ($auth->getRole(Roles::ADMIN) === null) {
             $admin = $auth->createRole(Roles::ADMIN);
+            $admin->description = 'User Admin';
             $auth->add($admin);
-            $auth->addChild($admin, $moduleManagement);
             $auth->addChild($admin, $usersManagement);
-            $auth->addChild($admin, $rolesManagement);
             $auth->addChild($admin, $standardUser);
+        }
+        
+        if ($auth->getRole(Roles::SUPER_ADMIN) === null) {
+            $superAdmin = $auth->createRole(Roles::SUPER_ADMIN);
+            $superAdmin->description = 'Usermanager Super Admin';
+            $auth->add($superAdmin);
+            $auth->addChild($superAdmin, $moduleManagement);
+            $auth->addChild($superAdmin, $usersManagement);
+            $auth->addChild($superAdmin, $rolesManagement);
+            $auth->addChild($superAdmin, $standardUser);
         }
         
         $this->stdout("\nBasic Roles and Permissions created.", Console::FG_GREEN);

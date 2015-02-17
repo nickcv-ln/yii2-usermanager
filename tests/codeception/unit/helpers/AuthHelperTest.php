@@ -23,7 +23,7 @@ class AuthHelperTest extends TestCase
     
     public function testGetGivenRoleDirectPermissions()
     {
-        $permissions = AuthHelper::getDirectPermissions(Roles::ADMIN);
+        $permissions = AuthHelper::getDirectPermissions(Roles::SUPER_ADMIN);
         
         $this->assertContainsOnlyInstancesOf('\yii\rbac\Permission', $permissions);
         
@@ -36,7 +36,7 @@ class AuthHelperTest extends TestCase
     
     public function testGetGivenRoleDirectPermissionAsDataProvider()
     {
-        $permissions = AuthHelper::getDirectPermissions(Roles::ADMIN, true);
+        $permissions = AuthHelper::getDirectPermissions(Roles::SUPER_ADMIN, true);
         
         $this->assertInstanceOf('\yii\data\ArrayDataProvider', $permissions);
         
@@ -72,7 +72,7 @@ class AuthHelperTest extends TestCase
     
     public function testGetChildrenRolesAsDataProvider()
     {
-        $dataProvider = AuthHelper::getChildrenRoles(Roles::ADMIN, true);
+        $dataProvider = AuthHelper::getChildrenRoles(Roles::SUPER_ADMIN, true);
         
         $this->assertInstanceOf('\yii\data\ArrayDataProvider', $dataProvider);
         $this->assertEquals(1, $dataProvider->count);
@@ -93,7 +93,7 @@ class AuthHelperTest extends TestCase
     
     public function testGetMissingPermissions()
     {
-        $admin = AuthHelper::getMissingPermissions(Roles::ADMIN);
+        $admin = AuthHelper::getMissingPermissions(Roles::SUPER_ADMIN);
         
         $this->assertContainsOnlyInstancesOf('\yii\rbac\Permission', $admin);
         
@@ -113,7 +113,7 @@ class AuthHelperTest extends TestCase
     public function testGetMissingPermissionsAsDataProvider()
     {
         
-        $adminData = AuthHelper::getMissingPermissions(Roles::ADMIN, true);
+        $adminData = AuthHelper::getMissingPermissions(Roles::SUPER_ADMIN, true);
         $this->assertInstanceOf('\yii\data\ArrayDataProvider', $adminData);
         $this->assertEquals(0, $adminData->count);
         
@@ -131,7 +131,7 @@ class AuthHelperTest extends TestCase
     
     public function testGetAllPermissions()
     {
-        $admin = AuthHelper::getAllPermissions(Roles::ADMIN);
+        $admin = AuthHelper::getAllPermissions(Roles::SUPER_ADMIN);
         
         $this->assertContainsOnlyInstancesOf('\yii\rbac\Permission', $admin);
         
@@ -144,7 +144,7 @@ class AuthHelperTest extends TestCase
     
     public function testGetAllPermissionsAsDataProvider()
     {
-        $adminData = AuthHelper::getAllPermissions(Roles::ADMIN, true);
+        $adminData = AuthHelper::getAllPermissions(Roles::SUPER_ADMIN, true);
         
         $this->assertInstanceOf('\yii\data\ArrayDataProvider', $adminData);
         $this->assertEquals(4, $adminData->count);

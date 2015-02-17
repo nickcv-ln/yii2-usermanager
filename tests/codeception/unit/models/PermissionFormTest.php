@@ -68,12 +68,12 @@ class PermissionFormTest extends TestCase
         $model = new PermissionForm(['scenario' => Scenarios::PERMISSION_ADD]);
         
         $model->role = Roles::ADMIN;
-        $model->existingPermissions[] = Permissions::MODULE_MANAGEMENT;
+        $model->existingPermissions[] = Permissions::USER_MANAGEMENT;
         
         $this->assertFalse($model->validate());
         $this->assertCount(1, $model->getErrors());
         $this->assertCount(1, $model->getErrors('existingPermissions'));
-        $this->assertContains('The given role "admin" already has a permission named "moduleManagement".', $model->getErrors('existingPermissions'));
+        $this->assertContains('The given role "admin" already has a permission named "usersManagement".', $model->getErrors('existingPermissions'));
     }
     
     public function testAddExistingPermissionsToRole()
@@ -161,13 +161,13 @@ class PermissionFormTest extends TestCase
         $this->assertEquals('made up description', $permission->description);
         
         $newPermissions = $auth->getPermissionsByRole(Roles::ADMIN);
-        $this->assertCount(5, $newPermissions);
+        $this->assertCount(3, $newPermissions);
         $this->assertArrayHasKey('madeUp', $newPermissions);
         
         $auth->remove($permission);
         
         $cleanPermissions = $auth->getPermissionsByRole(Roles::ADMIN);
-        $this->assertCount(4, $cleanPermissions);
+        $this->assertCount(2, $cleanPermissions);
         $this->assertArrayNotHasKey('madeUp', $cleanPermissions);
         
         $this->assertFileExists(\Yii::getAlias('@app/enums/ExtendedPermissions_test.php'));
@@ -220,26 +220,39 @@ class PermissionFormTest extends TestCase
         $model = new PermissionForm(['scenario' => Scenarios::PERMISSION_DELETE]);
         
         $model->role = Roles::ADMIN;
+        $model->name = Permissions::USER_MANAGEMENT;
+        
+        $this->assertFalse($model->validate());
+        $this->assertCount(1, $model->getErrors());
+        $this->assertCount(1, $model->getErrors('name'));
+        $this->assertContains('The permission "usersManagement" is a core "admin" permission and cannot be removed.', $model->getErrors('name'));
+    }
+    
+    public function testCannotDeleteBasicSuperAdminPermissions()
+    {
+        $model = new PermissionForm(['scenario' => Scenarios::PERMISSION_DELETE]);
+        
+        $model->role = Roles::SUPER_ADMIN;
         $model->name = Permissions::MODULE_MANAGEMENT;
         
         $this->assertFalse($model->validate());
         $this->assertCount(1, $model->getErrors());
         $this->assertCount(1, $model->getErrors('name'));
-        $this->assertContains('The permission "moduleManagement" is a core "admin" permission and cannot be removed.', $model->getErrors('name'));
+        $this->assertContains('The permission "moduleManagement" is a core "superAdmin" permission and cannot be removed.', $model->getErrors('name'));
         
         $model->clearErrors();
         $model->name = Permissions::ROLES_MANAGEMENT;
         $this->assertFalse($model->validate());
         $this->assertCount(1, $model->getErrors());
         $this->assertCount(1, $model->getErrors('name'));
-        $this->assertContains('The permission "rolesManagement" is a core "admin" permission and cannot be removed.', $model->getErrors('name'));
+        $this->assertContains('The permission "rolesManagement" is a core "superAdmin" permission and cannot be removed.', $model->getErrors('name'));
         
         $model->clearErrors();
         $model->name = Permissions::USER_MANAGEMENT;
         $this->assertFalse($model->validate());
         $this->assertCount(1, $model->getErrors());
         $this->assertCount(1, $model->getErrors('name'));
-        $this->assertContains('The permission "usersManagement" is a core "admin" permission and cannot be removed.', $model->getErrors('name'));
+        $this->assertContains('The permission "usersManagement" is a core "superAdmin" permission and cannot be removed.', $model->getErrors('name'));
     }
     
     public function testRemovePermissionFromRole()

@@ -1,6 +1,6 @@
 <?php
 /**
- * Contains the PermissionForm class used to add new and existing permissions to roles.
+ * Contains the RoleForm class used to add new and existing permissions to roles.
  * 
  * @link http://www.creationgears.com/
  * @copyright Copyright (c) 2015 Nicola Puddu
@@ -19,16 +19,15 @@ use nickcv\usermanager\enums\Permissions;
 use nickcv\usermanager\enums\Roles;
 
 /**
- * PermissionForm is the form behind the new permissions creation and the existing
- * permissions binding.
+ * RoleForm is the form behind the new roles creation and the existing
+ * roles binding.
  * 
  * @author Nicola Puddu <n.puddu@outlook.com>
  * @version 1.0
  */
-class PermissionForm extends Model
+class RoleForm extends Model
 {
-    public $role;
-    public $existingPermissions;
+    public $existingRoles;
     public $name;
     public $description;
     
@@ -128,21 +127,13 @@ class PermissionForm extends Model
      */
     public function permissionIsCore($attribute)
     {
-        switch ($this->role) {
-            case Roles::ADMIN:
-                switch ($this->$attribute) {
-                    case Permissions::USER_MANAGEMENT:
-                        $this->addError($attribute, 'The permission "' . $this->$attribute . '" is a core "' . Roles::ADMIN . '" permission and cannot be removed.');
-                }
-                break;
-            case Roles::SUPER_ADMIN:
-                switch ($this->$attribute) {
-                    case Permissions::MODULE_MANAGEMENT:
-                    case Permissions::ROLES_MANAGEMENT:
-                    case Permissions::USER_MANAGEMENT:
-                        $this->addError($attribute, 'The permission "' . $this->$attribute . '" is a core "' . Roles::SUPER_ADMIN . '" permission and cannot be removed.');
-                }
-                break;
+        if ($this->role === Roles::ADMIN) {
+            switch ($this->$attribute) {
+                case Permissions::MODULE_MANAGEMENT:
+                case Permissions::ROLES_MANAGEMENT:
+                case Permissions::USER_MANAGEMENT:
+                    $this->addError($attribute, 'The permission "' . $this->$attribute . '" is a core "' . Roles::ADMIN . '" permission and cannot be removed.');
+            }
         }
     }
     

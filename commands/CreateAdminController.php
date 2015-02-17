@@ -15,6 +15,7 @@ use yii\console\Controller;
 use yii\helpers\Console;
 use nickcv\usermanager\enums\Scenarios;
 use nickcv\usermanager\models\User;
+use nickcv\usermanager\enums\Roles;
 
 /**
  * Creates an Admin user for the usermanager module.
@@ -37,9 +38,11 @@ class CreateAdminController extends Controller
      */
     public function actionIndex()
     {
-        $this->stdout("\nAdmin Creation.\n", Console::FG_YELLOW);
+        $this->stdout("\nAdmin Creation.\n\n", Console::FG_YELLOW);
         
         $this->_admin = new User(['scenario' => Scenarios::ADMIN_CREATION]);
+        
+        $this->_admin->role = $this->confirm('Should this user be able to manage the whole module and not just the users?') ? Roles::SUPER_ADMIN : Roles::ADMIN;
         
         $this->requestInputs([
             'firstname',

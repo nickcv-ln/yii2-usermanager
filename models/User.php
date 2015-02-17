@@ -4,6 +4,7 @@ namespace nickcv\usermanager\models;
 
 use nickcv\usermanager\enums\Database;
 use nickcv\usermanager\enums\Scenarios;
+use nickcv\usermanager\enums\Roles;
 use yii\web\IdentityInterface;
 
 /**
@@ -25,6 +26,13 @@ use yii\web\IdentityInterface;
 class User extends \yii\db\ActiveRecord implements IdentityInterface
 {
     /**
+     * Role used during user creation.
+     * 
+     * @var string
+     */
+    public $role;
+    
+    /**
      * @inheritdoc
      */
     public static function tableName()
@@ -45,7 +53,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     public function scenarios()
     {
         $scenarios = parent::scenarios();
-        $scenarios[Scenarios::ADMIN_CREATION] = ['firstname', 'lastname', 'email', 'password'];
+        $scenarios[Scenarios::ADMIN_CREATION] = ['firstname', 'lastname', 'email', 'password', 'role'];
         
         return $scenarios;
     }
@@ -56,7 +64,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            [['firstname', 'lastname', 'email', 'password'], 'required'],
+            [['firstname', 'lastname', 'email', 'password', 'role'], 'required'],
             ['email', 'email'],
             ['email', 'unique'],
             [['status'], 'integer'],
@@ -64,7 +72,8 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             [['email', 'lastname', 'token'], 'string', 'max' => 130],
             [['password'], 'string', 'max' => 220],
             ['password', '\nickcv\usermanager\validators\PasswordStrength'],
-            [['firstname'], 'string', 'max' => 64]
+            [['firstname'], 'string', 'max' => 64],
+            ['role', 'in', 'range' => [Roles::ADMIN, Roles::SUPER_ADMIN]],
         ];
     }
 

@@ -87,7 +87,7 @@ class UserBehavior extends Behavior
         
         switch ($this->owner->scenario) {
             case Scenarios::ADMIN_CREATION:
-                $role = \Yii::$app->authManager->getRole(Roles::ADMIN);
+                $role = \Yii::$app->authManager->getRole($this->owner->role);
                 break;
             default:
                 $role = \Yii::$app->authManager->getRole(Roles::STANDARD_USER);
