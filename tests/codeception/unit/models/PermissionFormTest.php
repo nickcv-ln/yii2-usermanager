@@ -176,5 +176,92 @@ class PermissionFormTest extends TestCase
         rmdir(\Yii::getAlias('@app/enums'));
         
     }
+    
+    public function testRoleMustExistWhenDeletingPermission()
+    {
+        $model = new PermissionForm(['scenario' => Scenarios::PERMISSION_DELETE]);
+        $model->role = 'madeup';
+        
+        $this->assertFalse($model->validate());
+        $this->assertCount(2, $model->getErrors());
+        $this->assertCount(1, $model->getErrors('role'));
+        $this->assertContains('The given role "madeup" does not exist.', $model->getErrors('role'));
+    }
+    
+    public function testRoleNameAreRequiredWhenDeletingPermission()
+    {
+        $model = new PermissionForm(['scenario' => Scenarios::PERMISSION_DELETE]);
+        $model->clearErrors();
+        $this->assertCount(0, $model->getErrors());
+        
+        $this->assertFalse($model->validate());
+        $this->assertCount(2, $model->getErrors());
+        $this->assertCount(1, $model->getErrors('role'));
+        $this->assertContains('Role cannot be blank.', $model->getErrors('role'));
+        $this->assertCount(1, $model->getErrors('name'));
+        $this->assertContains('Name cannot be blank.', $model->getErrors('name'));
+    }
+    
+    public function testWhenDeletingPermissionItMustExist()
+    {
+        $model = new PermissionForm(['scenario' => Scenarios::PERMISSION_DELETE]);
+        
+        $model->role = Roles::ADMIN;
+        $model->name = 'madeup';
+        
+        $this->assertFalse($model->validate());
+        $this->assertCount(1, $model->getErrors());
+        $this->assertCount(1, $model->getErrors('name'));
+        $this->assertContains('The permission "madeup" does not exists.', $model->getErrors('name'));
+    }
+    
+    public function testCannotDeleteBasicAdminPermissions()
+    {
+        $model = new PermissionForm(['scenario' => Scenarios::PERMISSION_DELETE]);
+        
+        $model->role = Roles::ADMIN;
+        $model->name = Permissions::MODULE_MANAGEMENT;
+        
+        $this->assertFalse($model->validate());
+        $this->assertCount(1, $model->getErrors());
+        $this->assertCount(1, $model->getErrors('name'));
+        $this->assertContains('The permission "moduleManagement" is a core "admin" permission and cannot be removed.', $model->getErrors('name'));
+        
+        $model->clearErrors();
+        $model->name = Permissions::ROLES_MANAGEMENT;
+        $this->assertFalse($model->validate());
+        $this->assertCount(1, $model->getErrors());
+        $this->assertCount(1, $model->getErrors('name'));
+        $this->assertContains('The permission "rolesManagement" is a core "admin" permission and cannot be removed.', $model->getErrors('name'));
+        
+        $model->clearErrors();
+        $model->name = Permissions::USER_MANAGEMENT;
+        $this->assertFalse($model->validate());
+        $this->assertCount(1, $model->getErrors());
+        $this->assertCount(1, $model->getErrors('name'));
+        $this->assertContains('The permission "usersManagement" is a core "admin" permission and cannot be removed.', $model->getErrors('name'));
+    }
+    
+    public function testRemovePermissionFromRole()
+    {   
+        $role = \Yii::$app->authManager->getRole(Roles::STANDARD_USER);
+        \Yii::$app->authManager->addChild($role, \Yii::$app->authManager->getPermission(Permissions::MODULE_MANAGEMENT));
+        
+        $newPermissions = \Yii::$app->authManager->getPermissionsByRole(Roles::STANDARD_USER);
+        $this->assertCount(2, $newPermissions);
+        $this->assertArrayHasKey(Permissions::PROFILE_EDITING, $newPermissions);
+        $this->assertArrayHasKey(Permissions::MODULE_MANAGEMENT, $newPermissions);
+        
+        $model = new PermissionForm(['scenario' => Scenarios::PERMISSION_DELETE]);
+        
+        $model->role = Roles::STANDARD_USER;
+        $model->name = Permissions::MODULE_MANAGEMENT;
+        $model->removePermission();
+        
+        
+        $cleanPermissions = \Yii::$app->authManager->getPermissionsByRole(Roles::STANDARD_USER);
+        $this->assertCount(1, $cleanPermissions);
+        $this->assertArrayHasKey(Permissions::PROFILE_EDITING, $cleanPermissions);
+    }
 
 }

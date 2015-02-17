@@ -50,6 +50,7 @@ class AdminController extends Controller
                     'view-role',
                     'add-existing-permission',
                     'add-new-permission',
+                    'revoke-permission',
                 ],
                 'rules' => [
                     [
@@ -72,6 +73,12 @@ class AdminController extends Controller
                         'allow' => true,
                         'actions' => ['add-new-permission'],
                         'verbs' => ['POST'],
+                        'roles' => [Permissions::ROLES_MANAGEMENT],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['revoke-permission'],
+                        'verbs' => ['DELETE'],
                         'roles' => [Permissions::ROLES_MANAGEMENT],
                     ],
                 ],
@@ -149,6 +156,19 @@ class AdminController extends Controller
         $model = new PermissionForm(['scenario' => Scenarios::PERMISSION_NEW]);
         if ($model->load(\Yii::$app->request->post()) && $model->createNewPermission()) {
             \Yii::$app->session->setFlash('success', 'The permission "' . $model->name . '" was created and added to this role.');
+        }
+        
+        return $this->redirect(['admin/roles/' . $model->role]);
+    }
+    
+    /**
+     * Remove permission from given role
+     */
+    public function actionRevokePermission()
+    {
+        $model = new PermissionForm(['scenario' => Scenarios::PERMISSION_DELETE]);
+        if ($model->load(\Yii::$app->request->post()) && $model->removePermission()) {
+            \Yii::$app->session->setFlash('success', 'The permission "' . $model->name . '" was removed from this role.');
         }
         
         return $this->redirect(['admin/roles/' . $model->role]);

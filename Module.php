@@ -34,6 +34,8 @@ class Module extends \yii\base\Module implements BootstrapInterface
 {
     
     const CONFIG_FILENAME = 'usermanager.php';
+    const EXTENDED_PERMISSIONS_CLASS = 'ExtendedPermissions';
+    const EXTENDED_ROLES_CLASS = 'ExtendedRoles';
 
     /**
      * Check \nickcv\usermanager\enums\PasswordStrength for possible values.
@@ -209,6 +211,7 @@ class Module extends \yii\base\Module implements BootstrapInterface
                     'admin/roles/<role:\w+>' => 'admin/view-role',
                     'admin/roles/add-existing-permission' => 'admin/add-existing-permission',
                     'admin/roles/add-new-permission' => 'admin/add-new-permission',
+                    'admin/roles/revoke-permission' => 'admin/revoke-permission',
                 ],
             ]);
         }

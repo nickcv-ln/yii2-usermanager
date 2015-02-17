@@ -29,9 +29,9 @@ class BasicEnumTest extends TestCase
         $this->assertArrayHasKey('PENDING', $userStatus);
         $this->assertArrayHasKey('ACTIVE', $userStatus);
         
-        $this->assertEquals(0, $userStatus['BANNED']);
-        $this->assertEquals(1, $userStatus['PENDING']);
-        $this->assertEquals(2, $userStatus['ACTIVE']);
+        $this->assertEquals(enums\UserStatus::PENDING, $userStatus['PENDING']);
+        $this->assertEquals(enums\UserStatus::ACTIVE, $userStatus['ACTIVE']);
+        $this->assertEquals(enums\UserStatus::BANNED, $userStatus['BANNED']);
         
         $scenarios = enums\Scenarios::getList();
         $this->assertArrayHasKey('LOGIN', $scenarios);
@@ -39,42 +39,44 @@ class BasicEnumTest extends TestCase
         $this->assertArrayHasKey('USER_CREATION', $scenarios);
         $this->assertArrayHasKey('ADMIN_CREATION', $scenarios);
         
-        $this->assertEquals('login', $scenarios['LOGIN']);
-        $this->assertEquals('userRegistration', $scenarios['USER_REGISTRATION']);
-        $this->assertEquals('userCreation', $scenarios['USER_CREATION']);
-        $this->assertEquals('adminCreation', $scenarios['ADMIN_CREATION']);
+        $this->assertEquals(enums\Scenarios::LOGIN, $scenarios['LOGIN']);
+        $this->assertEquals(enums\Scenarios::USER_REGISTRATION, $scenarios['USER_REGISTRATION']);
+        $this->assertEquals(enums\Scenarios::USER_CREATION, $scenarios['USER_CREATION']);
+        $this->assertEquals(enums\Scenarios::ADMIN_CREATION, $scenarios['ADMIN_CREATION']);
         
         $this->assertCount(3, enums\UserStatus::getList());
     }
     
     public function testGetLabelOfConstantValue()
     {
-        $this->assertEquals('LOGIN', enums\Scenarios::getLabel(enums\Scenarios::LOGIN));
+        $this->assertEquals('BANNED', enums\UserStatus::getLabel(enums\UserStatus::BANNED));
     }
     
     public function testGetLabelsOfAllConstants()
     {
-        $labels = enums\Scenarios::getLabels();
+        $labels = enums\UserStatus::getLabels();
         
-        $this->assertCount(6, $labels);
-        $this->assertEquals('LOGIN', $labels[enums\Scenarios::LOGIN]);
-        $this->assertEquals('USER_REGISTRATION', $labels[enums\Scenarios::USER_REGISTRATION]);
-        $this->assertEquals('USER_CREATION', $labels[enums\Scenarios::USER_CREATION]);
-        $this->assertEquals('ADMIN_CREATION', $labels[enums\Scenarios::ADMIN_CREATION]);
-        $this->assertEquals('PERMISSION_ADD', $labels[enums\Scenarios::PERMISSION_ADD]);
-        $this->assertEquals('PERMISSION_NEW', $labels[enums\Scenarios::PERMISSION_NEW]);
+        $this->assertCount(3, $labels);
+        $this->assertEquals('BANNED', $labels[enums\UserStatus::BANNED]);
+        $this->assertEquals('PENDING', $labels[enums\UserStatus::PENDING]);
+        $this->assertEquals('ACTIVE', $labels[enums\UserStatus::ACTIVE]);
     }
     
     public function testGetConstantDeclaration()
     {
-        $this->assertNull(enums\Scenarios::getConstantDeclaration('madeup'));
-        $this->assertEquals('\nickcv\usermanager\enums\Scenarios::LOGIN', enums\Scenarios::getConstantDeclaration(enums\Scenarios::LOGIN));
+        $this->assertNull(enums\UserStatus::getConstantDeclaration('madeup'));
+        $this->assertEquals('\nickcv\usermanager\enums\UserStatus::BANNED', enums\UserStatus::getConstantDeclaration(enums\UserStatus::BANNED));
     }
     
     public function testKnowIfEnumHasConstantWithValue()
     {
-        $this->assertFalse(enums\Scenarios::hasConstantWithValue('madeup'));
-        $this->assertTrue(enums\Scenarios::hasConstantWithValue(enums\Scenarios::LOGIN));
+        $this->assertFalse(enums\UserStatus::hasConstantWithValue('madeup'));
+        $this->assertTrue(enums\UserStatus::hasConstantWithValue(enums\UserStatus::BANNED));
+    }
+    
+    public function testGetClassName()
+    {
+        $this->assertEquals('\nickcv\usermanager\enums\Scenarios', enums\Scenarios::getClassName());
     }
 
 }

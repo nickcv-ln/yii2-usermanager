@@ -25,4 +25,5 @@ class Scenarios extends BasicEnum
     const ADMIN_CREATION = 'adminCreation';
     const PERMISSION_ADD = 'permissionAdd';
     const PERMISSION_NEW = 'permissionNew';
+    const PERMISSION_DELETE = 'permissionDelete';
 }

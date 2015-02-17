@@ -91,9 +91,8 @@ class EnumFilesService extends BasicService
     private function getPrintableData($data)
     {
         $printable = [];
-        
         foreach ($data as $constantName => $constantValue) {
-            $printable[$this->getPrintableConstantName($constantName)] = $this->getPrintableConstantValue($constantValue);
+            $printable[$this->getPrintableConstantName($constantName)] = $constantValue;
         }
         
         return $printable;
@@ -160,7 +159,7 @@ class EnumFilesService extends BasicService
             if (!$this->validateConstantName($constantName)) {
                 return false;
             }
-            $content .= '    const ' . $constantName . ' = ' . $constantValue . ";\n";
+            $content .= '    const ' . $constantName . ' = ' . $this->getPrintableConstantValue($constantValue) . ";\n";
         }
         
         $content .= "\n}";

@@ -32,7 +32,7 @@ $form = ActiveForm::begin([
 
 <div class="col-md-12">
     <div class="">
-        <?php echo Html::submitButton('create permission and add it to role', ['class' => 'btn btn-primary', 'name' => 'configuration-button']) ?>
+        <?php echo Html::submitButton('create permission and add it to role', ['class' => 'btn btn-primary', 'name' => 'new-permission-button']) ?>
     </div>
 </div>
 

@@ -19,7 +19,7 @@ namespace nickcv\usermanager\enums;
  */
 class UserStatus extends BasicEnum
 {
-    const BANNED = 0;
     const PENDING = 1;
     const ACTIVE = 2;
+    const BANNED = 3;
 }

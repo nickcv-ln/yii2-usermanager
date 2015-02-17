@@ -75,6 +75,22 @@ abstract class BasicEnum
         return true;
     }
     
+    /**
+     * Returns the class name including the namespace.
+     * 
+     * @return string
+     */
+    final public static function getClassName()
+    {
+        return '\\' . get_called_class();
+    }
+    
+    /**
+     * Returns the Constant Declaration including the full class name.
+     * 
+     * @param mixed $value
+     * @return string
+     */
     final public static function getConstantDeclaration($value)
     {
         $key = array_search($value, self::getList());

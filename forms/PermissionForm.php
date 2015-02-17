@@ -14,6 +14,9 @@ use yii\base\Model;
 use nickcv\usermanager\enums\Scenarios;
 use nickcv\usermanager\helpers\AuthHelper;
 use nickcv\usermanager\services\EnumFilesService;
+use nickcv\usermanager\Module;
+use nickcv\usermanager\enums\Permissions;
+use nickcv\usermanager\enums\Roles;
 
 /**
  * PermissionsForm is the form behind the new permissions creation and the existing
@@ -37,6 +40,7 @@ class PermissionForm extends Model
         $scenarios = parent::scenarios();
         $scenarios[Scenarios::PERMISSION_NEW] = ['role', 'name', 'description'];
         $scenarios[Scenarios::PERMISSION_ADD] = ['role', 'existingPermissions'];
+        $scenarios[Scenarios::PERMISSION_DELETE] = ['role', 'name'];
         
         return $scenarios;
     }
@@ -49,7 +53,9 @@ class PermissionForm extends Model
         return [
             [['role', 'name', 'description', 'existingPermissions'], 'required'],
             ['role', 'roleExists'],
-            ['name', 'uniquePermission'],
+            ['name', 'uniquePermission', 'on' => Scenarios::PERMISSION_NEW],
+            ['name', 'permissionExists', 'on' => Scenarios::PERMISSION_DELETE],
+            ['name', 'permissionIsCore', 'on' => Scenarios::PERMISSION_DELETE],
             ['existingPermissions', 'missingPermission'],
         ];
     }
@@ -90,7 +96,7 @@ class PermissionForm extends Model
     }
     
     /**
-     * Validation rule that checks whether the given permission name does not
+     * Validation rule that checks whether the permission with the given name does not
      * already exists.
      * 
      * @param string $attribute the attribute name
@@ -99,6 +105,36 @@ class PermissionForm extends Model
     {
         if (\Yii::$app->authManager->getPermission($this->$attribute)) {
             $this->addError($attribute, 'The permission name should be unique, permission "' . $this->$attribute .'" already exists.');
+        }
+    }
+    
+    /**
+     * Validation rule that checks whether the given permission exists or not.
+     * 
+     * @param string $attribute the attribute name
+     */
+    public function permissionExists($attribute)
+    {
+        if (\Yii::$app->authManager->getPermission($this->$attribute) === null) {
+            $this->addError($attribute, 'The permission "' . $this->$attribute .'" does not exists.');
+        }
+    }
+    
+    /**
+     * Validation rule that checks whether or not the user is trying to remove
+     * a protected core permission.
+     * 
+     * @param string $attribute the attribute name
+     */
+    public function permissionIsCore($attribute)
+    {
+        if ($this->role === Roles::ADMIN) {
+            switch ($this->$attribute) {
+                case Permissions::MODULE_MANAGEMENT:
+                case Permissions::ROLES_MANAGEMENT:
+                case Permissions::USER_MANAGEMENT:
+                    $this->addError($attribute, 'The permission "' . $this->$attribute . '" is a core "' . Roles::ADMIN . '" permission and cannot be removed.');
+            }
         }
     }
     
@@ -141,9 +177,29 @@ class PermissionForm extends Model
         \Yii::$app->authManager->add($permission);
         \Yii::$app->authManager->addChild($role, $permission);
         
-        EnumFilesService::init()->updateEnum('ExtendedPermissions', [
+        EnumFilesService::init()->updateEnum(Module::EXTENDED_PERMISSIONS_CLASS, [
             $this->name => $this->name,
-        ], '\nickcv\usermanager\enums\Permissions');
+        ], Permissions::getClassName());
+        
+        return true;
+    }
+    
+    /**
+     * Remove the given permission from the given role if the current model scenario
+     * is nickcv\usermanager\enums\Scenarios::PERMISSION_DELETE and it passes
+     * validation.
+     * 
+     * @return boolean
+     */
+    public function removePermission()
+    {
+        if ($this->scenario !== Scenarios::PERMISSION_DELETE || !$this->validate()) {
+            return false;
+        }
+        
+        $role = \Yii::$app->authManager->getRole($this->role);
+        $permission = \Yii::$app->authManager->getPermission($this->name);
+        \Yii::$app->authManager->removeChild($role, $permission);
         
         return true;
     }

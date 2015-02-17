@@ -32,7 +32,7 @@ $model->scenario = Scenarios::PERMISSION_ADD;
 
 <div class="form-group">
     <div class="">
-        <?php echo Html::submitButton('add permissions to role', ['class' => 'btn btn-primary', 'name' => 'configuration-button']) ?>
+        <?php echo Html::submitButton('add permissions to role', ['class' => 'btn btn-primary', 'name' => 'existing-permission-button']) ?>
     </div>
 </div>
 

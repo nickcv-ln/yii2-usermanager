@@ -24,6 +24,23 @@ class AuthHelper
 {
     private static $_children = [];
     private static $_missingPermissions = [];
+    private static $_caching = true;
+    
+    /**
+     * Disables the cache, which causes issues during testing.
+     */
+    public static function disableCache()
+    {
+        self::$_caching = false;
+    }
+    
+    /**
+     * Enables the cache.
+     */
+    public static function enableCache()
+    {
+        self::$_caching = true;
+    }
     
     /**
      * Returns all the Children Roles of the given role.
@@ -86,7 +103,7 @@ class AuthHelper
      */
     public static function getMissingPermissions($role, $returnDataProvider = false)
     {
-        if (!isset(self::$_missingPermissions[$role])) {
+        if (!isset(self::$_missingPermissions[$role]) || self::$_caching === false) {
             $allPermissions = \Yii::$app->authManager->getPermissions();
             $rolePermissions = \Yii::$app->authManager->getPermissionsByRole($role);
 
@@ -130,7 +147,7 @@ class AuthHelper
      */
     private static function getRoleChildren($role)
     {
-        if (!isset(self::$_children[$role])) {
+        if (!isset(self::$_children[$role]) || self::$_caching === false) {
             self::$_children[$role] = \Yii::$app->authManager->getChildren($role);
         }
         

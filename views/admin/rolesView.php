@@ -1,6 +1,8 @@
 <?php
 use yii\grid\GridView;
 use yii\widgets\ListView;
+use nickcv\usermanager\Module;
+use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $permissionForm nickcv\usermanager\forms\PermissionForm */
@@ -18,9 +20,10 @@ $this->params['breadcrumbs'][] = $permissionForm->role;
     <h1>Roles and Permissions</h1>
     <p>From here you can manage roles and permissions.</p>
     <p>
-        The Enum files <kbd>\app\enums\ExtendedPermissions</kbd> and <kbd>\app\enums\ExtendedRoles</kbd>
-        will automatically contain constants for each role and permission you create,
-        to avoid the use of Magic Words throughout the application.
+        The Enum files <kbd>\app\enums\<?php echo Module::EXTENDED_PERMISSIONS_CLASS; ?></kbd>
+        and <kbd>\app\enums\<?php echo Module::EXTENDED_ROLES_CLASS ?></kbd> 
+        will automatically contain constants for each role and permission you 
+        create, to avoid the use of <em>Magic Words</em> throughout the application.
     </p>
 </div>
 
@@ -41,6 +44,15 @@ $this->params['breadcrumbs'][] = $permissionForm->role;
             [
                 'attribute' => 'updatedAt',
                 'format' => ['date', 'php:Y-m-d'],
+            ],
+            [
+                'class' => yii\grid\ActionColumn::className(),
+                'template' => '{delete}',
+                'buttons' => [
+                    'delete' => function ($url, $model, $key) use ($permissionForm) {
+                        return \Yii::$app->controller->renderPartial('_revokePermissionForm', ['permission' => $model, 'model' => $permissionForm]);
+                    }
+                ],
             ],
         ],
     ]); ?>
