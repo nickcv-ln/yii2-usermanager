@@ -159,5 +159,23 @@ class AuthHelperTest extends TestCase
         $this->assertEquals(Permissions::MODULE_MANAGEMENT, $admin[Permissions::MODULE_MANAGEMENT]->name);
         $this->assertEquals(Permissions::PROFILE_EDITING, $admin[Permissions::PROFILE_EDITING]->name);
     }
+    
+    public function testAdminProtectedPermissions()
+    {
+        $this->assertTrue(AuthHelper::isRolePermissionProtected(Roles::ADMIN, Permissions::USER_MANAGEMENT));
+        $this->assertFalse(AuthHelper::isRolePermissionProtected(Roles::ADMIN, Permissions::MODULE_MANAGEMENT));
+        $this->assertFalse(AuthHelper::isRolePermissionProtected(Roles::ADMIN, Permissions::ROLES_MANAGEMENT));
+        $this->assertFalse(AuthHelper::isRolePermissionProtected(Roles::ADMIN, Permissions::PROFILE_EDITING));
+        $this->assertFalse(AuthHelper::isRolePermissionProtected(Roles::ADMIN, 'madeup'));
+    }
+    
+    public function testSuperAdminProtectedPermissions()
+    {
+        $this->assertTrue(AuthHelper::isRolePermissionProtected(Roles::SUPER_ADMIN, Permissions::USER_MANAGEMENT));
+        $this->assertTrue(AuthHelper::isRolePermissionProtected(Roles::SUPER_ADMIN, Permissions::MODULE_MANAGEMENT));
+        $this->assertTrue(AuthHelper::isRolePermissionProtected(Roles::SUPER_ADMIN, Permissions::ROLES_MANAGEMENT));
+        $this->assertFalse(AuthHelper::isRolePermissionProtected(Roles::SUPER_ADMIN, Permissions::PROFILE_EDITING));
+        $this->assertFalse(AuthHelper::isRolePermissionProtected(Roles::SUPER_ADMIN, 'madeup'));
+    }
 
 }

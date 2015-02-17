@@ -13,6 +13,8 @@ namespace nickcv\usermanager\helpers;
 use yii\rbac\Role;
 use yii\rbac\Permission;
 use yii\data\ArrayDataProvider;
+use nickcv\usermanager\enums\Roles;
+use nickcv\usermanager\enums\Permissions;
 
 /**
  * Helper used to retrieve different set of informations from Auth.
@@ -142,6 +144,25 @@ class AuthHelper
     }
     
     /**
+     * Checks whether the given permission is protected for the given role.
+     * 
+     * @param string $role
+     * @param string $permission
+     * @return boolean
+     */
+    public static function isRolePermissionProtected($role, $permission)
+    {
+        switch ($role) {
+            case Roles::ADMIN:
+                return self::isAdminPermissionProtected($permission);
+            case Roles::SUPER_ADMIN:
+                return self::isSuperAdminPermissionProtected($permission);
+            default:
+                return false;
+        }
+    }
+    
+    /**
      * Returns all the children of a given role.
      * 
      * @param string $role the role name
@@ -154,5 +175,38 @@ class AuthHelper
         }
         
         return self::$_children[$role];
+    }
+    
+    /**
+     * Returns whether the given permission is protected for the Admin role.
+     * 
+     * @param string $permission
+     * @return boolean
+     */
+    private static function isAdminPermissionProtected($permission)
+    {
+        if ($permission === Permissions::USER_MANAGEMENT) {
+            return true;
+        }
+        
+        return false;
+    }
+    
+    /**
+     * Returns whether the given permission is protected for the SuperAdmin role.
+     * 
+     * @param string $permission
+     * @return boolean
+     */
+    private static function isSuperAdminPermissionProtected($permission)
+    {
+        switch ($permission) {
+            case Permissions::USER_MANAGEMENT:
+            case Permissions::ROLES_MANAGEMENT:
+            case Permissions::MODULE_MANAGEMENT:
+                return true;
+            default:
+                return false;
+        }
     }
 }

@@ -128,21 +128,8 @@ class PermissionForm extends Model
      */
     public function permissionIsCore($attribute)
     {
-        switch ($this->role) {
-            case Roles::ADMIN:
-                switch ($this->$attribute) {
-                    case Permissions::USER_MANAGEMENT:
-                        $this->addError($attribute, 'The permission "' . $this->$attribute . '" is a core "' . Roles::ADMIN . '" permission and cannot be removed.');
-                }
-                break;
-            case Roles::SUPER_ADMIN:
-                switch ($this->$attribute) {
-                    case Permissions::MODULE_MANAGEMENT:
-                    case Permissions::ROLES_MANAGEMENT:
-                    case Permissions::USER_MANAGEMENT:
-                        $this->addError($attribute, 'The permission "' . $this->$attribute . '" is a core "' . Roles::SUPER_ADMIN . '" permission and cannot be removed.');
-                }
-                break;
+        if (AuthHelper::isRolePermissionProtected($this->role, $this->$attribute)) {
+            $this->addError($attribute, 'The permission "' . $this->$attribute . '" is a core "' . $this->role . '" permission and cannot be removed.');
         }
     }
     

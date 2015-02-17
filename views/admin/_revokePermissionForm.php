@@ -2,8 +2,7 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use nickcv\usermanager\enums\Scenarios;
-use nickcv\usermanager\enums\Roles;
-use nickcv\usermanager\enums\Permissions;
+use nickcv\usermanager\helpers\AuthHelper;
 
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
@@ -14,10 +13,7 @@ $model->scenario = Scenarios::PERMISSION_DELETE;
 $model->name = $permission->name;
 ?>
 
-<?php if (($model->role === Roles::ADMIN && in_array($model->name, [
-    Permissions::MODULE_MANAGEMENT,
-    Permissions::USER_MANAGEMENT,
-    Permissions::ROLES_MANAGEMENT])) === false): ?>
+<?php if (!AuthHelper::isRolePermissionProtected($model->role, $model->name)): ?>
 
 <?php $form = ActiveForm::begin([
     'id' => 'revoke-permission-form',
