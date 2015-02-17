@@ -58,6 +58,7 @@ $this->params['breadcrumbs'][] = $permissionForm->role;
     ]); ?>
     
     <h2>Children roles of <kbd><?php echo $permissionForm->role; ?></kbd></h2>
+    <p>To edit the permission of a child role go to that role page by clicking on its name.</p>
     <?php echo ListView::widget([
         'dataProvider' => $childrenRoles,
         'itemView' => '_childrenRoles',

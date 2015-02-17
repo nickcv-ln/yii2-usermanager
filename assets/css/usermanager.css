@@ -9,6 +9,12 @@
     margin-top: 30px;
 }
 
+kbd a, kbd a:hover {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 /* LOGIN
 */
 

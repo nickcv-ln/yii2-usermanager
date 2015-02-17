@@ -170,9 +170,9 @@ class PermissionFormTest extends TestCase
         $this->assertCount(4, $cleanPermissions);
         $this->assertArrayNotHasKey('madeUp', $cleanPermissions);
         
-        $this->assertFileExists(\Yii::getAlias('@app/enums/ExtendedPermissions.php'));
+        $this->assertFileExists(\Yii::getAlias('@app/enums/ExtendedPermissions_test.php'));
         
-        unlink(\Yii::getAlias('@app/enums/ExtendedPermissions.php'));
+        unlink(\Yii::getAlias('@app/enums/ExtendedPermissions_test.php'));
         rmdir(\Yii::getAlias('@app/enums'));
         
     }

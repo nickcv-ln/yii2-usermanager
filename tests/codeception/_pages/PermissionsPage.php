@@ -29,8 +29,14 @@ class PermissionsPage extends BasePage
      */
     public function createPermission($name, $description)
     {
-        $this->actor->fillField('input[name="PermissionForm[name]"]', $name);
-        $this->actor->fillField('input[name="PermissionForm[description]"]', $description);
+        $this->actor->fillField('#permission-modal input[name="PermissionForm[name]"]', $name);
+        $this->actor->fillField('#permission-modal input[name="PermissionForm[description]"]', $description);
         $this->actor->click('new-permission-button');
+    }
+    
+    public function addExistingPermission($name)
+    {
+        $this->actor->checkOption('#permission-modal input[value="' . $name . '"]');
+        $this->actor->click('existing-permission-button');
     }
 }

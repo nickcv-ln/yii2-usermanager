@@ -101,6 +101,6 @@ Testing
 
 The entire module was built with TDD.
 
-To execute the acceptance tests make sure to create a vhost with ```SeverName yii2-nickcv.test``` and the document root pointing at ```vendor/nickcv/yii2-usermanager/tests/codeception/web```
+To execute the acceptance tests make sure to create a vhost with ```ServerName yii2-nickcv.test``` and the document root pointing at ```vendor/nickcv/yii2-usermanager/tests/codeception/web```
 
 To launch the tests just go inside the extension directory and execute the ```codecept run``` command.

@@ -177,7 +177,12 @@ class PermissionForm extends Model
         \Yii::$app->authManager->add($permission);
         \Yii::$app->authManager->addChild($role, $permission);
         
-        EnumFilesService::init()->updateEnum(Module::EXTENDED_PERMISSIONS_CLASS, [
+        $permissionClass = Module::EXTENDED_PERMISSIONS_CLASS;
+        if (defined('YII_ENV') && YII_ENV === 'test') {
+            $permissionClass .= '_test';
+        }
+        
+        EnumFilesService::init()->updateEnum($permissionClass, [
             $this->name => $this->name,
         ], Permissions::getClassName());
         

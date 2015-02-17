@@ -212,8 +212,9 @@ class InstallController extends Controller
     private function printConfigFileSuccessMessage()
     {
         $filePath = ConfigFilesService::init()->getPath(Module::CONFIG_FILENAME);
-        $this->stdout("\nconfig file generated in '$filePath'.", Console::FG_GREEN);
-        $this->stdout("\nadd this line in your web config file inside the components array and update the console config file as well:");
+        $this->stdout("\nconfig file generated in '$filePath'.\n", Console::FG_GREEN);
+        $this->stdout("\nupdated the module configuration in your console config file and add it to your web config file:");
         echo $this->ansiFormat("\n\t'usermanager' => require(__DIR__ . DIRECTORY_SEPARATOR . '" . Module::CONFIG_FILENAME . "'),\n\n", Console::BOLD, Console::FG_PURPLE);
+        $this->stdout("Afterwards remember to add to the bootstrap array the usermanager module into your web config file.\n\n");
     }
 }

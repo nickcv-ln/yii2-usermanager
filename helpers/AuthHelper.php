@@ -40,6 +40,8 @@ class AuthHelper
     public static function enableCache()
     {
         self::$_caching = true;
+        self::$_children = [];
+        self::$_missingPermissions = [];
     }
     
     /**

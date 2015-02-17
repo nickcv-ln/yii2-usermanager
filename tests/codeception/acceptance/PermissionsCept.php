@@ -10,7 +10,7 @@ if ($testName) {
 }
 
 
-$I = new FunctionalTester($scenario);
+$I = new AcceptanceTester($scenario);
 $I->wantTo('ensure that permissions page works');
 
 $permissionPage = PermissionsPage::openBy($I);
