@@ -1,5 +1,13 @@
 <?php
-
+/**
+ * Contains the ConfigurationForm class used to edit the module configuration.
+ * 
+ * @link http://www.creationgears.com/
+ * @copyright Copyright (c) 2015 Nicola Puddu
+ * @license http://www.gnu.org/copyleft/gpl.html
+ * @package nickcv/yii2-usermanager
+ * @author Nicola Puddu <n.puddu@outlook.com>
+ */
 namespace nickcv\usermanager\forms;
 
 use yii\base\Model;
@@ -10,6 +18,9 @@ use nickcv\usermanager\helpers\ArrayHelper as AH;
 
 /**
  * ConfigurationForm is the form behind the module configurations.
+ * 
+ * @author Nicola Puddu <n.puddu@outlook.com>
+ * @version 1.0
  */
 class ConfigurationForm extends Model
 {

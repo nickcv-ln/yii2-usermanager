@@ -56,11 +56,13 @@ class BasicEnumTest extends TestCase
     {
         $labels = enums\Scenarios::getLabels();
         
-        $this->assertCount(4, $labels);
+        $this->assertCount(6, $labels);
         $this->assertEquals('LOGIN', $labels[enums\Scenarios::LOGIN]);
         $this->assertEquals('USER_REGISTRATION', $labels[enums\Scenarios::USER_REGISTRATION]);
         $this->assertEquals('USER_CREATION', $labels[enums\Scenarios::USER_CREATION]);
         $this->assertEquals('ADMIN_CREATION', $labels[enums\Scenarios::ADMIN_CREATION]);
+        $this->assertEquals('PERMISSION_ADD', $labels[enums\Scenarios::PERMISSION_ADD]);
+        $this->assertEquals('PERMISSION_NEW', $labels[enums\Scenarios::PERMISSION_NEW]);
     }
     
     public function testGetConstantDeclaration()

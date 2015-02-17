@@ -5,6 +5,10 @@
     background-color: #78909c;
 }
 
+.push-down-30 {
+    margin-top: 30px;
+}
+
 /* LOGIN
 */
 
@@ -27,4 +31,11 @@
 
 #usermanager-login button {
     width: 100%;
+}
+
+/* ROlES
+*/
+
+#permission-modal .col-md-6:first-child {
+    border-right: 1px solid #eee;
 }

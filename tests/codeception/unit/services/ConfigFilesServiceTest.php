@@ -59,7 +59,7 @@ class ConfigFilesServiceTest extends TestCase
         
         $this->assertEquals($serviceClassPath, $errors['details']['file']);
         $this->assertArrayHasKey('line', $errors['details']);
-        $this->assertEquals('208', $errors['details']['line']);
+        $this->assertEquals('162', $errors['details']['line']);
     }
     
     public function testCreateConfigFile()

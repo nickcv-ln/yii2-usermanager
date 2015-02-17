@@ -1,8 +1,24 @@
 <?php
+/**
+ * Contains ArrayHelper class that extends the Yii ArrayHelper.
+ * 
+ * @link http://www.creationgears.com/
+ * @copyright Copyright (c) 2015 Nicola Puddu
+ * @license http://www.gnu.org/copyleft/gpl.html
+ * @package nickcv/yii2-usermanager
+ * @author Nicola Puddu <n.puddu@outlook.com>
+ */
 namespace nickcv\usermanager\helpers;
 
 use yii\helpers\ArrayHelper as YiiArrayHelper;
 
+/**
+ * This helper inherits all the methods from the Yii ArrayHelper adding a method
+ * used to get the PHP code that generates the given array.
+ * 
+ * @author Nicola Puddu <n.puddu@outlook.com>
+ * @version 1.0
+ */
 class ArrayHelper extends YiiArrayHelper
 {
     const PHP_CONTENT = '#PHP#';

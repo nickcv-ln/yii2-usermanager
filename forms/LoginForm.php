@@ -1,5 +1,13 @@
 <?php
-
+/**
+ * Contains the LoginForm class used to handle login actions.
+ * 
+ * @link http://www.creationgears.com/
+ * @copyright Copyright (c) 2015 Nicola Puddu
+ * @license http://www.gnu.org/copyleft/gpl.html
+ * @package nickcv/yii2-usermanager
+ * @author Nicola Puddu <n.puddu@outlook.com>
+ */
 namespace nickcv\usermanager\forms;
 
 use Yii;
@@ -8,6 +16,9 @@ use nickcv\usermanager\models\User as User;
 
 /**
  * LoginForm is the model behind the login form.
+ * 
+ * @author Nicola Puddu <n.puddu@outlook.com>
+ * @version 1.0
  */
 class LoginForm extends Model
 {

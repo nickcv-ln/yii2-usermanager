@@ -1,7 +1,6 @@
 <?php
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
-use nickcv\usermanager\AssetBundle;
 use nickcv\usermanager\enums\Registration;
 use nickcv\usermanager\enums\GeneralSettings;
 use nickcv\usermanager\enums\PasswordStrength;
@@ -11,17 +10,20 @@ use nickcv\usermanager\Module;
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $model nickcv\usermanager\forms\ConfigurationForm */
 
-$this->title = 'Admin Panel | '.\Yii::$app->name;
+$this->title = 'Configuration | Admin Panel | '.\Yii::$app->name;
 $this->params['breadcrumbs'][] = 'Admin Panel';
-
-echo $this->render('_heroUnit');
+$this->params['breadcrumbs'][] = 'Configuration';
 ?>
 
-<div class="col-lg-12">
-    <h2>Module Configuration</h2>
-    <p>The following configuration is the one contained in the <mark><?php echo Module::CONFIG_FILENAME; ?></mark> file.</p>
+<div class="jumbotron usermanager">
+    <h1>Module Configuration</h1>
+    <p>The following configuration is the one contained in the <kbd><?php echo Module::CONFIG_FILENAME; ?></kbd> file.</p>
     <p>You can either edit it from here or you can directly change the content of the file.</p>
-    <hr>
+</div>
+
+<?php echo $this->render('_nav'); ?>
+
+<div class="col-lg-12 push-down-30">
     <?php $form = ActiveForm::begin([
         'id' => 'configuration-form',
         'options' => ['autocomplete' => 'off'],

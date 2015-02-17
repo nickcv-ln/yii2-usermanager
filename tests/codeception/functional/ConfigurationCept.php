@@ -7,6 +7,7 @@ $I->wantTo('ensure that configuration page works');
 
 $configPage = ConfigurationPage::openBy($I);
 
+$I->dontSee('Module Configuration');
 $I->see('Login | My Application', '.breadcrumb .active');
 
 $I->amGoingTo('login with correct credentials');

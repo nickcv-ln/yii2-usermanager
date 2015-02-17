@@ -2377,3 +2377,435 @@ $_SERVER = [
     'argv' => []
     'argc' => 0
 ]
+2015-02-16 14:28:19 [][-][-][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Object of class yii\rbac\Permission could not be converted to string' in /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/helpers/AuthHelper.php:91
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2015-02-16 14:28:19 [][-][-][info][application] $_SERVER = [
+    'RA_GIV' => 's6Hdwl8fWHC1_t|P'
+    'TERM_PROGRAM' => 'Apple_Terminal'
+    'RA_SMTP_USR' => 'no-reply@beg-for-keys.com'
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/nj/87nq3v6x2534mm930q6kbzgh0000gq/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.JL8BqQtqRK/Render'
+    'TERM_PROGRAM_VERSION' => '343.6'
+    'RA_GP' => 'vS4Y334_!dTj2'
+    'TERM_SESSION_ID' => '013FAF20-E463-445F-A884-14AFB01DC124'
+    'USER' => 'nicola.puddu'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.zASitgzjdN/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F7:0x0:0x0'
+    'RA_SMTP_PSW' => 'ranchanucchan89'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin'
+    'RA_DB_NAME' => 'rest_assured'
+    'RA_SALT' => 'gewerVewa432SfE3478'
+    'PWD' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests'
+    'LANG' => 'en_GB.UTF-8'
+    'RA_DB_PSW' => 'root'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'HOME' => '/Users/nicola.puddu'
+    'SHLVL' => '1'
+    'RA_DB_USR' => 'root'
+    'RA_SMTP_HOST' => 'smtp.gmail.com'
+    'LOGNAME' => 'nicola.puddu'
+    'RA_CDN_URL' => 'http://cdn.restassured.loc/index-test.php/'
+    'RA_DB_HOST' => 'localhost'
+    'RA_SESSION_DOMAIN' => '.restassured.loc'
+    'SECURITYSESSIONID' => '186a6'
+    '_' => '/usr/bin/codecept'
+    'PHP_SELF' => '/usr/bin/codecept'
+    'SCRIPT_NAME' => '/index-test.php'
+    'SCRIPT_FILENAME' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web/index-test.php'
+    'PATH_TRANSLATED' => '/usr/bin/codecept'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1424096899.6861
+    'REQUEST_TIME' => 1424096899
+    'argv' => [
+        0 => '/usr/bin/codecept'
+        1 => 'run'
+        2 => 'unit'
+    ]
+    'argc' => 3
+    'SERVER_NAME' => 'yii2-nickcv.test'
+    'SERVER_PORT' => '80'
+]
+2015-02-16 14:29:29 [][-][-][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Object of class yii\rbac\Permission could not be converted to string' in /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/helpers/AuthHelper.php:94
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2015-02-16 14:29:29 [][-][-][info][application] $_SERVER = [
+    'RA_GIV' => 's6Hdwl8fWHC1_t|P'
+    'TERM_PROGRAM' => 'Apple_Terminal'
+    'RA_SMTP_USR' => 'no-reply@beg-for-keys.com'
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/nj/87nq3v6x2534mm930q6kbzgh0000gq/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.JL8BqQtqRK/Render'
+    'TERM_PROGRAM_VERSION' => '343.6'
+    'RA_GP' => 'vS4Y334_!dTj2'
+    'TERM_SESSION_ID' => '013FAF20-E463-445F-A884-14AFB01DC124'
+    'USER' => 'nicola.puddu'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.zASitgzjdN/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F7:0x0:0x0'
+    'RA_SMTP_PSW' => 'ranchanucchan89'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin'
+    'RA_DB_NAME' => 'rest_assured'
+    'RA_SALT' => 'gewerVewa432SfE3478'
+    'PWD' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests'
+    'LANG' => 'en_GB.UTF-8'
+    'RA_DB_PSW' => 'root'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'HOME' => '/Users/nicola.puddu'
+    'SHLVL' => '1'
+    'RA_DB_USR' => 'root'
+    'RA_SMTP_HOST' => 'smtp.gmail.com'
+    'LOGNAME' => 'nicola.puddu'
+    'RA_CDN_URL' => 'http://cdn.restassured.loc/index-test.php/'
+    'RA_DB_HOST' => 'localhost'
+    'RA_SESSION_DOMAIN' => '.restassured.loc'
+    'SECURITYSESSIONID' => '186a6'
+    '_' => '/usr/bin/codecept'
+    'PHP_SELF' => '/usr/bin/codecept'
+    'SCRIPT_NAME' => '/index-test.php'
+    'SCRIPT_FILENAME' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web/index-test.php'
+    'PATH_TRANSLATED' => '/usr/bin/codecept'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1424096969.3472
+    'REQUEST_TIME' => 1424096969
+    'argv' => [
+        0 => '/usr/bin/codecept'
+        1 => 'run'
+        2 => 'unit'
+    ]
+    'argc' => 3
+    'SERVER_NAME' => 'yii2-nickcv.test'
+    'SERVER_PORT' => '80'
+]
+2015-02-16 16:49:24 [][-][-][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message '[] operator not supported for strings' in /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/unit/models/PermissionFormTest.php:35
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2015-02-16 16:49:22 [][-][-][info][application] $_SERVER = [
+    'RA_GIV' => 's6Hdwl8fWHC1_t|P'
+    'TERM_PROGRAM' => 'Apple_Terminal'
+    'RA_SMTP_USR' => 'no-reply@beg-for-keys.com'
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/nj/87nq3v6x2534mm930q6kbzgh0000gq/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.JL8BqQtqRK/Render'
+    'TERM_PROGRAM_VERSION' => '343.6'
+    'RA_GP' => 'vS4Y334_!dTj2'
+    'TERM_SESSION_ID' => '013FAF20-E463-445F-A884-14AFB01DC124'
+    'USER' => 'nicola.puddu'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.zASitgzjdN/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F7:0x0:0x0'
+    'RA_SMTP_PSW' => 'ranchanucchan89'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin'
+    'RA_DB_NAME' => 'rest_assured'
+    'RA_SALT' => 'gewerVewa432SfE3478'
+    'PWD' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests'
+    'LANG' => 'en_GB.UTF-8'
+    'RA_DB_PSW' => 'root'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'HOME' => '/Users/nicola.puddu'
+    'SHLVL' => '1'
+    'RA_DB_USR' => 'root'
+    'RA_SMTP_HOST' => 'smtp.gmail.com'
+    'LOGNAME' => 'nicola.puddu'
+    'RA_CDN_URL' => 'http://cdn.restassured.loc/index-test.php/'
+    'RA_DB_HOST' => 'localhost'
+    'RA_SESSION_DOMAIN' => '.restassured.loc'
+    'SECURITYSESSIONID' => '186a6'
+    '_' => '/usr/bin/codecept'
+    'PHP_SELF' => '/usr/bin/codecept'
+    'SCRIPT_NAME' => '/index-test.php'
+    'SCRIPT_FILENAME' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web/index-test.php'
+    'PATH_TRANSLATED' => '/usr/bin/codecept'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1424105362.536
+    'REQUEST_TIME' => 1424105362
+    'argv' => [
+        0 => '/usr/bin/codecept'
+        1 => 'run'
+        2 => 'unit'
+        3 => '-vvv'
+    ]
+    'argc' => 4
+    'SERVER_NAME' => 'yii2-nickcv.test'
+    'SERVER_PORT' => '80'
+]
+2015-02-17 12:06:30 [][-][-][error][yii\base\ErrorException:4] exception 'yii\base\ErrorException' with message 'parse error, expecting `"identifier (T_STRING)"'' in /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/enums/TestEnum.php:8
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2015-02-17 12:06:30 [][-][-][info][application] $_SERVER = [
+    'RA_GIV' => 's6Hdwl8fWHC1_t|P'
+    'TERM_PROGRAM' => 'Apple_Terminal'
+    'RA_SMTP_USR' => 'no-reply@beg-for-keys.com'
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/nj/87nq3v6x2534mm930q6kbzgh0000gq/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.JL8BqQtqRK/Render'
+    'TERM_PROGRAM_VERSION' => '343.6'
+    'RA_GP' => 'vS4Y334_!dTj2'
+    'TERM_SESSION_ID' => '013FAF20-E463-445F-A884-14AFB01DC124'
+    'USER' => 'nicola.puddu'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.zASitgzjdN/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F7:0x0:0x0'
+    'RA_SMTP_PSW' => 'ranchanucchan89'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin'
+    'RA_DB_NAME' => 'rest_assured'
+    'RA_SALT' => 'gewerVewa432SfE3478'
+    'PWD' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests'
+    'LANG' => 'en_GB.UTF-8'
+    'RA_DB_PSW' => 'root'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'HOME' => '/Users/nicola.puddu'
+    'SHLVL' => '1'
+    'RA_DB_USR' => 'root'
+    'RA_SMTP_HOST' => 'smtp.gmail.com'
+    'LOGNAME' => 'nicola.puddu'
+    'RA_CDN_URL' => 'http://cdn.restassured.loc/index-test.php/'
+    'RA_DB_HOST' => 'localhost'
+    'RA_SESSION_DOMAIN' => '.restassured.loc'
+    'SECURITYSESSIONID' => '186a6'
+    '_' => '/usr/bin/codecept'
+    'PHP_SELF' => '/usr/bin/codecept'
+    'SCRIPT_NAME' => '/index-test.php'
+    'SCRIPT_FILENAME' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web/index-test.php'
+    'PATH_TRANSLATED' => '/usr/bin/codecept'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1424174790.5599
+    'REQUEST_TIME' => 1424174790
+    'argv' => [
+        0 => '/usr/bin/codecept'
+        1 => 'run'
+        2 => 'unit'
+        3 => 'codeception/unit/services/EnumFilesServiceTest.php'
+    ]
+    'argc' => 4
+    'SERVER_NAME' => 'yii2-nickcv.test'
+    'SERVER_PORT' => '80'
+]
+2015-02-17 12:08:52 [][-][-][error][yii\base\ErrorException:4] exception 'yii\base\ErrorException' with message 'parse error, expecting `"identifier (T_STRING)"'' in /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/enums/TestEnum.php:8
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2015-02-17 12:08:52 [][-][-][info][application] $_SERVER = [
+    'RA_GIV' => 's6Hdwl8fWHC1_t|P'
+    'TERM_PROGRAM' => 'Apple_Terminal'
+    'RA_SMTP_USR' => 'no-reply@beg-for-keys.com'
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/nj/87nq3v6x2534mm930q6kbzgh0000gq/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.JL8BqQtqRK/Render'
+    'TERM_PROGRAM_VERSION' => '343.6'
+    'RA_GP' => 'vS4Y334_!dTj2'
+    'TERM_SESSION_ID' => '013FAF20-E463-445F-A884-14AFB01DC124'
+    'USER' => 'nicola.puddu'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.zASitgzjdN/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F7:0x0:0x0'
+    'RA_SMTP_PSW' => 'ranchanucchan89'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin'
+    'RA_DB_NAME' => 'rest_assured'
+    'RA_SALT' => 'gewerVewa432SfE3478'
+    'PWD' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests'
+    'LANG' => 'en_GB.UTF-8'
+    'RA_DB_PSW' => 'root'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'HOME' => '/Users/nicola.puddu'
+    'SHLVL' => '1'
+    'RA_DB_USR' => 'root'
+    'RA_SMTP_HOST' => 'smtp.gmail.com'
+    'LOGNAME' => 'nicola.puddu'
+    'RA_CDN_URL' => 'http://cdn.restassured.loc/index-test.php/'
+    'RA_DB_HOST' => 'localhost'
+    'RA_SESSION_DOMAIN' => '.restassured.loc'
+    'SECURITYSESSIONID' => '186a6'
+    '_' => '/usr/bin/codecept'
+    'PHP_SELF' => '/usr/bin/codecept'
+    'SCRIPT_NAME' => '/index-test.php'
+    'SCRIPT_FILENAME' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web/index-test.php'
+    'PATH_TRANSLATED' => '/usr/bin/codecept'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1424174932.7335
+    'REQUEST_TIME' => 1424174932
+    'argv' => [
+        0 => '/usr/bin/codecept'
+        1 => 'run'
+        2 => 'unit'
+        3 => 'codeception/unit/services/EnumFilesServiceTest.php'
+    ]
+    'argc' => 4
+    'SERVER_NAME' => 'yii2-nickcv.test'
+    'SERVER_PORT' => '80'
+]
+2015-02-17 12:10:06 [][-][-][error][yii\base\ErrorException:4] exception 'yii\base\ErrorException' with message 'parse error, expecting `"identifier (T_STRING)"'' in /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/enums/TestEnum.php:8
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2015-02-17 12:10:06 [][-][-][info][application] $_SERVER = [
+    'RA_GIV' => 's6Hdwl8fWHC1_t|P'
+    'TERM_PROGRAM' => 'Apple_Terminal'
+    'RA_SMTP_USR' => 'no-reply@beg-for-keys.com'
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/nj/87nq3v6x2534mm930q6kbzgh0000gq/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.JL8BqQtqRK/Render'
+    'TERM_PROGRAM_VERSION' => '343.6'
+    'RA_GP' => 'vS4Y334_!dTj2'
+    'TERM_SESSION_ID' => '013FAF20-E463-445F-A884-14AFB01DC124'
+    'USER' => 'nicola.puddu'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.zASitgzjdN/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F7:0x0:0x0'
+    'RA_SMTP_PSW' => 'ranchanucchan89'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin'
+    'RA_DB_NAME' => 'rest_assured'
+    'RA_SALT' => 'gewerVewa432SfE3478'
+    'PWD' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests'
+    'LANG' => 'en_GB.UTF-8'
+    'RA_DB_PSW' => 'root'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'HOME' => '/Users/nicola.puddu'
+    'SHLVL' => '1'
+    'RA_DB_USR' => 'root'
+    'RA_SMTP_HOST' => 'smtp.gmail.com'
+    'LOGNAME' => 'nicola.puddu'
+    'RA_CDN_URL' => 'http://cdn.restassured.loc/index-test.php/'
+    'RA_DB_HOST' => 'localhost'
+    'RA_SESSION_DOMAIN' => '.restassured.loc'
+    'SECURITYSESSIONID' => '186a6'
+    '_' => '/usr/bin/codecept'
+    'PHP_SELF' => '/usr/bin/codecept'
+    'SCRIPT_NAME' => '/index-test.php'
+    'SCRIPT_FILENAME' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web/index-test.php'
+    'PATH_TRANSLATED' => '/usr/bin/codecept'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1424175006.462
+    'REQUEST_TIME' => 1424175006
+    'argv' => [
+        0 => '/usr/bin/codecept'
+        1 => 'run'
+        2 => 'unit'
+        3 => 'codeception/unit/services/EnumFilesServiceTest.php'
+    ]
+    'argc' => 4
+    'SERVER_NAME' => 'yii2-nickcv.test'
+    'SERVER_PORT' => '80'
+]
+2015-02-17 12:20:02 [][-][-][error][yii\base\ErrorException:64] exception 'yii\base\ErrorException' with message 'Cannot redeclare class nickcv\usermanager\enums\TestEnum' in /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/enums/TestEnum.php:12
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2015-02-17 12:20:02 [][-][-][info][application] $_SERVER = [
+    'RA_GIV' => 's6Hdwl8fWHC1_t|P'
+    'TERM_PROGRAM' => 'Apple_Terminal'
+    'RA_SMTP_USR' => 'no-reply@beg-for-keys.com'
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/nj/87nq3v6x2534mm930q6kbzgh0000gq/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.JL8BqQtqRK/Render'
+    'TERM_PROGRAM_VERSION' => '343.6'
+    'RA_GP' => 'vS4Y334_!dTj2'
+    'TERM_SESSION_ID' => '013FAF20-E463-445F-A884-14AFB01DC124'
+    'USER' => 'nicola.puddu'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.zASitgzjdN/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F7:0x0:0x0'
+    'RA_SMTP_PSW' => 'ranchanucchan89'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin'
+    'RA_DB_NAME' => 'rest_assured'
+    'RA_SALT' => 'gewerVewa432SfE3478'
+    'PWD' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests'
+    'LANG' => 'en_GB.UTF-8'
+    'RA_DB_PSW' => 'root'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'HOME' => '/Users/nicola.puddu'
+    'SHLVL' => '1'
+    'RA_DB_USR' => 'root'
+    'RA_SMTP_HOST' => 'smtp.gmail.com'
+    'LOGNAME' => 'nicola.puddu'
+    'RA_CDN_URL' => 'http://cdn.restassured.loc/index-test.php/'
+    'RA_DB_HOST' => 'localhost'
+    'RA_SESSION_DOMAIN' => '.restassured.loc'
+    'SECURITYSESSIONID' => '186a6'
+    '_' => '/usr/bin/codecept'
+    'PHP_SELF' => '/usr/bin/codecept'
+    'SCRIPT_NAME' => '/index-test.php'
+    'SCRIPT_FILENAME' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web/index-test.php'
+    'PATH_TRANSLATED' => '/usr/bin/codecept'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1424175602.7897
+    'REQUEST_TIME' => 1424175602
+    'argv' => [
+        0 => '/usr/bin/codecept'
+        1 => 'run'
+        2 => 'unit'
+        3 => 'codeception/unit/services/EnumFilesServiceTest.php'
+        4 => '-vvv'
+    ]
+    'argc' => 5
+    'SERVER_NAME' => 'yii2-nickcv.test'
+    'SERVER_PORT' => '80'
+]
+2015-02-17 12:45:07 [][-][-][error][yii\base\ErrorException:4] exception 'yii\base\ErrorException' with message 'parse error, expecting `'=''' in /Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/enums/TestEnum.php:9
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2015-02-17 12:45:07 [][-][-][info][application] $_SERVER = [
+    'RA_GIV' => 's6Hdwl8fWHC1_t|P'
+    'TERM_PROGRAM' => 'Apple_Terminal'
+    'RA_SMTP_USR' => 'no-reply@beg-for-keys.com'
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/nj/87nq3v6x2534mm930q6kbzgh0000gq/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.JL8BqQtqRK/Render'
+    'TERM_PROGRAM_VERSION' => '343.6'
+    'RA_GP' => 'vS4Y334_!dTj2'
+    'TERM_SESSION_ID' => '013FAF20-E463-445F-A884-14AFB01DC124'
+    'USER' => 'nicola.puddu'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.zASitgzjdN/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F7:0x0:0x0'
+    'RA_SMTP_PSW' => 'ranchanucchan89'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin'
+    'RA_DB_NAME' => 'rest_assured'
+    'RA_SALT' => 'gewerVewa432SfE3478'
+    'PWD' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests'
+    'LANG' => 'en_GB.UTF-8'
+    'RA_DB_PSW' => 'root'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'HOME' => '/Users/nicola.puddu'
+    'SHLVL' => '1'
+    'RA_DB_USR' => 'root'
+    'RA_SMTP_HOST' => 'smtp.gmail.com'
+    'LOGNAME' => 'nicola.puddu'
+    'RA_CDN_URL' => 'http://cdn.restassured.loc/index-test.php/'
+    'RA_DB_HOST' => 'localhost'
+    'RA_SESSION_DOMAIN' => '.restassured.loc'
+    'SECURITYSESSIONID' => '186a6'
+    '_' => '/usr/bin/codecept'
+    'PHP_SELF' => '/usr/bin/codecept'
+    'SCRIPT_NAME' => '/index-test.php'
+    'SCRIPT_FILENAME' => '/Users/nicola.puddu/www-data/yii2/vendor/nickcv/yii2-usermanager/tests/codeception/web/index-test.php'
+    'PATH_TRANSLATED' => '/usr/bin/codecept'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1424177107.1792
+    'REQUEST_TIME' => 1424177107
+    'argv' => [
+        0 => '/usr/bin/codecept'
+        1 => 'run'
+        2 => 'unit'
+        3 => 'codeception/unit/services/EnumFilesServiceTest.php'
+        4 => '-vvv'
+    ]
+    'argc' => 5
+    'SERVER_NAME' => 'yii2-nickcv.test'
+    'SERVER_PORT' => '80'
+]

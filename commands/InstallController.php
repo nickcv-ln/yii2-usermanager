@@ -116,9 +116,18 @@ class InstallController extends Controller
             $auth->add($rolesManagement);
         }
         
+        $profileEditing = $auth->getPermission(Permissions::PROFILE_EDITING);
+        
+        if ($profileEditing === null) {
+            $profileEditing = $auth->createPermission(Permissions::PROFILE_EDITING);
+            $profileEditing->description = 'Profile Editing';
+            $auth->add($profileEditing);
+        }
+        
         if ($auth->getRole(Roles::STANDARD_USER) === null) {
             $standardUser = $auth->createRole(Roles::STANDARD_USER);
             $auth->add($standardUser);
+            $auth->addChild($standardUser, $profileEditing);
         }
 
         if ($auth->getRole(Roles::ADMIN) === null) {
@@ -127,6 +136,7 @@ class InstallController extends Controller
             $auth->addChild($admin, $moduleManagement);
             $auth->addChild($admin, $usersManagement);
             $auth->addChild($admin, $rolesManagement);
+            $auth->addChild($admin, $standardUser);
         }
         
         $this->stdout("\nBasic Roles and Permissions created.", Console::FG_GREEN);

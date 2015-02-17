@@ -22,4 +22,5 @@ class Permissions extends BasicEnum
     const MODULE_MANAGEMENT = 'moduleManagement';
     const USER_MANAGEMENT = 'usersManagement';
     const ROLES_MANAGEMENT = 'rolesManagement';
+    const PROFILE_EDITING = 'profileEditing';
 }

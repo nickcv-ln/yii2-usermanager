@@ -4,17 +4,10 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\Alert;
 
 /* @var $this yii\web\View */
+/* @var $activateRoles boolean */
 
 AssetBundle::register($this);
 ?>
-<div class="jumbotron usermanager">
-    <h1>Admin Panel</h1>
-    <p>
-        This is the <em>usermanager admin panel</em>, from here you can 
-        change the module configuration's, create and edit users and manage
-        roles.
-    </p>
-</div>
 
 <div class="clearfix"></div>
 <?php if (\Yii::$app->session->hasFlash('success')):
@@ -40,6 +33,7 @@ endif; ?>
             [
                 'label' => 'Roles',
                 'url' => ['admin/roles'],
+                'active' => isset($activateRoles) && $activateRoles === true ? true : null,
             ],
         ],
         'options' => [
