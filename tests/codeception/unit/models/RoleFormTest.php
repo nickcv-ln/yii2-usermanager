@@ -26,7 +26,7 @@ class RoleFormTest extends TestCase
         AuthHelper::enableCache();
     }
 
-    public function testNameIsRequiredWhenAddingExistingRole()
+    public function testNameParentRoleAreRequiredWhenAddingToParentRole()
     {
         $model = new RoleForm(['scenario' => Scenarios::ROLE_ADD]);
         
@@ -34,73 +34,54 @@ class RoleFormTest extends TestCase
         $this->assertCount(2, $model->getErrors());
         $this->assertCount(1, $model->getErrors('name'));
         $this->assertContains('Name cannot be blank.', $model->getErrors('name'));
+        $this->assertCount(1, $model->getErrors('parentRole'));
+        $this->assertContains('Parent Role cannot be blank.', $model->getErrors('parentRole'));
     }
     
-    public function testNameMustExistWhenAddingExistingRole()
+    public function testParentRoleMustExistWhenAddingToParentRole()
     {
         $model = new RoleForm(['scenario' => Scenarios::ROLE_ADD]);
-        $model->name = 'madeup';
+        $model->parentRole = 'madeup';
         
         $this->assertFalse($model->validate());
         $this->assertCount(2, $model->getErrors());
+        $this->assertCount(1, $model->getErrors('parentRole'));
+        $this->assertContains('The role "madeup" does not exists.', $model->getErrors('parentRole'));
+    }
+    
+    public function testRoleMustNotBeAlreadyAChildOfParentRole()
+    {
+        $model = new RoleForm(['scenario' => Scenarios::ROLE_ADD]);
+        
+        $model->name = Roles::STANDARD_USER;
+        $model->parentRole = Roles::ADMIN;
+        
+        
+        $this->assertFalse($model->validate());
+        $this->assertCount(1, $model->getErrors());
+        $this->assertCount(1, $model->getErrors('name'));
+        $this->assertContains('The given role "admin" is already inheriting or being inherited by a role named "standardUser".', $model->getErrors('name'));
+        
+        $model->name = 'madeup';
+        $model->clearErrors();
+        
+        $this->assertFalse($model->validate());
+        $this->assertCount(1, $model->getErrors());
         $this->assertCount(1, $model->getErrors('name'));
         $this->assertContains('The role "madeup" does not exists.', $model->getErrors('name'));
     }
     
-    public function testExistingRoleMustBeAString()
-    {
-        $model = new RoleForm(['scenario' => Scenarios::ROLE_ADD]);
-        
-        $model->existingRole = true;
-        
-        $this->assertFalse($model->validate());
-        $this->assertCount(2, $model->getErrors());
-        $this->assertCount(1, $model->getErrors('existingRole'));
-        $this->assertContains('Existing Role should be a role.', $model->getErrors('existingRole'));
-        
-        $model->existingRole = [];
-        $model->clearErrors();
-        $this->assertCount(0, $model->getErrors());
-        
-        $this->assertFalse($model->validate());
-        $this->assertCount(2, $model->getErrors());
-        $this->assertCount(1, $model->getErrors('existingRole'));
-        
-        $this->assertContains('Existing Role cannot be blank.', $model->getErrors('existingRole'));
-    }
-    
-    public function testExistingRoleMustBeMissingForTheGivenRole()
-    {
-        $model = new RoleForm(['scenario' => Scenarios::ROLE_ADD]);
-        
-        $model->name = Roles::ADMIN;
-        $model->existingRole = Roles::STANDARD_USER;
-        
-        $this->assertFalse($model->validate());
-        $this->assertCount(1, $model->getErrors());
-        $this->assertCount(1, $model->getErrors('existingRole'));
-        $this->assertContains('The given role "admin" is already inheriting or being inherited by a role named "standardUser".', $model->getErrors('existingRole'));
-        
-        $model->existingRole = 'madeup';
-        $model->clearErrors();
-        
-        $this->assertFalse($model->validate());
-        $this->assertCount(1, $model->getErrors());
-        $this->assertCount(1, $model->getErrors('existingRole'));
-        $this->assertContains('The given role "admin" is already inheriting or being inherited by a role named "madeup".', $model->getErrors('existingRole'));
-    }
-    
-    public function testAddExistingPermissionsToRole()
+    public function testAddRoleToExistingRole()
     {
         $model = new RoleForm(['scenario' => Scenarios::ROLE_ADD]);
         
         $currentChildren = AuthHelper::getChildrenRoles(Roles::STANDARD_USER);
         $this->assertCount(0, $currentChildren);
         
-        $model->name = Roles::STANDARD_USER;
         $this->createRole('madeup');
-        $model->existingRole = 'madeup';
-        $this->assertTrue($model->addExistingRole());
+        $model->name = 'madeup';
+        $model->parentRole = Roles::STANDARD_USER;
+        $this->assertTrue($model->addToParentRole());
         
         $newChildren = AuthHelper::getChildrenRoles(Roles::STANDARD_USER);
         $this->assertCount(1, $newChildren);
@@ -192,8 +173,8 @@ class RoleFormTest extends TestCase
         
         $this->assertFalse($model->validate());
         $this->assertCount(2, $model->getErrors());
-        $this->assertCount(1, $model->getErrors('existingRole'));
-        $this->assertContains('Existing Role cannot be blank.', $model->getErrors('existingRole'));
+        $this->assertCount(1, $model->getErrors('parentRole'));
+        $this->assertContains('Parent Role cannot be blank.', $model->getErrors('parentRole'));
         $this->assertCount(1, $model->getErrors('name'));
         $this->assertContains('Name cannot be blank.', $model->getErrors('name'));
     }
@@ -214,7 +195,7 @@ class RoleFormTest extends TestCase
     {
         $model = new RoleForm(['scenario' => Scenarios::ROLE_DELETE]);
         
-        $model->existingRole = Roles::ADMIN;
+        $model->parentRole = Roles::ADMIN;
         $model->name = Roles::STANDARD_USER;
         
         $this->assertFalse($model->validate());
@@ -227,7 +208,7 @@ class RoleFormTest extends TestCase
     {
         $model = new RoleForm(['scenario' => Scenarios::ROLE_DELETE]);
         
-        $model->existingRole = Roles::SUPER_ADMIN;
+        $model->parentRole = Roles::SUPER_ADMIN;
         $model->name = Roles::ADMIN;
         
         $this->assertFalse($model->validate());
@@ -247,13 +228,13 @@ class RoleFormTest extends TestCase
     {
         $model = new RoleForm(['scenario' => Scenarios::ROLE_DELETE]);
         
-        $model->existingRole = Roles::ADMIN;
+        $model->parentRole = Roles::ADMIN;
         $model->name = Roles::SUPER_ADMIN;
         
         $this->assertFalse($model->validate());
         $this->assertCount(1, $model->getErrors());
-        $this->assertCount(1, $model->getErrors('existingRole'));
-        $this->assertContains('The role "admin" is not a parent of role "superAdmin".', $model->getErrors('existingRole'));
+        $this->assertCount(1, $model->getErrors('parentRole'));
+        $this->assertContains('The role "admin" is not a parent of role "superAdmin".', $model->getErrors('parentRole'));
     }
     
     public function testRemoveChildRole()
@@ -266,7 +247,7 @@ class RoleFormTest extends TestCase
         
         $model = new RoleForm(['scenario' => Scenarios::ROLE_DELETE]);
         
-        $model->existingRole = Roles::STANDARD_USER;
+        $model->parentRole = Roles::STANDARD_USER;
         $model->name = 'madeup';
         $model->removeChildRole();
         

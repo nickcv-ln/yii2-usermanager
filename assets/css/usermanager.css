@@ -17,10 +17,20 @@
     margin-top: 50px;
 }
 
-kbd a, kbd a:hover {
+kbd a, kbd a:hover, kbd a:focus {
     color: #fff;
     text-decoration: none;
     cursor: pointer;
+}
+
+.btn.btn-dark {
+    background-color: #333;
+    color: #fff;
+}
+
+.btn.btn-dark:focus, .btn.btn-dark:hover {
+    background-color: #222;
+    color: #eee;
 }
 
 /* LOGIN
@@ -52,4 +62,14 @@ kbd a, kbd a:hover {
 
 #permission-modal .col-md-6:first-child {
     border-right: 1px solid #eee;
+}
+
+#add-role-modal .modal-body {
+    max-height: 400px;
+    overflow: auto;
+    margin-bottom: 20px;
+}
+
+#add-role-modal form {
+    display:inline-block;
 }

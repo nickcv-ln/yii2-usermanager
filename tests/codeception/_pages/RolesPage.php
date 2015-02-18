@@ -18,8 +18,8 @@ class RolesPage extends LoginPage
      */
     public function createRole($name, $description)
     {
-        $this->actor->fillField('#role-modal input[name="RoleForm[name]"]', $name);
-        $this->actor->fillField('#role-modal input[name="RoleForm[description]"]', $description);
+        $this->actor->fillField('#new-role-modal input[name="RoleForm[name]"]', $name);
+        $this->actor->fillField('#new-role-modal input[name="RoleForm[description]"]', $description);
         $this->actor->click('new-role-button');
     }
 }

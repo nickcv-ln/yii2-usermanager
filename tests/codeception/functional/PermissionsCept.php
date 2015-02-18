@@ -42,7 +42,8 @@ $I->amGoingTo('add an existing permission.');
 $permissionPage->addExistingPermission('TestName');
 $I->expectTo('see the success message.');
 $I->see('The following permissions have been added to this role: TestName', '.alert-success');
-
+$I->expectTo('see the revoke permission button and not to see the option to add again the permission.');
+$I->dontSee('Test Permission', '#existing-permission-form');
 $I->seeElement('button[name="revoke-permission-button"]');
 
 $I->amGoingTo('try to create a permission without the required fields');

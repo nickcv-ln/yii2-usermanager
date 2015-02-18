@@ -7,7 +7,7 @@ use yii\helpers\Html;
 /* @var $model nickcv\usermanager\forms\RoleForm */
 
 Modal::begin([
-    'id' => 'role-modal',
+    'id' => 'new-role-modal',
     'header' => '<h2>Add Role</h2>',
     'size' => Modal::SIZE_LARGE,
     'toggleButton' => ['label' => 'add role', 'class' => 'btn btn-primary'],
@@ -33,9 +33,7 @@ Modal::begin([
 <div class="clearfix"></div>
 
 <div class="col-md-12">
-    <div class="">
-        <?php echo Html::submitButton('create new role', ['class' => 'btn btn-primary', 'name' => 'new-role-button']) ?>
-    </div>
+    <?php echo Html::submitButton('create new role', ['class' => 'btn btn-primary', 'name' => 'new-role-button']) ?>
 </div>
 
 <?php ActiveForm::end(); ?>

@@ -51,5 +51,5 @@ $this->params['breadcrumbs'][] = 'Roles';
 <hr>
 
 <div class="col-lg-12">
-    <?php echo $this->render('_roleModal', ['model' => $roleForm]); ?>
+    <?php echo $this->render('_newRoleModal', ['model' => $roleForm]); ?>
 </div>

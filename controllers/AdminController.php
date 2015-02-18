@@ -52,7 +52,9 @@ class AdminController extends Controller
                     'add-existing-permission',
                     'add-new-permission',
                     'revoke-permission',
+                    'add-existing-role',
                     'add-new-role',
+                    'revoke-role',
                 ],
                 'rules' => [
                     [
@@ -67,7 +69,7 @@ class AdminController extends Controller
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['add-existing-permission'],
+                        'actions' => ['add-existing-permission', 'add-existing-role'],
                         'verbs' => ['PUT'],
                         'roles' => [Permissions::ROLES_MANAGEMENT],
                     ],
@@ -79,7 +81,7 @@ class AdminController extends Controller
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['revoke-permission'],
+                        'actions' => ['revoke-permission', 'revoke-role'],
                         'verbs' => ['DELETE'],
                         'roles' => [Permissions::ROLES_MANAGEMENT],
                     ],
@@ -135,6 +137,7 @@ class AdminController extends Controller
             'permissionForm' => new PermissionForm(['role' => $role]),
             'directPermissions' => AuthHelper::getDirectPermissions($role, true),
             'childrenRoles' => AuthHelper::getChildrenRoles($role, true),
+            'roleForm' => new RoleForm(['parentRole' => $role]),
         ]);
     }
     
@@ -208,6 +211,42 @@ class AdminController extends Controller
         }
         
         return $this->redirect(['admin/roles']);
+    }
+    
+    /**
+     * Adds existing permissions to given role.
+     */
+    public function actionAddExistingRole()
+    {
+        $model = new RoleForm(['scenario' => Scenarios::ROLE_ADD]);
+        if ($model->load(\Yii::$app->request->post()) && $model->addToParentRole()) {
+            \Yii::$app->session->setFlash('success', 'The role "' . $model->name . '" is now a child of the current role.');
+        } else {
+            \Yii::$app->session->setFlash('error', [
+                'message' => 'The role could have not been added for the following reasons:',
+                'errors' => $model->getFirstErrors(),
+            ]);
+        }
+        
+        return $this->redirect(['admin/roles/' . $model->parentRole]);
+    }
+    
+    /**
+     * Remove permission from given role
+     */
+    public function actionRevokeRole()
+    {
+        $model = new RoleForm(['scenario' => Scenarios::ROLE_DELETE]);
+        if ($model->load(\Yii::$app->request->post()) && $model->removeChildRole()) {
+            \Yii::$app->session->setFlash('success', 'The role "' . $model->name . '" is not a child of this role anymore.');
+        } else {
+            \Yii::$app->session->setFlash('error', [
+                'message' => 'The role could have not been revoked for the following reasons:',
+                'errors' => $model->getFirstErrors(),
+            ]);
+        }
+        
+        return $this->redirect(['admin/roles/' . $model->parentRole]);
     }
 
 }

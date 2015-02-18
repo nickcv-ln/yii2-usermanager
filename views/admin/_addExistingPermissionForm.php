@@ -31,9 +31,7 @@ $model->scenario = Scenarios::PERMISSION_ADD;
 <?php echo $form->field($model, 'existingPermissions')->checkboxList(ArrayHelper::map(AuthHelper::getMissingPermissions($model->role), 'name', 'description'));  ?>
 
 <div class="form-group">
-    <div class="">
-        <?php echo Html::submitButton('add permissions to role', ['class' => 'btn btn-primary', 'name' => 'existing-permission-button']) ?>
-    </div>
+    <?php echo Html::submitButton('add permissions to role', ['class' => 'btn btn-primary', 'name' => 'existing-permission-button']) ?>
 </div>
 
 <?php ActiveForm::end();

@@ -31,9 +31,7 @@ $form = ActiveForm::begin([
 <div class="clearfix"></div>
 
 <div class="col-md-12">
-    <div class="">
-        <?php echo Html::submitButton('create permission and add it to role', ['class' => 'btn btn-primary', 'name' => 'new-permission-button']) ?>
-    </div>
+    <?php echo Html::submitButton('create permission and add it to role', ['class' => 'btn btn-primary', 'name' => 'new-permission-button']) ?>
 </div>
 
 <?php ActiveForm::end();

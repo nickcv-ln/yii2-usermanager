@@ -2,10 +2,10 @@
 use yii\grid\GridView;
 use yii\widgets\ListView;
 use nickcv\usermanager\Module;
-use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $permissionForm nickcv\usermanager\forms\PermissionForm */
+/* @var $roleForm nickcv\usermanager\forms\RoleForm */
 /* @var $directPermissions yii\data\ArrayDataProvider */
 /* @var $childrenRoles yii\data\ArrayDataProvider */
 
@@ -34,6 +34,8 @@ $this->params['breadcrumbs'][] = $permissionForm->role;
     <hr>
     <?php echo GridView::widget([
         'dataProvider' => $directPermissions,
+        'emptyText' => 'this role does not have any direct permission.',
+        'layout' => '{items}',
         'columns' => [
             'name',
             'description',
@@ -64,10 +66,13 @@ $this->params['breadcrumbs'][] = $permissionForm->role;
         'dataProvider' => $childrenRoles,
         'itemView' => '_childrenRoles',
         'layout' => '{items}',
+        'viewParams' => ['roleForm' => $roleForm],
     ]); ?>
     
     <hr>
     
     <?php echo $this->render('_permissionModal', ['permissionForm' => $permissionForm]); ?>
+    
+    <?php echo $this->render('_addRoleModal', ['model' => $roleForm]); ?>
     
 </div>

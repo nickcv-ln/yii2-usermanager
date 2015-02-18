@@ -26,7 +26,7 @@ use nickcv\usermanager\enums\Roles;
  */
 class RoleForm extends Model
 {
-    public $existingRole;
+    public $parentRole;
     public $name;
     public $description;
     
@@ -37,8 +37,8 @@ class RoleForm extends Model
     {
         $scenarios = parent::scenarios();
         $scenarios[Scenarios::ROLE_NEW] = ['name', 'description'];
-        $scenarios[Scenarios::ROLE_ADD] = ['name', 'existingRole'];
-        $scenarios[Scenarios::ROLE_DELETE] = ['name', 'existingRole'];
+        $scenarios[Scenarios::ROLE_ADD] = ['name', 'parentRole'];
+        $scenarios[Scenarios::ROLE_DELETE] = ['name', 'parentRole'];
         
         return $scenarios;
     }
@@ -49,13 +49,13 @@ class RoleForm extends Model
     public function rules()
     {
         return [
-            [['name', 'description', 'existingRole'], 'required'],
+            [['name', 'description', 'parentRole'], 'required'],
             ['name', 'uniqueRole', 'on' => Scenarios::ROLE_NEW],
             ['name', 'match', 'pattern' => '/^[a-zA-Z_]+$/', 'message' => '{attribute} can only contain letters and underscore signs.'],
-            ['name', 'roleExists', 'on' => [Scenarios::ROLE_ADD, Scenarios::ROLE_DELETE]],
+            [['parentRole', 'name'], 'roleExists', 'on' => [Scenarios::ROLE_ADD, Scenarios::ROLE_DELETE]],
             ['name', 'roleIsCore', 'on' => Scenarios::ROLE_DELETE],
-            ['existingRole', 'missingRole', 'on' => Scenarios::ROLE_ADD],
-            ['existingRole', 'isParent', 'on' => Scenarios::ROLE_DELETE],
+            ['name', 'missingRole', 'on' => Scenarios::ROLE_ADD],
+            ['parentRole', 'isParent', 'on' => Scenarios::ROLE_DELETE],
         ];
     }
     
@@ -82,8 +82,8 @@ class RoleForm extends Model
         if (!is_string($this->$attribute)) {
             return $this->addError($attribute, $this->getAttributeLabel($attribute) . ' should be a role.');
         }
-        if (!array_key_exists($this->$attribute, AuthHelper::getMissingRoles($this->name))) {
-            $this->addError($attribute, 'The given role "' . $this->name . '" is already inheriting or being inherited by a role named "' . $this->$attribute . '".');
+        if (!array_key_exists($this->$attribute, AuthHelper::getMissingRoles($this->parentRole))) {
+            $this->addError($attribute, 'The given role "' . $this->parentRole . '" is already inheriting or being inherited by a role named "' . $this->$attribute . '".');
         }   
     }
     
@@ -112,8 +112,8 @@ class RoleForm extends Model
      */
     public function roleIsCore($attribute)
     {
-        if (AuthHelper::isChildRoleProtected($this->existingRole, $this->$attribute)) {
-            $this->addError($attribute, 'The role "' . $this->$attribute . '" is a core "' . $this->existingRole . '" child role and cannot be removed.');
+        if (AuthHelper::isChildRoleProtected($this->parentRole, $this->$attribute)) {
+            $this->addError($attribute, 'The role "' . $this->$attribute . '" is a core "' . $this->parentRole . '" child role and cannot be removed.');
         }
     }
     
@@ -136,14 +136,14 @@ class RoleForm extends Model
      * 
      * @return boolean
      */
-    public function addExistingRole()
+    public function addToParentRole()
     {
         if ($this->scenario !== Scenarios::ROLE_ADD || !$this->validate()) {
             return false;
         }
         
-        $role = \Yii::$app->authManager->getRole($this->name);
-        \Yii::$app->authManager->addChild($role, \Yii::$app->authManager->getRole($this->existingRole));
+        $role = \Yii::$app->authManager->getRole($this->parentRole);
+        \Yii::$app->authManager->addChild($role, \Yii::$app->authManager->getRole($this->name));
         
         return true;
     }
@@ -189,7 +189,7 @@ class RoleForm extends Model
             return false;
         }
         
-        $role = \Yii::$app->authManager->getRole($this->existingRole);
+        $role = \Yii::$app->authManager->getRole($this->parentRole);
         $child = \Yii::$app->authManager->getRole($this->name);
         \Yii::$app->authManager->removeChild($role, $child);
         
