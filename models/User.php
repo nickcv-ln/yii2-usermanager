@@ -1,5 +1,14 @@
 <?php
-
+/**
+ * Contains the User entity for table "usermanager_user" which is also used ad
+ * the user identity.
+ * 
+ * @link http://www.creationgears.com/
+ * @copyright Copyright (c) 2015 Nicola Puddu
+ * @license http://www.gnu.org/copyleft/gpl.html
+ * @package nickcv/yii2-usermanager
+ * @author Nicola Puddu <n.puddu@outlook.com>
+ */
 namespace nickcv\usermanager\models;
 
 use nickcv\usermanager\enums\Database;

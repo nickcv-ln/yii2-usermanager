@@ -143,6 +143,11 @@ class AdminController extends Controller
         $model = new PermissionForm(['scenario' => Scenarios::PERMISSION_ADD]);
         if ($model->load(\Yii::$app->request->post()) && $model->addExistingPermissions()) {
             \Yii::$app->session->setFlash('success', 'The following permissions have been added to this role: ' . implode(', ', $model->existingPermissions));
+        } else {
+            \Yii::$app->session->setFlash('error', [
+                'message' => 'The existing permission could have not been added for the following reasons:',
+                'errors' => $model->getFirstErrors(),
+            ]);
         }
         
         return $this->redirect(['admin/roles/' . $model->role]);
@@ -156,6 +161,11 @@ class AdminController extends Controller
         $model = new PermissionForm(['scenario' => Scenarios::PERMISSION_NEW]);
         if ($model->load(\Yii::$app->request->post()) && $model->createNewPermission()) {
             \Yii::$app->session->setFlash('success', 'The permission "' . $model->name . '" was created and added to this role.');
+        } else {
+            \Yii::$app->session->setFlash('error', [
+                'message' => 'The new permission could have not been created for the following reasons:',
+                'errors' => $model->getFirstErrors(),
+            ]);
         }
         
         return $this->redirect(['admin/roles/' . $model->role]);
@@ -169,6 +179,11 @@ class AdminController extends Controller
         $model = new PermissionForm(['scenario' => Scenarios::PERMISSION_DELETE]);
         if ($model->load(\Yii::$app->request->post()) && $model->removePermission()) {
             \Yii::$app->session->setFlash('success', 'The permission "' . $model->name . '" was removed from this role.');
+        } else {
+            \Yii::$app->session->setFlash('error', [
+                'message' => 'The permission could have not been revoked for the following reasons:',
+                'errors' => $model->getFirstErrors(),
+            ]);
         }
         
         return $this->redirect(['admin/roles/' . $model->role]);

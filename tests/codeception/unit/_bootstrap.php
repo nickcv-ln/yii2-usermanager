@@ -1,3 +1,3 @@
 <?php
 
-// add unit testing specific bootstrap code here
+$_SERVER['REMOTE_ADDR'] = '123.123.123.123';

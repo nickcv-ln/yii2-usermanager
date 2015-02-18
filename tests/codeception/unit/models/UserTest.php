@@ -139,7 +139,7 @@ class UserTest extends DbTestCase
         $this->assertNotEquals('HardPassword12!', $user->password);
         $this->assertNotNull($user->authkey);
         $this->assertTrue(\Yii::$app->security->validatePassword('HardPassword12!', $user->password));
-        $this->assertEquals(2, $user->id);
+        $this->assertEquals(3, $user->id);
         $this->assertTrue(\Yii::$app->authManager->checkAccess($user->id, Roles::ADMIN));
     }
     
@@ -160,7 +160,7 @@ class UserTest extends DbTestCase
         $this->assertNotEquals('HardPassword12!', $user->password);
         $this->assertNotNull($user->authkey);
         $this->assertTrue(\Yii::$app->security->validatePassword('HardPassword12!', $user->password));
-        $this->assertEquals(2, $user->id);
+        $this->assertEquals(3, $user->id);
         $this->assertTrue(\Yii::$app->authManager->checkAccess($user->id, Roles::SUPER_ADMIN));
     }
 }

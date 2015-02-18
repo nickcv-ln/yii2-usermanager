@@ -15,7 +15,15 @@ AssetBundle::register($this);
         'options' => [
             'class' => 'alert-success',
         ],
-        'body' => \Yii::$app->session->getFlash('success'),
+        'body' => \Yii::$app->session->getFlash('success', null, true),
+    ]);
+elseif (\Yii::$app->session->hasFlash('error')):
+    $error = \Yii::$app->session->getFlash('error', null, true);
+    echo Alert::widget([
+        'options' => [
+            'class' => 'alert-danger',
+        ],
+        'body' => '<strong>' . $error['message'] . '</strong><br><br> - ' . implode('<br> - ', $error['errors']),
     ]);
 endif; ?>
 

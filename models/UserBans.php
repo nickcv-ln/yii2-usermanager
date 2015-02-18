@@ -1,5 +1,13 @@
 <?php
-
+/**
+ * Contains the UserBans entity for table "usermanager_user_bans".
+ * 
+ * @link http://www.creationgears.com/
+ * @copyright Copyright (c) 2015 Nicola Puddu
+ * @license http://www.gnu.org/copyleft/gpl.html
+ * @package nickcv/yii2-usermanager
+ * @author Nicola Puddu <n.puddu@outlook.com>
+ */
 namespace nickcv\usermanager\models;
 
 use nickcv\usermanager\enums\Database;
@@ -7,6 +15,7 @@ use nickcv\usermanager\enums\Database;
 /**
  * This is the model class for table "usermanager_user_bans".
  *
+ * @property string $id
  * @property string $id_user
  * @property string $message
  * @property string $expiration_date

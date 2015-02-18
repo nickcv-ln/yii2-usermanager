@@ -2,26 +2,15 @@
 
 namespace nickcv\usermanager\tests\codeception\_pages;
 
-use yii\codeception\BasePage;
+use nickcv\usermanager\tests\codeception\_pages\LoginPage;
 
 /**
  * Represents configuration page
  * @property \AcceptanceTester|\FunctionalTester $actor
  */
-class PermissionsPage extends BasePage
+class PermissionsPage extends LoginPage
 {
     public $route = 'usermanager/admin/roles/admin';
-
-    /**
-     * @param string $email
-     * @param string $password
-     */
-    public function login($email, $password)
-    {
-        $this->actor->fillField('input[name="LoginForm[email]"]', $email);
-        $this->actor->fillField('input[name="LoginForm[password]"]', $password);
-        $this->actor->click('login-button');
-    }
     
     /**
      * @param string $name

@@ -168,7 +168,7 @@ class RoleForm extends Model
         
         EnumFilesService::init()->updateEnum($permissionClass, [
             $this->name => $this->name,
-        ], Permissions::getClassName());
+        ], Permissions::className());
         
         return true;
     }

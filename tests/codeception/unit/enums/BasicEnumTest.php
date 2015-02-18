@@ -76,7 +76,7 @@ class BasicEnumTest extends TestCase
     
     public function testGetClassName()
     {
-        $this->assertEquals('\nickcv\usermanager\enums\Scenarios', enums\Scenarios::getClassName());
+        $this->assertEquals('\nickcv\usermanager\enums\Scenarios', enums\Scenarios::className());
     }
 
 }

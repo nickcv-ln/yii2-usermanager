@@ -15,19 +15,9 @@ class m150127_145713_usermanager_user extends Migration
 
         $this->createTable(Database::USER_TABLE, $this->getUserTableColumns(), $tableOptions);
 
-        $this->createTable(Database::USER_LOGS_TABLE, [
-            'id_user' => $this->getIdUserDefinition(),
-            'ip' => Schema::TYPE_STRING . '(64) NOT NULL',
-            'login_date' => Schema::TYPE_DATETIME,
-            'FOREIGN KEY (id_user) REFERENCES ' . Database::USER_TABLE . ' (id) ON DELETE CASCADE ON UPDATE CASCADE',
-        ], $tableOptions);
+        $this->createTable(Database::USER_LOGS_TABLE, $this->getUserLogsTableColumns(), $tableOptions);
 
-        $this->createTable(Database::USER_BANS_TABLE, [
-            'id_user' => $this->getIdUserDefinition(),
-            'message' => Schema::TYPE_STRING . '(200)',
-            'expiration_date' => Schema::TYPE_DATETIME,
-            'FOREIGN KEY (id_user) REFERENCES ' . Database::USER_TABLE . ' (id) ON DELETE CASCADE ON UPDATE CASCADE',
-        ], $tableOptions);
+        $this->createTable(Database::USER_BANS_TABLE, $this->getUserBansTableColumns(), $tableOptions);
     }
 
     public function down()
@@ -68,6 +58,62 @@ class m150127_145713_usermanager_user extends Migration
                     'authkey' => Schema::TYPE_STRING . '(120) NOT NULL',
                     'token' => Schema::TYPE_STRING . '(130)',
                     'registration_date' => Schema::TYPE_DATETIME,
+                    'PRIMARY KEY (id)'
+                ];
+        }
+    }
+    
+    /**
+     * Returns the user logs table columns definition
+     * 
+     * @return array
+     */
+    private function getUserLogsTableColumns()
+    {
+        switch ($this->db->driverName) {
+            case 'sqlite':
+                return [
+                    'id' => Schema::TYPE_INTEGER . ' PRIMARY KEY AUTOINCREMENT NOT NULL',
+                    'id_user' => $this->getIdUserDefinition(),
+                    'ip' => Schema::TYPE_STRING . '(64) NOT NULL',
+                    'login_date' => Schema::TYPE_DATETIME,
+                    'FOREIGN KEY (id_user) REFERENCES ' . Database::USER_TABLE . ' (id) ON DELETE CASCADE ON UPDATE CASCADE',
+                ];
+            default:
+                return [
+                    'id' => Schema::TYPE_BIGINT . ' UNSIGNED AUTO_INCREMENT NOT NULL',
+                    'id_user' => $this->getIdUserDefinition(),
+                    'ip' => Schema::TYPE_STRING . '(64) NOT NULL',
+                    'login_date' => Schema::TYPE_DATETIME,
+                    'FOREIGN KEY (id_user) REFERENCES ' . Database::USER_TABLE . ' (id) ON DELETE CASCADE ON UPDATE CASCADE',
+                    'PRIMARY KEY (id)'
+                ];
+        }
+    }
+    
+    /**
+     * Returns the user_bans table columns definition
+     * 
+     * @return array
+     */
+    private function getUserBansTableColumns()
+    {
+        switch ($this->db->driverName) {
+            case 'sqlite':
+                return [
+                    'id' => Schema::TYPE_INTEGER . ' PRIMARY KEY AUTOINCREMENT NOT NULL',
+                    'id_user' => $this->getIdUserDefinition(),
+                    'message' => Schema::TYPE_STRING . '(200)',
+                    'expiration_date' => Schema::TYPE_DATETIME,
+                    'FOREIGN KEY (id_user) REFERENCES ' . Database::USER_TABLE . ' (id) ON DELETE CASCADE ON UPDATE CASCADE',
+                ];
+            default:
+                return [
+                    'id' => Schema::TYPE_BIGINT . ' UNSIGNED AUTO_INCREMENT NOT NULL',
+                    'id_user' => $this->getIdUserDefinition(),
+                    'message' => Schema::TYPE_STRING . '(200)',
+                    'expiration_date' => Schema::TYPE_DATETIME,
+                    'FOREIGN KEY (id_user) REFERENCES ' . Database::USER_TABLE . ' (id) ON DELETE CASCADE ON UPDATE CASCADE',
                     'PRIMARY KEY (id)'
                 ];
         }

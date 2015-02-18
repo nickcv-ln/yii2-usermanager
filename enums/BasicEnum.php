@@ -80,7 +80,7 @@ abstract class BasicEnum
      * 
      * @return string
      */
-    final public static function getClassName()
+    final public static function className()
     {
         return '\\' . get_called_class();
     }

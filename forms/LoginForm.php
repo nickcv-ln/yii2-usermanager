@@ -12,7 +12,8 @@ namespace nickcv\usermanager\forms;
 
 use Yii;
 use yii\base\Model;
-use nickcv\usermanager\models\User as User;
+use nickcv\usermanager\models\User;
+use nickcv\usermanager\models\UserLogs;
 
 /**
  * LoginForm is the model behind the login form.
@@ -66,7 +67,9 @@ class LoginForm extends Model
     public function login()
     {
         if ($this->validate()) {
-            return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600*24*30 : 0);
+            $user = $this->getUser();
+            UserLogs::addUserLogs($user);
+            return Yii::$app->user->login($user, $this->rememberMe ? 3600*24*30 : 0);
         } else {
             return false;
         }

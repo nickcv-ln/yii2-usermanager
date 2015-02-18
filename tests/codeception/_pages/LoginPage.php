@@ -22,4 +22,12 @@ class LoginPage extends BasePage
         $this->actor->fillField('input[name="LoginForm[password]"]', $password);
         $this->actor->click('login-button');
     }
+    
+    /**
+     * @param string $email
+     */
+    public function logout($email)
+    {
+        $this->actor->sendAjaxPostRequest('/site/logout');
+    }
 }
