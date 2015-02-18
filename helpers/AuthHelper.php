@@ -26,6 +26,7 @@ class AuthHelper
 {
     private static $_children = [];
     private static $_missingPermissions = [];
+    private static $_missingRoles = [];
     private static $_caching = true;
     
     /**
@@ -57,9 +58,10 @@ class AuthHelper
     {
         $roles = [];
         
-        foreach (self::getRoleChildren($role) as $k => $authItem) {
+        foreach (self::getAllChildrenOfRole($role) as $k => $authItem) {
             if ($authItem instanceof Role) {
                 $roles[$k] = $authItem;
+                $roles += self::getChildrenRoles($authItem->name);
             }
         }
         
@@ -83,7 +85,7 @@ class AuthHelper
     {
         $permissions = [];
         
-        foreach (self::getRoleChildren($role) as $k => $authItem) {
+        foreach (self::getAllChildrenOfRole($role) as $k => $authItem) {
             if ($authItem instanceof Permission) {
                 $permissions[$k] = $authItem;
             }
@@ -121,6 +123,38 @@ class AuthHelper
         }
         
         return self::$_missingPermissions[$role];
+    }
+    
+    /**
+     * Returns the list of roles that the given role is currently not hineriting
+     * or that are not inheriting the given role.
+     * 
+     * @param string $role
+     * @param boolean $returnDataProvider
+     * @return \yii\rbac\Role[]|\yii\data\ArrayDataProvider
+     */
+    public static function getMissingRoles($role, $returnDataProvider = false)
+    {
+        if (!isset(self::$_missingRoles[$role]) || self::$_caching === false) {
+            
+            self::$_missingRoles[$role] = [];
+            
+            foreach (array_diff_key(\Yii::$app->authManager->getRoles(), self::getChildrenRoles($role)) as $k => $r) {
+                if ($r->name === $role || array_key_exists($role, self::getChildrenRoles($r->name))) {
+                    continue;
+                }
+
+                self::$_missingRoles[$role][$k] = $r;
+            }
+        }
+        
+        if ($returnDataProvider) {
+            return new ArrayDataProvider([
+                'allModels' => self::$_missingRoles[$role],
+            ]);
+        }
+        
+        return self::$_missingRoles[$role];
     }
     
     /**
@@ -170,7 +204,7 @@ class AuthHelper
      * @param string $role the role name
      * @return array
      */
-    private static function getRoleChildren($role)
+    private static function getAllChildrenOfRole($role)
     {
         if (!isset(self::$_children[$role]) || self::$_caching === false) {
             self::$_children[$role] = \Yii::$app->authManager->getChildren($role);

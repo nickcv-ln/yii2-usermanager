@@ -39,11 +39,11 @@ $this->params['breadcrumbs'][] = $permissionForm->role;
             'description',
             [
                 'attribute' => 'createdAt',
-                'format' => ['date', 'php:Y-m-d'],
+                'format' => ['date', 'php:Y-m-d H:m'],
             ],
             [
                 'attribute' => 'updatedAt',
-                'format' => ['date', 'php:Y-m-d'],
+                'format' => ['date', 'php:Y-m-d H:m'],
             ],
             [
                 'class' => yii\grid\ActionColumn::className(),

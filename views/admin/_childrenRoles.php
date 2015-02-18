@@ -8,20 +8,20 @@ use yii\helpers\Html;
 /* @var $model yii\rbac\Role */
 ?>
 
-<h3><kbd><?php echo Html::a($model->name, ['admin/roles/' . $model->name]); ?></kbd> permissions (includes inherited ones).</h3>
+<h3 class="push-down-40"><kbd><?php echo Html::a($model->name, ['admin/roles/' . $model->name]); ?></kbd> direct permissions.</h3>
 
 <?php echo GridView::widget([
-    'dataProvider' => AuthHelper::getAllPermissions($model->name, true),
+    'dataProvider' => AuthHelper::getDirectPermissions($model->name, true),
     'columns' => [
         'name',
         'description',
         [
             'attribute' => 'createdAt',
-            'format' => ['date', 'php:Y-m-d'],
+            'format' => ['date', 'php:Y-m-d H:m'],
         ],
         [
             'attribute' => 'updatedAt',
-            'format' => ['date', 'php:Y-m-d'],
+            'format' => ['date', 'php:Y-m-d H:m'],
         ],
     ],
 ]);
