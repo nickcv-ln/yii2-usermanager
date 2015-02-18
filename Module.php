@@ -208,10 +208,9 @@ class Module extends \yii\base\Module implements BootstrapInterface
                 'prefix' => 'usermanager',
                 'rules' => [
                     'login' => 'default/login',
+                    'admin/roles' => 'admin/roles',
                     'admin/roles/<role:\w+>' => 'admin/view-role',
-                    'admin/roles/add-existing-permission' => 'admin/add-existing-permission',
-                    'admin/roles/add-new-permission' => 'admin/add-new-permission',
-                    'admin/roles/revoke-permission' => 'admin/revoke-permission',
+                    'admin/roles/<action:[\w-]+>' => 'admin/<action>',
                 ],
             ]);
         }

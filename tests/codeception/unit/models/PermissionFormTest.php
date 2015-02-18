@@ -127,6 +127,19 @@ class PermissionFormTest extends TestCase
         $this->assertContains('Description cannot be blank.', $model->getErrors('description'));
     }
     
+    public function testNewPermissionNameMustBeValid()
+    {
+        $model = new PermissionForm(['scenario' => Scenarios::PERMISSION_NEW]);
+        
+        $model->role = Roles::ADMIN;
+        $model->name = 'Inva-lid';
+        
+        $this->assertFalse($model->validate());
+        $this->assertCount(2, $model->getErrors());
+        $this->assertCount(1, $model->getErrors('name'));
+        $this->assertContains('Name can only contain letters and underscore signs.', $model->getErrors('name'));
+    }
+    
     public function testNewPermissionNameMustBeUnique()
     {
         $model = new PermissionForm(['scenario' => Scenarios::PERMISSION_NEW]);
@@ -138,6 +151,14 @@ class PermissionFormTest extends TestCase
         $this->assertCount(2, $model->getErrors());
         $this->assertCount(1, $model->getErrors('name'));
         $this->assertContains('The permission name should be unique, permission "moduleManagement" already exists.', $model->getErrors('name'));
+        
+        $model->clearErrors();
+        $model->name = Roles::ADMIN;
+        
+        $this->assertFalse($model->validate());
+        $this->assertCount(2, $model->getErrors());
+        $this->assertCount(1, $model->getErrors('name'));
+        $this->assertContains('The permission name should not match a role name, a role named "admin" has been found.', $model->getErrors('name'));
     }
     
     public function testCreateNewPermission()

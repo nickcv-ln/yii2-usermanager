@@ -3,6 +3,7 @@ use yii\helpers\Html;
 use nickcv\usermanager\Module;
 
 /* @var $this yii\web\View */
+/* @var $roleForm nickcv\usermanager\forms\RoleForm */
 
 $this->title = 'Roles | Admin Panel | '.\Yii::$app->name;
 $this->params['breadcrumbs'][] = 'Admin Panel';
@@ -45,4 +46,10 @@ $this->params['breadcrumbs'][] = 'Roles';
             ],
         ],
     ]); ?>
+</div>
+
+<hr>
+
+<div class="col-lg-12">
+    <?php echo $this->render('_roleModal', ['model' => $roleForm]); ?>
 </div>

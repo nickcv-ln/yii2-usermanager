@@ -14,14 +14,15 @@ namespace nickcv\usermanager\controllers;
 
 use yii\web\Controller;
 use yii\filters\AccessControl;
+use yii\data\ArrayDataProvider;
 use nickcv\usermanager\Module;
 use nickcv\usermanager\helpers\AuthHelper;
-use nickcv\usermanager\forms\PermissionForm;
-use nickcv\usermanager\enums\Permissions;
 use nickcv\usermanager\forms\ConfigurationForm;
-use nickcv\usermanager\services\ConfigFilesService;
-use yii\data\ArrayDataProvider;
+use nickcv\usermanager\forms\PermissionForm;
+use nickcv\usermanager\forms\RoleForm;
+use nickcv\usermanager\enums\Permissions;
 use nickcv\usermanager\enums\Scenarios;
+use nickcv\usermanager\services\ConfigFilesService;
 
 /**
  * Controller class containing the actions for the core module administration.
@@ -51,6 +52,7 @@ class AdminController extends Controller
                     'add-existing-permission',
                     'add-new-permission',
                     'revoke-permission',
+                    'add-new-role',
                 ],
                 'rules' => [
                     [
@@ -71,7 +73,7 @@ class AdminController extends Controller
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['add-new-permission'],
+                        'actions' => ['add-new-permission', 'add-new-role'],
                         'verbs' => ['POST'],
                         'roles' => [Permissions::ROLES_MANAGEMENT],
                     ],
@@ -113,6 +115,7 @@ class AdminController extends Controller
             'roles' => new ArrayDataProvider([   
                 'allModels' => \Yii::$app->authManager->getRoles(),
             ]),
+            'roleForm' => new RoleForm(['scenario' => Scenarios::ROLE_NEW]),
         ]);
     }
     
@@ -187,6 +190,24 @@ class AdminController extends Controller
         }
         
         return $this->redirect(['admin/roles/' . $model->role]);
+    }
+    
+    /**
+     * Creates a new role.
+     */
+    public function actionAddNewRole()
+    {
+        $model = new RoleForm(['scenario' => Scenarios::ROLE_NEW]);
+        if ($model->load(\Yii::$app->request->post()) && $model->createNewRole()) {
+            \Yii::$app->session->setFlash('success', 'The role "' . $model->name . '" has been created.');
+        } else {
+            \Yii::$app->session->setFlash('error', [
+                'message' => 'The new role could have not been created for the following reasons:',
+                'errors' => $model->getFirstErrors(),
+            ]);
+        }
+        
+        return $this->redirect(['admin/roles']);
     }
 
 }

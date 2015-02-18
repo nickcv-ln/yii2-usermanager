@@ -51,6 +51,7 @@ class RoleForm extends Model
         return [
             [['name', 'description', 'existingRole'], 'required'],
             ['name', 'uniqueRole', 'on' => Scenarios::ROLE_NEW],
+            ['name', 'match', 'pattern' => '/^[a-zA-Z_]+$/', 'message' => '{attribute} can only contain letters and underscore signs.'],
             ['name', 'roleExists', 'on' => [Scenarios::ROLE_ADD, Scenarios::ROLE_DELETE]],
             ['name', 'roleIsCore', 'on' => Scenarios::ROLE_DELETE],
             ['existingRole', 'missingRole', 'on' => Scenarios::ROLE_ADD],
@@ -96,6 +97,10 @@ class RoleForm extends Model
     {
         if (\Yii::$app->authManager->getRole($this->$attribute)) {
             $this->addError($attribute, 'The role name should be unique, role "' . $this->$attribute .'" already exists.');
+        }
+        
+        if (\Yii::$app->authManager->getPermission($this->$attribute)) {
+            $this->addError($attribute, 'The role name should not match a permission name, a permission named "' . $this->$attribute .'" has been found.');
         }
     }
     

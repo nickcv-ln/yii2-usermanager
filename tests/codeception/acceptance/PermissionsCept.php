@@ -3,6 +3,7 @@
 use nickcv\usermanager\tests\codeception\_pages\PermissionsPage;
 use nickcv\usermanager\helpers\AuthHelper;
 use nickcv\usermanager\enums\Permissions;
+use nickcv\usermanager\enums\Roles;
 AuthHelper::disableCache();
 
 $testName = Yii::$app->authManager->getPermission('TestName');
@@ -49,6 +50,17 @@ $permissionPage->createPermission('', '');
 $I->expectTo('see validation errors');
 $I->see('Name cannot be blank.');
 $I->see('Description cannot be blank.');
+
+$I->amGoingTo('try to create a permission with an invalid name');
+$permissionPage->createPermission('Inv-alid', 'does not matter');
+$I->expectTo('see validation errors');
+$I->see('Name can only contain letters and underscore signs.');
+
+$I->amGoingTo('try to create a permission with a role name');
+$permissionPage->createPermission(Roles::ADMIN, 'does not matter');
+$I->expectTo('see validation errors');
+$I->see('The new permission could have not been created for the following reasons:');
+$I->see('The permission name should not match a role name, a role named "admin" has been found.');
 
 $I->amGoingTo('try to create a permission that already exists.');
 $permissionPage->createPermission(Permissions::MODULE_MANAGEMENT, 'does not matter');

@@ -52,6 +52,7 @@ class PermissionForm extends Model
         return [
             [['role', 'name', 'description', 'existingPermissions'], 'required'],
             ['role', 'roleExists'],
+            ['name', 'match', 'pattern' => '/^[a-zA-Z_]+$/', 'message' => '{attribute} can only contain letters and underscore signs.'],
             ['name', 'uniquePermission', 'on' => Scenarios::PERMISSION_NEW],
             ['name', 'permissionExists', 'on' => Scenarios::PERMISSION_DELETE],
             ['name', 'permissionIsCore', 'on' => Scenarios::PERMISSION_DELETE],
@@ -104,6 +105,10 @@ class PermissionForm extends Model
     {
         if (\Yii::$app->authManager->getPermission($this->$attribute)) {
             $this->addError($attribute, 'The permission name should be unique, permission "' . $this->$attribute .'" already exists.');
+        }
+        
+        if (\Yii::$app->authManager->getRole($this->$attribute)) {
+            $this->addError($attribute, 'The permission name should not match a role name, a role named "' . $this->$attribute .'" has been found.');
         }
     }
     

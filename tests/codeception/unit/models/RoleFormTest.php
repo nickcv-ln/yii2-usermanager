@@ -6,6 +6,7 @@ use yii\codeception\TestCase;
 use nickcv\usermanager\forms\RoleForm;
 use nickcv\usermanager\enums\Scenarios;
 use nickcv\usermanager\enums\Roles;
+use nickcv\usermanager\enums\Permissions;
 use nickcv\usermanager\helpers\AuthHelper;
 
 class RoleFormTest extends TestCase
@@ -123,6 +124,18 @@ class RoleFormTest extends TestCase
         $this->assertContains('Description cannot be blank.', $model->getErrors('description'));
     }
     
+    public function testNewRoleNameMustBeValid()
+    {
+        $model = new RoleForm(['scenario' => Scenarios::ROLE_NEW]);
+        
+        $model->name = 'Inva-lid';
+        
+        $this->assertFalse($model->validate());
+        $this->assertCount(2, $model->getErrors());
+        $this->assertCount(1, $model->getErrors('name'));
+        $this->assertContains('Name can only contain letters and underscore signs.', $model->getErrors('name'));
+    }
+    
     public function testNewRoleNameMustBeUnique()
     {
         $model = new RoleForm(['scenario' => Scenarios::ROLE_NEW]);
@@ -133,6 +146,14 @@ class RoleFormTest extends TestCase
         $this->assertCount(2, $model->getErrors());
         $this->assertCount(1, $model->getErrors('name'));
         $this->assertContains('The role name should be unique, role "admin" already exists.', $model->getErrors('name'));
+        
+        $model->clearErrors();
+        $model->name = Permissions::MODULE_MANAGEMENT;
+        
+        $this->assertFalse($model->validate());
+        $this->assertCount(2, $model->getErrors());
+        $this->assertCount(1, $model->getErrors('name'));
+        $this->assertContains('The role name should not match a permission name, a permission named "moduleManagement" has been found.', $model->getErrors('name'));
     }
     
     public function testCreateNewRole()

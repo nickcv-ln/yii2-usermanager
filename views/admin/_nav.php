@@ -17,7 +17,8 @@ AssetBundle::register($this);
         ],
         'body' => \Yii::$app->session->getFlash('success', null, true),
     ]);
-elseif (\Yii::$app->session->hasFlash('error')):
+endif;
+if (\Yii::$app->session->hasFlash('error')):
     $error = \Yii::$app->session->getFlash('error', null, true);
     echo Alert::widget([
         'options' => [
