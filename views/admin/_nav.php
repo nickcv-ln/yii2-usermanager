@@ -2,6 +2,7 @@
 use nickcv\usermanager\AssetBundle;
 use yii\bootstrap\Nav;
 use yii\bootstrap\Alert;
+use nickcv\usermanager\enums\Permissions;
 
 /* @var $this yii\web\View */
 /* @var $activateRoles boolean */
@@ -34,10 +35,12 @@ endif; ?>
             [
                 'label' => 'Configuration',
                 'url' => ['admin/configuration'],
+                'visible' => \Yii::$app->authManager->checkAccess(\Yii::$app->user->id, Permissions::MODULE_MANAGEMENT),
             ],
             [
                 'label' => 'Users',
-                'url' => ['admin/users'],
+                'url' => '/usermanager/admin/users',
+                'active' => isset($activateUsers) && $activateUsers === true ? true : null,
             ],
             [
                 'label' => 'Roles',

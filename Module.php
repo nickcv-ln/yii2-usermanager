@@ -208,6 +208,9 @@ class Module extends \yii\base\Module implements BootstrapInterface
                 'prefix' => 'usermanager',
                 'rules' => [
                     'login' => 'default/login',
+                    'admin/users' => 'admin-user',
+                    'admin/users/<user:\d+>' => 'admin-user/view',
+                    'admin/users/<action:[\w-]+>' => 'admin-user/<action>',
                     'admin/roles' => 'admin/roles',
                     'admin/roles/<role:\w+>' => 'admin/view-role',
                     'admin/roles/<action:[\w-]+>' => 'admin/<action>',
