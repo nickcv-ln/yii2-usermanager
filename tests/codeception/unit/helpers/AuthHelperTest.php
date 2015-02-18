@@ -27,11 +27,10 @@ class AuthHelperTest extends TestCase
         
         $this->assertContainsOnlyInstancesOf('\yii\rbac\Permission', $permissions);
         
-        $this->assertCount(3, $permissions);
+        $this->assertCount(2, $permissions);
         
         $this->assertEquals(Permissions::MODULE_MANAGEMENT, $permissions[Permissions::MODULE_MANAGEMENT]->name);
         $this->assertEquals(Permissions::ROLES_MANAGEMENT, $permissions[Permissions::ROLES_MANAGEMENT]->name);
-        $this->assertEquals(Permissions::USER_MANAGEMENT, $permissions[Permissions::USER_MANAGEMENT]->name);
     }
     
     public function testGetGivenRoleDirectPermissionAsDataProvider()
@@ -40,14 +39,13 @@ class AuthHelperTest extends TestCase
         
         $this->assertInstanceOf('\yii\data\ArrayDataProvider', $permissions);
         
-        $this->assertEquals(3, $permissions->count);
+        $this->assertEquals(2, $permissions->count);
         
         $models = $permissions->getModels();
         $this->assertContainsOnlyInstancesOf('\yii\rbac\Permission', $models);
         
         $this->assertEquals(Permissions::MODULE_MANAGEMENT, $models[Permissions::MODULE_MANAGEMENT]->name);
         $this->assertEquals(Permissions::ROLES_MANAGEMENT, $models[Permissions::ROLES_MANAGEMENT]->name);
-        $this->assertEquals(Permissions::USER_MANAGEMENT, $models[Permissions::USER_MANAGEMENT]->name);
     }
     
     public function testGetNotExistingRoleDirectPermissions()
@@ -79,7 +77,7 @@ class AuthHelperTest extends TestCase
         
         $roles = $dataProvider->getModels();
         $this->assertContainsOnlyInstancesOf('\yii\rbac\Role', $roles);
-        $this->assertEquals(Roles::STANDARD_USER, $roles[Roles::STANDARD_USER]->name);
+        $this->assertEquals(Roles::ADMIN, $roles[Roles::ADMIN]->name);
     }
     
     public function testGetChildrenRolesOfNotExistingRole()
@@ -160,12 +158,21 @@ class AuthHelperTest extends TestCase
         $this->assertEquals(Permissions::PROFILE_EDITING, $admin[Permissions::PROFILE_EDITING]->name);
     }
     
+    public function testStandardUserProtectedPermissions()
+    {
+        $this->assertFalse(AuthHelper::isRolePermissionProtected(Roles::STANDARD_USER, Permissions::USER_MANAGEMENT));
+        $this->assertFalse(AuthHelper::isRolePermissionProtected(Roles::STANDARD_USER, Permissions::MODULE_MANAGEMENT));
+        $this->assertFalse(AuthHelper::isRolePermissionProtected(Roles::STANDARD_USER, Permissions::ROLES_MANAGEMENT));
+        $this->assertTrue(AuthHelper::isRolePermissionProtected(Roles::STANDARD_USER, Permissions::PROFILE_EDITING));
+        $this->assertFalse(AuthHelper::isRolePermissionProtected(Roles::STANDARD_USER, 'madeup'));
+    }
+    
     public function testAdminProtectedPermissions()
     {
         $this->assertTrue(AuthHelper::isRolePermissionProtected(Roles::ADMIN, Permissions::USER_MANAGEMENT));
         $this->assertFalse(AuthHelper::isRolePermissionProtected(Roles::ADMIN, Permissions::MODULE_MANAGEMENT));
         $this->assertFalse(AuthHelper::isRolePermissionProtected(Roles::ADMIN, Permissions::ROLES_MANAGEMENT));
-        $this->assertFalse(AuthHelper::isRolePermissionProtected(Roles::ADMIN, Permissions::PROFILE_EDITING));
+        $this->assertTrue(AuthHelper::isRolePermissionProtected(Roles::ADMIN, Permissions::PROFILE_EDITING));
         $this->assertFalse(AuthHelper::isRolePermissionProtected(Roles::ADMIN, 'madeup'));
     }
     
@@ -174,7 +181,7 @@ class AuthHelperTest extends TestCase
         $this->assertTrue(AuthHelper::isRolePermissionProtected(Roles::SUPER_ADMIN, Permissions::USER_MANAGEMENT));
         $this->assertTrue(AuthHelper::isRolePermissionProtected(Roles::SUPER_ADMIN, Permissions::MODULE_MANAGEMENT));
         $this->assertTrue(AuthHelper::isRolePermissionProtected(Roles::SUPER_ADMIN, Permissions::ROLES_MANAGEMENT));
-        $this->assertFalse(AuthHelper::isRolePermissionProtected(Roles::SUPER_ADMIN, Permissions::PROFILE_EDITING));
+        $this->assertTrue(AuthHelper::isRolePermissionProtected(Roles::SUPER_ADMIN, Permissions::PROFILE_EDITING));
         $this->assertFalse(AuthHelper::isRolePermissionProtected(Roles::SUPER_ADMIN, 'madeup'));
     }
 

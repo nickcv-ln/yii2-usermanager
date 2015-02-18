@@ -23,7 +23,26 @@ class EnumFilesService extends BasicService
 {
     
     /**
-     * updates the given enum, creating or updating the values of the existing
+     * Checks whether the enum file exists or not.
+     * 
+     * The namespace will be used to get the file path prepending the @ symbol
+     * and using the \Yii::getAlias() method. The default is "app\enums"
+     * 
+     * @param string $classname class name without namespace
+     * @param string $namespace the namespace of the enum
+     * @return boolean
+     */
+    public function fileExists($classname, $namespace = 'app\enums')
+    {
+        if (file_exists($this->getFilePath($classname, $namespace))) {
+            return true;
+        }
+        
+        return false;
+    }
+    
+    /**
+     * Updates the given enum, creating or updating the values of the existing
      * constants.
      * 
      * The keys of the data array will be the constant name, while the value
@@ -41,16 +60,11 @@ class EnumFilesService extends BasicService
      * @param string $classname class name without namespace
      * @param array $data the constants to add to the enum
      * @param string $extends the class to extend
-     * @param string $namespace the namespace of the enum.
+     * @param string $namespace the namespace of the enum
      * @return boolean
      */
     public function updateEnum($classname, array $data, $extends = '\nickcv\usermanager\enums\BasicEnum', $namespace = 'app\enums')
     {
-        if (!count($data)) {
-            $this->addError('data cannot be empty.');
-            return false;
-        }
-        
         if ($extends !== null && !class_exists($extends)) {
             $this->addError('The class to extend "' . $extends . '" does not exist.');
             return false;
@@ -79,7 +93,15 @@ class EnumFilesService extends BasicService
         }
         
         $enumReflection = new \ReflectionClass($namespace . '\\' . $classname);
-        return $enumReflection->getConstants();
+        
+        $constants = $enumReflection->getConstants();
+        
+        $extension = $enumReflection->getParentClass();
+        if ($extension) {
+            $constants = array_diff_key($constants, $extension->getConstants());
+        }
+        
+        return $constants;
     }
     
     /**

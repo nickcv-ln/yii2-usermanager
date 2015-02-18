@@ -153,6 +153,8 @@ class AuthHelper
     public static function isRolePermissionProtected($role, $permission)
     {
         switch ($role) {
+            case Roles::STANDARD_USER:
+                return self::isStandardUserPermissionProtected($permission);
             case Roles::ADMIN:
                 return self::isAdminPermissionProtected($permission);
             case Roles::SUPER_ADMIN:
@@ -178,6 +180,21 @@ class AuthHelper
     }
     
     /**
+     * Returns whether the given permission is protected for the StandardUser role.
+     * 
+     * @param string $permission
+     * @return boolean
+     */
+    private static function isStandardUserPermissionProtected($permission)
+    {
+        if ($permission === Permissions::PROFILE_EDITING) {
+            return true;
+        }
+        
+        return false;
+    }
+    
+    /**
      * Returns whether the given permission is protected for the Admin role.
      * 
      * @param string $permission
@@ -189,7 +206,7 @@ class AuthHelper
             return true;
         }
         
-        return false;
+        return self::isStandardUserPermissionProtected($permission);
     }
     
     /**
@@ -201,12 +218,11 @@ class AuthHelper
     private static function isSuperAdminPermissionProtected($permission)
     {
         switch ($permission) {
-            case Permissions::USER_MANAGEMENT:
             case Permissions::ROLES_MANAGEMENT:
             case Permissions::MODULE_MANAGEMENT:
                 return true;
             default:
-                return false;
+                return self::isAdminPermissionProtected($permission);
         }
     }
 }

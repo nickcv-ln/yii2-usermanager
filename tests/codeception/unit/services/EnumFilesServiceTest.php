@@ -20,14 +20,6 @@ class EnumFilesServiceTest extends TestCase
     {
     }
     
-    public function testDataCannotBeEmpty()
-    {
-        $this->assertFalse(EnumFilesService::init()->updateEnum('TestEnum', []));
-        $errors = EnumFilesService::init()->errors();
-        $this->assertArrayHasKey('message', $errors);
-        $this->assertEquals('data cannot be empty.', $errors['message']);
-    }
-    
     public function testClassToExtendMustExist()
     {
         $this->assertFalse(EnumFilesService::init()->updateEnum('TestEnum', ['MADEUP' => 'madeup'], '\Madeup'));
@@ -100,6 +92,32 @@ class EnumFilesServiceTest extends TestCase
         $this->assertFileEquals(\Yii::getAlias('@app/data/TestEnum.php'), \Yii::getAlias('@nickcv/usermanager/enums/TestEnum.php'));
         
         unlink(\Yii::getAlias('@nickcv/usermanager/enums/TestEnum.php'));
+    }
+    
+    public function testUpdateEnumDoesNotOverrideConstants()
+    {
+        $this->assertTrue(EnumFilesService::init()->updateEnum('TestEnumUnique', [
+            'MADEUP_ONE' => true,
+            'MadeUp Two' => 'madeup',
+        ], '\nickcv\usermanager\enums\Permissions', 'nickcv\usermanager\enums'));
+        
+        $this->assertTrue(EnumFilesService::init()->updateEnum('TestEnumUnique', [
+            'MADEUP_ONE' => true,
+            'MadeUp Two' => 'newValue',
+            'MADEUP_THREE' => 'thirdValue',
+        ], '\nickcv\usermanager\enums\Permissions', 'nickcv\usermanager\enums'));
+        
+        $this->assertFileExists(\Yii::getAlias('@nickcv/usermanager/enums/TestEnumUnique.php'));
+        $this->assertTrue(class_exists('\nickcv\usermanager\enums\TestEnumUnique'));
+        $this->assertFileEquals(\Yii::getAlias('@app/data/TestEnumUnique.php'), \Yii::getAlias('@nickcv/usermanager/enums/TestEnumUnique.php'));
+        
+        unlink(\Yii::getAlias('@nickcv/usermanager/enums/TestEnumUnique.php'));
+    }
+    
+    public function testEnumExists()
+    {
+        $this->assertTrue(EnumFilesService::init()->fileExists('Roles', 'nickcv\usermanager\enums'));
+        $this->assertFalse(EnumFilesService::init()->fileExists('MadeUp', 'nickcv\usermanager\enums'));
     }
 
 }

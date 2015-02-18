@@ -13,14 +13,15 @@ namespace nickcv\usermanager\commands;
 
 use yii\console\Controller;
 use yii\helpers\Console;
+use nickcv\usermanager\Module;
 use nickcv\usermanager\enums\Permissions;
 use nickcv\usermanager\enums\Roles;
-use nickcv\usermanager\services\ConfigFilesService;
 use nickcv\usermanager\enums\PasswordStrength;
 use nickcv\usermanager\enums\GeneralSettings;
 use nickcv\usermanager\enums\Registration;
 use nickcv\usermanager\helpers\ArrayHelper;
-use nickcv\usermanager\Module;
+use nickcv\usermanager\services\ConfigFilesService;
+use nickcv\usermanager\services\EnumFilesService;
 
 /**
  * Installs the usermanager module.
@@ -49,6 +50,7 @@ class InstallController extends Controller
         }
 
         $this->createRoles();
+        $this->createEnums();
         $this->createConfigFile();
         return 0;
     }
@@ -124,14 +126,18 @@ class InstallController extends Controller
             $auth->add($profileEditing);
         }
         
-        if ($auth->getRole(Roles::STANDARD_USER) === null) {
+        $standardUser = $auth->getRole(Roles::STANDARD_USER);
+        
+        if ($standardUser === null) {
             $standardUser = $auth->createRole(Roles::STANDARD_USER);
             $standardUser->description = 'Standard User';
             $auth->add($standardUser);
             $auth->addChild($standardUser, $profileEditing);
         }
+        
+        $admin = $auth->getRole(Roles::ADMIN);
 
-        if ($auth->getRole(Roles::ADMIN) === null) {
+        if ($admin === null) {
             $admin = $auth->createRole(Roles::ADMIN);
             $admin->description = 'User Admin';
             $auth->add($admin);
@@ -144,12 +150,31 @@ class InstallController extends Controller
             $superAdmin->description = 'Usermanager Super Admin';
             $auth->add($superAdmin);
             $auth->addChild($superAdmin, $moduleManagement);
-            $auth->addChild($superAdmin, $usersManagement);
             $auth->addChild($superAdmin, $rolesManagement);
-            $auth->addChild($superAdmin, $standardUser);
+            $auth->addChild($superAdmin, $admin);
         }
         
-        $this->stdout("\nBasic Roles and Permissions created.", Console::FG_GREEN);
+        $this->stdout("\nBasic Roles and Permissions created.\n", Console::FG_GREEN);
+    }
+    
+    /**
+     * Creates the roles and permissions enums.
+     */
+    private function createEnums()
+    {
+        $this->stdout("\nCreating the enum files.\n", Console::FG_YELLOW);
+        
+        $service = EnumFilesService::init();
+        
+        if (!$service->fileExists(Module::EXTENDED_PERMISSIONS_CLASS) || $this->confirm("\nThe enum file \"" . Module::EXTENDED_PERMISSIONS_CLASS . '" already exists. Do you wish to continue and delete its content?')) {
+            $service->updateEnum(Module::EXTENDED_PERMISSIONS_CLASS, [], '\nickcv\usermanager\enums\Permissions');
+            $this->stdout("\nThe \"" . Module::EXTENDED_PERMISSIONS_CLASS . "\" enum file has been created.\n", Console::FG_GREEN);
+        }
+        
+        if (!$service->fileExists(Module::EXTENDED_ROLES_CLASS) || $this->confirm("\nThe enum file \"" . Module::EXTENDED_ROLES_CLASS . '" already exists. Do you wish to continue and delete its content?')) {
+            $service->updateEnum(Module::EXTENDED_ROLES_CLASS, [], '\nickcv\usermanager\enums\Roles');
+            $this->stdout("\nThe \"" . Module::EXTENDED_ROLES_CLASS . "\" enum file has been created.\n", Console::FG_GREEN);
+        }
     }
     
     /**
@@ -160,21 +185,7 @@ class InstallController extends Controller
         
         $this->stdout("\nCreating the config file.\n", Console::FG_YELLOW);
         
-        $strength = PasswordStrength::getConstantDeclaration($this->select('Choose the minimum password strength', PasswordStrength::getLabels()));
-        
-        $registration = Registration::getConstantDeclaration($this->select('Do you want to enable manual user registration?', Registration::getLabels()));
-        
-        $activation = GeneralSettings::getConstantDeclaration($this->select('Do you want to enable account activation?', GeneralSettings::getLabels()));
-        
-        $passwordRecovery = GeneralSettings::getConstantDeclaration($this->select('Do you want to enable manual password recovery?', GeneralSettings::getLabels()));
-        
-        $data = [
-            'class'=>'\nickcv\usermanager\Module',
-            'passwordStrength' => ArrayHelper::PHP_CONTENT . $strength,
-            'registration' => ArrayHelper::PHP_CONTENT . $registration,
-            'activation' => ArrayHelper::PHP_CONTENT . $activation,
-            'passwordRecovery' => ArrayHelper::PHP_CONTENT . $passwordRecovery,
-        ];
+        $data = $this->retrieveConfigurationFromUser();
         
         if (ConfigFilesService::init()->createFile(Module::CONFIG_FILENAME, $data) === false) {
             if (strpos(ConfigFilesService::init()->errors()['message'], 'already exists') !== false) {
@@ -186,6 +197,30 @@ class InstallController extends Controller
         }
         
         $this->printConfigFileSuccessMessage();
+    }
+    
+    /**
+     * Retrieves from the user the basic configuration for the module.
+     * 
+     * @return array
+     */
+    private function retrieveConfigurationFromUser()
+    {
+        $strength = PasswordStrength::getConstantDeclaration($this->select('Choose the minimum password strength', PasswordStrength::getLabels()));
+        
+        $registration = Registration::getConstantDeclaration($this->select('Do you want to enable manual user registration?', Registration::getLabels()));
+        
+        $activation = GeneralSettings::getConstantDeclaration($this->select('Do you want to enable account activation?', GeneralSettings::getLabels()));
+
+        $passwordRecovery = GeneralSettings::getConstantDeclaration($this->select('Do you want to enable manual password recovery?', GeneralSettings::getLabels()));
+        
+        return [
+            'class'=>'\nickcv\usermanager\Module',
+            'passwordStrength' => ArrayHelper::PHP_CONTENT . $strength,
+            'registration' => ArrayHelper::PHP_CONTENT . $registration,
+            'activation' => ArrayHelper::PHP_CONTENT . $activation,
+            'passwordRecovery' => ArrayHelper::PHP_CONTENT . $passwordRecovery,
+        ];
     }
     
     /**

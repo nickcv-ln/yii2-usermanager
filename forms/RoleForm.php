@@ -37,9 +37,9 @@ class RoleForm extends Model
     public function scenarios()
     {
         $scenarios = parent::scenarios();
-        $scenarios[Scenarios::PERMISSION_NEW] = ['role', 'name', 'description'];
-        $scenarios[Scenarios::PERMISSION_ADD] = ['role', 'existingPermissions'];
-        $scenarios[Scenarios::PERMISSION_DELETE] = ['role', 'name'];
+        $scenarios[Scenarios::PERMISSION_NEW] = ['name', 'description'];
+        $scenarios[Scenarios::PERMISSION_ADD] = ['existingRoles'];
+        $scenarios[Scenarios::PERMISSION_DELETE] = ['name'];
         
         return $scenarios;
     }
@@ -50,12 +50,11 @@ class RoleForm extends Model
     public function rules()
     {
         return [
-            [['role', 'name', 'description', 'existingPermissions'], 'required'],
-            ['role', 'roleExists'],
-            ['name', 'uniquePermission', 'on' => Scenarios::PERMISSION_NEW],
-            ['name', 'permissionExists', 'on' => Scenarios::PERMISSION_DELETE],
-            ['name', 'permissionIsCore', 'on' => Scenarios::PERMISSION_DELETE],
-            ['existingPermissions', 'missingPermission'],
+            [['name', 'description', 'existingRoles'], 'required'],
+            ['name', 'uniqueRole', 'on' => Scenarios::PERMISSION_NEW],
+            ['name', 'roleExists', 'on' => Scenarios::PERMISSION_DELETE],
+            ['name', 'roleIsCore', 'on' => Scenarios::PERMISSION_DELETE],
+            ['existingRoles', 'missingRole'],
         ];
     }
     
@@ -72,68 +71,54 @@ class RoleForm extends Model
     }
     
     /**
-     * Validation rules that checks whether the given list of missing permissions
-     * is indeed a list and if the current role really does not already have
+     * Validation rules that checks whether the given list of missing roles
+     * is indeed a list and if the current role really does not already inherit
      * them.
      * 
      * @param string $attribute the attribute name
      */
-    public function missingPermission($attribute)
+    public function missingRole($attribute)
     {
         if (!is_array($this->$attribute)) {
-            return $this->addError($attribute, $this->getAttributeLabel($attribute) . ' should be a list of permissions.');
+            return $this->addError($attribute, $this->getAttributeLabel($attribute) . ' should be a list of roles.');
         }
         
-        foreach ($this->$attribute as $permission) {
-            if (!is_string($permission)) {
-                return $this->addError($attribute, $this->getAttributeLabel($attribute) . ' should be a list of permissions.');
+        foreach ($this->$attribute as $role) {
+            if (!is_string($role)) {
+                return $this->addError($attribute, $this->getAttributeLabel($attribute) . ' should be a list of roles.');
             }
-            if (!array_key_exists($permission, AuthHelper::getMissingPermissions($this->role))) {
-                $this->addError($attribute, 'The given role "' . $this->role . '" already has a permission named "' . $permission . '".');
+            if (!array_key_exists($role, AuthHelper::getMissingPermissions($this->name))) {
+                $this->addError($attribute, 'The given role "' . $this->name . '" is already inheriting a role named "' . $role . '".');
             }
         }
     }
     
     /**
-     * Validation rule that checks whether the permission with the given name does not
+     * Validation rule that checks whether the role with the given name does not
      * already exists.
      * 
      * @param string $attribute the attribute name
      */
-    public function uniquePermission($attribute)
+    public function uniqueRole($attribute)
     {
         if (\Yii::$app->authManager->getPermission($this->$attribute)) {
-            $this->addError($attribute, 'The permission name should be unique, permission "' . $this->$attribute .'" already exists.');
-        }
-    }
-    
-    /**
-     * Validation rule that checks whether the given permission exists or not.
-     * 
-     * @param string $attribute the attribute name
-     */
-    public function permissionExists($attribute)
-    {
-        if (\Yii::$app->authManager->getPermission($this->$attribute) === null) {
-            $this->addError($attribute, 'The permission "' . $this->$attribute .'" does not exists.');
+            $this->addError($attribute, 'The role name should be unique, role "' . $this->$attribute .'" already exists.');
         }
     }
     
     /**
      * Validation rule that checks whether or not the user is trying to remove
-     * a protected core permission.
+     * a protected core role.
      * 
      * @param string $attribute the attribute name
      */
-    public function permissionIsCore($attribute)
+    public function roleIsCore($attribute)
     {
-        if ($this->role === Roles::ADMIN) {
-            switch ($this->$attribute) {
-                case Permissions::MODULE_MANAGEMENT:
-                case Permissions::ROLES_MANAGEMENT:
-                case Permissions::USER_MANAGEMENT:
-                    $this->addError($attribute, 'The permission "' . $this->$attribute . '" is a core "' . Roles::ADMIN . '" permission and cannot be removed.');
-            }
+        switch ($this->$attribute) {
+            case Roles::STANDARD_USER:
+            case Roles::ADMIN:
+            case Roles::SUPER_ADMIN:
+                $this->addError($attribute, 'The role "' . $this->$attribute . '" is a core role and cannot be removed.');
         }
     }
     
