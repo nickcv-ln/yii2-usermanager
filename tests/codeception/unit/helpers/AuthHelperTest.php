@@ -295,6 +295,30 @@ class AuthHelperTest extends TestCase
         $this->assertEquals(Roles::ADMIN, $madeup4[Roles::ADMIN]->name);
     }
     
+    public function testStandardUserProtectedChildRoles()
+    {
+        $this->assertFalse(AuthHelper::isChildRoleProtected(Roles::STANDARD_USER, Roles::SUPER_ADMIN));
+        $this->assertFalse(AuthHelper::isChildRoleProtected(Roles::STANDARD_USER, Roles::ADMIN));
+        $this->assertFalse(AuthHelper::isChildRoleProtected(Roles::STANDARD_USER, Roles::STANDARD_USER));
+        $this->assertFalse(AuthHelper::isChildRoleProtected(Roles::STANDARD_USER, 'madeup'));
+    }
+    
+    public function testAdminProtectedChildRoles()
+    {
+        $this->assertFalse(AuthHelper::isChildRoleProtected(Roles::ADMIN, Roles::SUPER_ADMIN));
+        $this->assertFalse(AuthHelper::isChildRoleProtected(Roles::ADMIN, Roles::ADMIN));
+        $this->assertTrue(AuthHelper::isChildRoleProtected(Roles::ADMIN, Roles::STANDARD_USER));
+        $this->assertFalse(AuthHelper::isChildRoleProtected(Roles::ADMIN, 'madeup'));
+    }
+    
+    public function testSuperAdminProtectedChildRoles()
+    {
+        $this->assertFalse(AuthHelper::isChildRoleProtected(Roles::SUPER_ADMIN, Roles::SUPER_ADMIN));
+        $this->assertTrue(AuthHelper::isChildRoleProtected(Roles::SUPER_ADMIN, Roles::ADMIN));
+        $this->assertTrue(AuthHelper::isChildRoleProtected(Roles::SUPER_ADMIN, Roles::STANDARD_USER));
+        $this->assertFalse(AuthHelper::isChildRoleProtected(Roles::SUPER_ADMIN, 'madeup'));
+    }
+    
     private function createRole($roleName, $child = null, $parent = null)
     {
         $newRole = \Yii::$app->authManager->createRole($roleName);

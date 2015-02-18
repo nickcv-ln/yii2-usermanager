@@ -16,7 +16,6 @@ use nickcv\usermanager\helpers\AuthHelper;
 use nickcv\usermanager\services\EnumFilesService;
 use nickcv\usermanager\Module;
 use nickcv\usermanager\enums\Permissions;
-use nickcv\usermanager\enums\Roles;
 
 /**
  * PermissionForm is the form behind the new permissions creation and the existing
@@ -134,7 +133,7 @@ class PermissionForm extends Model
     }
     
     /**
-     * Adds the new permissions if the model scenario is 
+     * Adds the existing permissions if the model scenario is 
      * nickcv\usermanager\enums\Scenarios::PERMISSION_ADD and it passes validation.
      * 
      * @return boolean

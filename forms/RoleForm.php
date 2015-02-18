@@ -15,7 +15,6 @@ use nickcv\usermanager\enums\Scenarios;
 use nickcv\usermanager\helpers\AuthHelper;
 use nickcv\usermanager\services\EnumFilesService;
 use nickcv\usermanager\Module;
-use nickcv\usermanager\enums\Permissions;
 use nickcv\usermanager\enums\Roles;
 
 /**
@@ -27,7 +26,7 @@ use nickcv\usermanager\enums\Roles;
  */
 class RoleForm extends Model
 {
-    public $existingRoles;
+    public $existingRole;
     public $name;
     public $description;
     
@@ -37,9 +36,9 @@ class RoleForm extends Model
     public function scenarios()
     {
         $scenarios = parent::scenarios();
-        $scenarios[Scenarios::PERMISSION_NEW] = ['name', 'description'];
-        $scenarios[Scenarios::PERMISSION_ADD] = ['existingRoles'];
-        $scenarios[Scenarios::PERMISSION_DELETE] = ['name'];
+        $scenarios[Scenarios::ROLE_NEW] = ['name', 'description'];
+        $scenarios[Scenarios::ROLE_ADD] = ['name', 'existingRole'];
+        $scenarios[Scenarios::ROLE_DELETE] = ['name', 'existingRole'];
         
         return $scenarios;
     }
@@ -50,11 +49,12 @@ class RoleForm extends Model
     public function rules()
     {
         return [
-            [['name', 'description', 'existingRoles'], 'required'],
-            ['name', 'uniqueRole', 'on' => Scenarios::PERMISSION_NEW],
-            ['name', 'roleExists', 'on' => Scenarios::PERMISSION_DELETE],
-            ['name', 'roleIsCore', 'on' => Scenarios::PERMISSION_DELETE],
-            ['existingRoles', 'missingRole'],
+            [['name', 'description', 'existingRole'], 'required'],
+            ['name', 'uniqueRole', 'on' => Scenarios::ROLE_NEW],
+            ['name', 'roleExists', 'on' => [Scenarios::ROLE_ADD, Scenarios::ROLE_DELETE]],
+            ['name', 'roleIsCore', 'on' => Scenarios::ROLE_DELETE],
+            ['existingRole', 'missingRole', 'on' => Scenarios::ROLE_ADD],
+            ['existingRole', 'isParent', 'on' => Scenarios::ROLE_DELETE],
         ];
     }
     
@@ -66,31 +66,24 @@ class RoleForm extends Model
     public function roleExists($attribute)
     {
         if (!\Yii::$app->authManager->getRole($this->$attribute)) {
-            $this->addError($attribute, 'The given role "' . $this->$attribute . '" does not exist.');
+            $this->addError($attribute, 'The role "' . $this->$attribute . '" does not exists.');
         }
     }
     
     /**
-     * Validation rules that checks whether the given list of missing roles
-     * is indeed a list and if the current role really does not already inherit
-     * them.
+     * Validation rules that checks whether the given missing role is not
+     * inheriting or being inherited by the current role.
      * 
      * @param string $attribute the attribute name
      */
     public function missingRole($attribute)
-    {
-        if (!is_array($this->$attribute)) {
-            return $this->addError($attribute, $this->getAttributeLabel($attribute) . ' should be a list of roles.');
+    {   
+        if (!is_string($this->$attribute)) {
+            return $this->addError($attribute, $this->getAttributeLabel($attribute) . ' should be a role.');
         }
-        
-        foreach ($this->$attribute as $role) {
-            if (!is_string($role)) {
-                return $this->addError($attribute, $this->getAttributeLabel($attribute) . ' should be a list of roles.');
-            }
-            if (!array_key_exists($role, AuthHelper::getMissingPermissions($this->name))) {
-                $this->addError($attribute, 'The given role "' . $this->name . '" is already inheriting a role named "' . $role . '".');
-            }
-        }
+        if (!array_key_exists($this->$attribute, AuthHelper::getMissingRoles($this->name))) {
+            $this->addError($attribute, 'The given role "' . $this->name . '" is already inheriting or being inherited by a role named "' . $this->$attribute . '".');
+        }   
     }
     
     /**
@@ -101,94 +94,99 @@ class RoleForm extends Model
      */
     public function uniqueRole($attribute)
     {
-        if (\Yii::$app->authManager->getPermission($this->$attribute)) {
+        if (\Yii::$app->authManager->getRole($this->$attribute)) {
             $this->addError($attribute, 'The role name should be unique, role "' . $this->$attribute .'" already exists.');
         }
     }
     
     /**
      * Validation rule that checks whether or not the user is trying to remove
-     * a protected core role.
+     * a protected core child role.
      * 
      * @param string $attribute the attribute name
      */
     public function roleIsCore($attribute)
     {
-        switch ($this->$attribute) {
-            case Roles::STANDARD_USER:
-            case Roles::ADMIN:
-            case Roles::SUPER_ADMIN:
-                $this->addError($attribute, 'The role "' . $this->$attribute . '" is a core role and cannot be removed.');
+        if (AuthHelper::isChildRoleProtected($this->existingRole, $this->$attribute)) {
+            $this->addError($attribute, 'The role "' . $this->$attribute . '" is a core "' . $this->existingRole . '" child role and cannot be removed.');
         }
     }
     
     /**
-     * Adds the new permissions if the model scenario is 
-     * nickcv\usermanager\enums\Scenarios::PERMISSION_ADD and it passes validation.
+     * Validation rule that checks wheter or not the existing role is a parent
+     * of the current role.
+     * 
+     * @param string $attribute the attribute name
+     */
+    public function isParent($attribute)
+    {
+        if (!array_key_exists($this->name, AuthHelper::getChildrenRoles($this->$attribute))) {
+            $this->addError($attribute, 'The role "' . $this->$attribute . '" is not a parent of role "' . $this->name . '".');
+        }
+    }
+    
+    /**
+     * Adds the existing role if the model scenario is 
+     * nickcv\usermanager\enums\Scenarios::ROLE_ADD and it passes validation.
      * 
      * @return boolean
      */
-    public function addExistingPermissions()
+    public function addExistingRole()
     {
-        if ($this->scenario !== Scenarios::PERMISSION_ADD || !$this->validate()) {
+        if ($this->scenario !== Scenarios::ROLE_ADD || !$this->validate()) {
             return false;
         }
         
-        $role = \Yii::$app->authManager->getRole($this->role);
-        foreach ($this->existingPermissions as $permission) {
-            \Yii::$app->authManager->addChild($role, \Yii::$app->authManager->getPermission($permission));
-        }
+        $role = \Yii::$app->authManager->getRole($this->name);
+        \Yii::$app->authManager->addChild($role, \Yii::$app->authManager->getRole($this->existingRole));
         
         return true;
     }
     
     /**
-     * Creates a new permission and assigns it to the the current role if the
-     * model scenario is nickcv\usermanager\enums\Scenarios::PERMISSION_NEW and
-     * it passes validation.
+     * Creates a new role if the model scenario is 
+     * nickcv\usermanager\enums\Scenarios::ROLE_NEW and it passes validation.
      * 
      * @return boolean
      */
-    public function createNewPermission()
+    public function createNewRole()
     {
-        if ($this->scenario !== Scenarios::PERMISSION_NEW || !$this->validate()) {
+        if ($this->scenario !== Scenarios::ROLE_NEW || !$this->validate()) {
             return false;
         }
         
-        $role = \Yii::$app->authManager->getRole($this->role);
-        $permission = \Yii::$app->authManager->createPermission($this->name);
-        $permission->description = $this->description;
-        \Yii::$app->authManager->add($permission);
-        \Yii::$app->authManager->addChild($role, $permission);
+        $role = \Yii::$app->authManager->createRole($this->name);
+        $role->description = $this->description;
+        \Yii::$app->authManager->add($role);
         
-        $permissionClass = Module::EXTENDED_PERMISSIONS_CLASS;
+        $roleClass = Module::EXTENDED_ROLES_CLASS;
         if (defined('YII_ENV') && YII_ENV === 'test') {
-            $permissionClass .= '_test';
+            $roleClass .= '_test';
         }
         
-        EnumFilesService::init()->updateEnum($permissionClass, [
+        EnumFilesService::init()->updateEnum($roleClass, [
             $this->name => $this->name,
-        ], Permissions::className());
+        ], Roles::className());
         
         return true;
     }
     
     /**
-     * Remove the given permission from the given role if the current model scenario
-     * is nickcv\usermanager\enums\Scenarios::PERMISSION_DELETE and it passes
+     * Remove the given child role from the existing role if the current model scenario
+     * is nickcv\usermanager\enums\Scenarios::ROLE_DELETE and it passes
      * validation.
      * 
      * @return boolean
      */
-    public function removePermission()
+    public function removeChildRole()
     {
-        if ($this->scenario !== Scenarios::PERMISSION_DELETE || !$this->validate()) {
+        if ($this->scenario !== Scenarios::ROLE_DELETE || !$this->validate()) {
             return false;
         }
         
-        $role = \Yii::$app->authManager->getRole($this->role);
-        $permission = \Yii::$app->authManager->getPermission($this->name);
-        \Yii::$app->authManager->removeChild($role, $permission);
+        $role = \Yii::$app->authManager->getRole($this->existingRole);
+        $child = \Yii::$app->authManager->getRole($this->name);
+        \Yii::$app->authManager->removeChild($role, $child);
         
         return true;
     }

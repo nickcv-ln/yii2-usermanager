@@ -199,6 +199,25 @@ class AuthHelper
     }
     
     /**
+     * Checks if a child role of a given role is protected or not.
+     * 
+     * @param string $role
+     * @param string $child
+     * @return boolean
+     */
+    public static function isChildRoleProtected($role, $child)
+    {
+        switch ($role) {
+            case Roles::ADMIN:
+                return self::isAdminChildRoleProtected($child);
+            case Roles::SUPER_ADMIN:
+                return self::isSuperAdminChildRoleProtected($child);
+            default:
+                return false;
+        }
+    }
+    
+    /**
      * Returns all the children of a given role.
      * 
      * @param string $role the role name
@@ -214,7 +233,7 @@ class AuthHelper
     }
     
     /**
-     * Returns whether the given permission is protected for the StandardUser role.
+     * Checks whether the given permission is protected for the StandardUser role.
      * 
      * @param string $permission
      * @return boolean
@@ -229,7 +248,7 @@ class AuthHelper
     }
     
     /**
-     * Returns whether the given permission is protected for the Admin role.
+     * Checks whether the given permission is protected for the Admin role.
      * 
      * @param string $permission
      * @return boolean
@@ -244,7 +263,7 @@ class AuthHelper
     }
     
     /**
-     * Returns whether the given permission is protected for the SuperAdmin role.
+     * Checks whether the given permission is protected for the SuperAdmin role.
      * 
      * @param string $permission
      * @return boolean
@@ -258,5 +277,35 @@ class AuthHelper
             default:
                 return self::isAdminPermissionProtected($permission);
         }
+    }
+    
+    /**
+     * Checks whether the given child role is protected for the Admin role.
+     * 
+     * @param string $child
+     * @return boolean
+     */
+    private static function isAdminChildRoleProtected($child)
+    {
+        if ($child === Roles::STANDARD_USER) {
+            return true;
+        }
+        
+        return false;
+    }
+    
+    /**
+     * Checks whether the given child role is protected for the SuperAdmin role.
+     * 
+     * @param string $child
+     * @return boolean
+     */
+    private static function isSuperAdminChildRoleProtected($child)
+    {
+        if ($child === Roles::ADMIN) {
+            return true;
+        }
+        
+        return self::isAdminChildRoleProtected($child);
     }
 }

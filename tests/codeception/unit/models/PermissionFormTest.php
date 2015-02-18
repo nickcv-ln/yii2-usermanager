@@ -116,8 +116,6 @@ class PermissionFormTest extends TestCase
     public function testRoleNameDescriptionAreRequiredWhenAddingNewPermission()
     {
         $model = new PermissionForm(['scenario' => Scenarios::PERMISSION_NEW]);
-        $model->clearErrors();
-        $this->assertCount(0, $model->getErrors());
         
         $this->assertFalse($model->validate());
         $this->assertCount(3, $model->getErrors());
@@ -215,6 +213,19 @@ class PermissionFormTest extends TestCase
         $this->assertContains('The permission "madeup" does not exists.', $model->getErrors('name'));
     }
     
+    public function testCannotDeleteBasicStandardUserPermissions()
+    {
+        $model = new PermissionForm(['scenario' => Scenarios::PERMISSION_DELETE]);
+        
+        $model->role = Roles::STANDARD_USER;
+        $model->name = Permissions::PROFILE_EDITING;
+        
+        $this->assertFalse($model->validate());
+        $this->assertCount(1, $model->getErrors());
+        $this->assertCount(1, $model->getErrors('name'));
+        $this->assertContains('The permission "profileEditing" is a core "standardUser" permission and cannot be removed.', $model->getErrors('name'));
+    }
+    
     public function testCannotDeleteBasicAdminPermissions()
     {
         $model = new PermissionForm(['scenario' => Scenarios::PERMISSION_DELETE]);
@@ -226,6 +237,13 @@ class PermissionFormTest extends TestCase
         $this->assertCount(1, $model->getErrors());
         $this->assertCount(1, $model->getErrors('name'));
         $this->assertContains('The permission "usersManagement" is a core "admin" permission and cannot be removed.', $model->getErrors('name'));
+        
+        $model->clearErrors();
+        $model->name = Permissions::PROFILE_EDITING;
+        $this->assertFalse($model->validate());
+        $this->assertCount(1, $model->getErrors());
+        $this->assertCount(1, $model->getErrors('name'));
+        $this->assertContains('The permission "profileEditing" is a core "admin" permission and cannot be removed.', $model->getErrors('name'));
     }
     
     public function testCannotDeleteBasicSuperAdminPermissions()
@@ -253,6 +271,13 @@ class PermissionFormTest extends TestCase
         $this->assertCount(1, $model->getErrors());
         $this->assertCount(1, $model->getErrors('name'));
         $this->assertContains('The permission "usersManagement" is a core "superAdmin" permission and cannot be removed.', $model->getErrors('name'));
+        
+        $model->clearErrors();
+        $model->name = Permissions::PROFILE_EDITING;
+        $this->assertFalse($model->validate());
+        $this->assertCount(1, $model->getErrors());
+        $this->assertCount(1, $model->getErrors('name'));
+        $this->assertContains('The permission "profileEditing" is a core "superAdmin" permission and cannot be removed.', $model->getErrors('name'));
     }
     
     public function testRemovePermissionFromRole()
@@ -275,6 +300,8 @@ class PermissionFormTest extends TestCase
         $cleanPermissions = \Yii::$app->authManager->getPermissionsByRole(Roles::STANDARD_USER);
         $this->assertCount(1, $cleanPermissions);
         $this->assertArrayHasKey(Permissions::PROFILE_EDITING, $cleanPermissions);
+        
+        $this->assertNotNull(\Yii::$app->authManager->getPermission(Permissions::MODULE_MANAGEMENT));
     }
 
 }
