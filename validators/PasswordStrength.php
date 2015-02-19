@@ -47,11 +47,11 @@ class PasswordStrength extends Validator
      * Validates the password contained in the given attribute against
      * the current module password strength configuration.
      * 
-     * @param Model $model
+     * @param \yii\base\Model $model
      * @param string $attribute
      * @return boolean
      */
-    public function validateAttribute(Model $model, $attribute)
+    public function validateAttribute($model, $attribute)
     {
         $value = $model->$attribute;
         $results = [];

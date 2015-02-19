@@ -10,6 +10,6 @@ use nickcv\usermanager\tests\codeception\_pages\LoginPage;
  */
 class ConfigurationPage extends LoginPage
 {
-    public $route = 'usermanager/admin';
+    public $route = 'usermanager/admin/configuration';
 
 }

@@ -1,17 +1,25 @@
 <?php
 namespace nickcv\usermanager\tests\codeception\unit\helpers;
 
-use yii\codeception\TestCase;
+use yii\codeception\DbTestCase;
+use nickcv\usermanager\tests\codeception\unit\fixtures\UserFixture;
 use nickcv\usermanager\helpers\AuthHelper;
 use nickcv\usermanager\enums\Roles;
 use nickcv\usermanager\enums\Permissions;
 
-class AuthHelperTest extends TestCase
+class AuthHelperTest extends DbTestCase
 {
     /**
      * @var \UnitTester
      */
     protected $tester;
+    
+    public function fixtures()
+    {
+        return [
+            'users' => UserFixture::className(),
+        ];
+    }
     
     protected function setUp()
     {
@@ -317,6 +325,20 @@ class AuthHelperTest extends TestCase
         $this->assertTrue(AuthHelper::isChildRoleProtected(Roles::SUPER_ADMIN, Roles::ADMIN));
         $this->assertTrue(AuthHelper::isChildRoleProtected(Roles::SUPER_ADMIN, Roles::STANDARD_USER));
         $this->assertFalse(AuthHelper::isChildRoleProtected(Roles::SUPER_ADMIN, 'madeup'));
+    }
+    
+    public function testGetListOfUserWithRole()
+    {
+        $superAdmins = AuthHelper::getUsersWithRole(Roles::SUPER_ADMIN);
+        $this->assertCount(1, $superAdmins);
+        $this->assertEquals(1, $superAdmins[0]);
+        
+        $admins = AuthHelper::getUsersWithRole(Roles::ADMIN);
+        $this->assertCount(1, $admins);
+        $this->assertEquals(2, $admins[0]);
+        
+        $standardUsers = AuthHelper::getUsersWithRole(Roles::STANDARD_USER);
+        $this->assertCount(0, $standardUsers);
     }
     
     private function createRole($roleName, $child = null, $parent = null)

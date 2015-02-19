@@ -1,5 +1,6 @@
 <?php
 use yii\helpers\Html;
+use yii\widgets\Pjax;
 use nickcv\usermanager\Module;
 
 /* @var $this yii\web\View */
@@ -22,17 +23,15 @@ $this->params['breadcrumbs'][] = 'Roles';
     </p>
 </div>
 
-<?php echo $this->render('_nav'); ?>
-
-<div class="col-lg-12 push-down-30">
+    <?php Pjax::begin(); ?>
     <?php echo yii\grid\GridView::widget([
         'dataProvider' => $roles,
         'columns' => [
             [
                 'attribute' => 'name',
-                'format' => 'html',
+                'format' => 'raw',
                 'value' => function($model, $key) {
-                    return Html::a($key, ['admin/roles/' . $key]);
+                    return Html::a($key, ['admin/roles/' . $key], ['data-pjax' => 0]);
                 }
             ],
             'description',
@@ -46,10 +45,7 @@ $this->params['breadcrumbs'][] = 'Roles';
             ],
         ],
     ]); ?>
-</div>
-
+    <?php Pjax::end(); ?>
 <hr>
 
-<div class="col-lg-12">
-    <?php echo $this->render('_newRoleModal', ['model' => $roleForm]); ?>
-</div>
+<?php echo $this->render('_newRoleModal', ['model' => $roleForm]); ?>

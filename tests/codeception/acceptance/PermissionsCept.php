@@ -17,13 +17,13 @@ $I->wantTo('ensure that permissions page works');
 
 $permissionPage = PermissionsPage::openBy($I);
 
-$I->dontSee('Roles and Permissions');
+$I->dontSee('Direct permissions of the admin role.', 'h1');
 $I->see('Login | My Application', '.breadcrumb .active');
 
 $I->amGoingTo('login with correct credentials');
 $permissionPage->login('jon@testing.com', 'easypassword');
 $I->expectTo('see permissions page');
-$I->see('Roles and Permissions');
+$I->see('Direct permissions of the admin role.', 'h1');
 $I->dontSeeElement('button[name="revoke-permission-button"]');
 
 $I->amGoingTo('create a new permission');

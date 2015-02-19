@@ -57,6 +57,8 @@ class Module extends \yii\base\Module implements BootstrapInterface
      * @var boolean
      */
     private $_activation;
+    
+    public $layout = '@nickcv/usermanager/views/layouts/main';
 
     /**
      * Register defaults without use of magic numbers and magic letters.
@@ -83,12 +85,6 @@ class Module extends \yii\base\Module implements BootstrapInterface
         
         parent::init();
     }
-    
-    public $urlPrefix = 'usermanager';
-    
-    public $urlRules = [
-        'login' => 'default/login',
-    ];
 
     /**
      * Sets a new password strength.
@@ -208,12 +204,12 @@ class Module extends \yii\base\Module implements BootstrapInterface
                 'prefix' => 'usermanager',
                 'rules' => [
                     'login' => 'default/login',
-                    'admin/users' => 'admin-user',
-                    'admin/users/<user:\d+>' => 'admin-user/view',
-                    'admin/users/<action:[\w-]+>' => 'admin-user/<action>',
-                    'admin/roles' => 'admin/roles',
-                    'admin/roles/<role:\w+>' => 'admin/view-role',
-                    'admin/roles/<action:[\w-]+>' => 'admin/<action>',
+                    'logout' => 'default/logout',
+                    'admin' => 'admin-users',
+                    'admin/<c:[\w]+>' => 'admin-<c>/index',
+                    'admin/<c:[\w]+>/<id:[\w]+>' => 'admin-<c>/view',
+                    'admin/<c:[\w]+>/<a:[\w-]+>/<id:\w+>' => 'admin-<c>/<a>',
+                    'admin/<c:[\w]+>/<a:[\w-]+>' => 'admin-<c>/<a>',
                 ],
             ]);
         }

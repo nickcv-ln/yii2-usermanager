@@ -12,6 +12,7 @@ namespace nickcv\usermanager\helpers;
 
 use yii\rbac\Role;
 use yii\rbac\Permission;
+use yii\db\Query;
 use yii\data\ArrayDataProvider;
 use nickcv\usermanager\enums\Roles;
 use nickcv\usermanager\enums\Permissions;
@@ -215,6 +216,27 @@ class AuthHelper
             default:
                 return false;
         }
+    }
+    
+    /**
+     * Returns a list of user ids with the given role.
+     * 
+     * @param string $role
+     * @return array
+     */
+    public static function getUsersWithRole($role)
+    {
+        $auth = \Yii::$app->authManager;
+        $query = (new Query)
+            ->from($auth->assignmentTable)
+            ->where(['item_name' => (string) $role]);
+
+        $userIDs = [];
+        foreach ($query->all($auth->db) as $row) {
+            $userIDs[] = $row['user_id'];
+        }
+        
+        return $userIDs;
     }
     
     /**

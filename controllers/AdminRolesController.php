@@ -15,14 +15,11 @@ namespace nickcv\usermanager\controllers;
 use yii\web\Controller;
 use yii\filters\AccessControl;
 use yii\data\ArrayDataProvider;
-use nickcv\usermanager\Module;
 use nickcv\usermanager\helpers\AuthHelper;
-use nickcv\usermanager\forms\ConfigurationForm;
 use nickcv\usermanager\forms\PermissionForm;
 use nickcv\usermanager\forms\RoleForm;
 use nickcv\usermanager\enums\Permissions;
 use nickcv\usermanager\enums\Scenarios;
-use nickcv\usermanager\services\ConfigFilesService;
 
 /**
  * Controller class containing the actions for the core module administration.
@@ -32,7 +29,7 @@ use nickcv\usermanager\services\ConfigFilesService;
  * 
  * @property \nickcv\usermanager\Module $module
  */
-class AdminController extends Controller
+class AdminRolesController extends Controller
 {
 
     /**
@@ -46,9 +43,8 @@ class AdminController extends Controller
             'access' => [
                 'class' => AccessControl::className(),
                 'only' => [
-                    'configuration',
-                    'roles',
-                    'view-role',
+                    'index',
+                    'view',
                     'add-existing-permission',
                     'add-new-permission',
                     'revoke-permission',
@@ -59,12 +55,7 @@ class AdminController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['configuration'],
-                        'roles' => [Permissions::MODULE_MANAGEMENT],
-                    ],
-                    [
-                        'allow' => true,
-                        'actions' => ['roles', 'view-role'],
+                        'actions' => ['index', 'view'],
                         'roles' => [Permissions::ROLES_MANAGEMENT],
                     ],
                     [
@@ -90,32 +81,17 @@ class AdminController extends Controller
         ];
     }
     
-    public $defaultAction = 'configuration';
-
-    /**
-     * Updates the current module configuration.
-     */
-    public function actionConfiguration()
-    {
-        $model = new ConfigurationForm();
-        $model->attributes = ConfigFilesService::init()->getConfigFile(Module::CONFIG_FILENAME);
-        if ($model->load(\Yii::$app->request->post()) && $model->validate() && ConfigFilesService::init()->updateFile(Module::CONFIG_FILENAME, $model->getDefinedAttributesAsconstants(), true)) {
-            \Yii::$app->session->setFlash('success', 'Configuration updated.');
-            return $this->refresh();
-        }
-        return $this->render('configuration', [
-            'model' => $model,
-        ]);
-    }
-    
     /**
      * Lets you manage the existing application Roles.
      */
-    public function actionRoles()
+    public function actionIndex()
     {
-        return $this->render('roles', [
+        return $this->render('index', [
             'roles' => new ArrayDataProvider([   
                 'allModels' => \Yii::$app->authManager->getRoles(),
+                'pagination' => [
+                    'pageSize' => 10,
+                ],
             ]),
             'roleForm' => new RoleForm(['scenario' => Scenarios::ROLE_NEW]),
         ]);
@@ -124,20 +100,20 @@ class AdminController extends Controller
     /**
      * Display the existing permission for a role and lets you add some others.
      * 
-     * @param string $role the role name
+     * @param string $id the role name
      * @throws \yii\web\NotFoundHttpException
      */
-    public function actionViewRole($role)
+    public function actionView($id)
     {
-        if (\Yii::$app->authManager->getRole($role) === null) {
+        if (\Yii::$app->authManager->getRole($id) === null) {
             throw new \yii\web\NotFoundHttpException('The given role was not found within this application.');
         }
         
-        return $this->render('rolesView', [
-            'permissionForm' => new PermissionForm(['role' => $role]),
-            'directPermissions' => AuthHelper::getDirectPermissions($role, true),
-            'childrenRoles' => AuthHelper::getChildrenRoles($role, true),
-            'roleForm' => new RoleForm(['parentRole' => $role]),
+        return $this->render('view', [
+            'permissionForm' => new PermissionForm(['role' => $id]),
+            'directPermissions' => AuthHelper::getDirectPermissions($id, true),
+            'childrenRoles' => AuthHelper::getChildrenRoles($id, true),
+            'roleForm' => new RoleForm(['parentRole' => $id]),
         ]);
     }
     

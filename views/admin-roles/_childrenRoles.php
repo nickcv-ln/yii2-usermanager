@@ -1,5 +1,4 @@
 <?php
-
 use nickcv\usermanager\helpers\AuthHelper;
 use yii\grid\GridView;
 use yii\helpers\Html;

@@ -14,9 +14,9 @@ namespace nickcv\usermanager\controllers;
 
 use yii\web\Controller;
 use yii\filters\AccessControl;
-use yii\data\ActiveDataProvider;
 use nickcv\usermanager\enums\Permissions;
 use nickcv\usermanager\models\User;
+use nickcv\usermanager\models\UserSearch;
 
 /**
  * Controller class containing the actions for the user administration.
@@ -26,7 +26,7 @@ use nickcv\usermanager\models\User;
  * 
  * @property \nickcv\usermanager\Module $module
  */
-class AdminUserController extends Controller
+class AdminUsersController extends Controller
 {
 
     /**
@@ -41,11 +41,12 @@ class AdminUserController extends Controller
                 'class' => AccessControl::className(),
                 'only' => [
                     'index',
+                    'update'
                 ],
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['index'],
+                        'actions' => ['index','update'],
                         'roles' => [Permissions::USER_MANAGEMENT],
                     ],
                 ],
@@ -55,13 +56,30 @@ class AdminUserController extends Controller
     
     public function actionIndex()
     {
+        $model = new UserSearch();
+        $dataProvider = $model->search(\Yii::$app->request->queryParams);
+        
         return $this->render('index', [
-            'dataProvider' => new ActiveDataProvider([
-                'query' => User::find(),
-                'pagination' => [
-                    'pageSize' => 20,
-                ],
-            ])
+            'model' => $model,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+    
+    public function actionUpdate($id)
+    {
+        
+    }
+    
+    public function actionView($id)
+    {
+        $model = User::find(['id' => $id])->with(['logs'])->one();
+        
+        if (!$model) {
+            throw new \yii\web\NotFoundHttpException('user not found');
+        }
+        
+        return $this->render('view', [
+            'model' => $model
         ]);
     }
 

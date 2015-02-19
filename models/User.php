@@ -1,6 +1,6 @@
 <?php
 /**
- * Contains the User entity for table "usermanager_user" which is also used ad
+ * Contains the User entity for table "usermanager_user" which is also used as
  * the user identity.
  * 
  * @link http://www.creationgears.com/
@@ -29,8 +29,8 @@ use yii\web\IdentityInterface;
  * @property string $authkey
  * @property string $registration_date
  *
- * @property UserBans[] $userBans
- * @property UserLogs[] $userLogs
+ * @property UserBans[] $bans
+ * @property UserLogs[] $logs
  */
 class User extends \yii\db\ActiveRecord implements IdentityInterface
 {
@@ -106,7 +106,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getUserBans()
+    public function getBans()
     {
         return $this->hasMany(UserBans::className(), ['id_user' => 'id']);
     }
@@ -114,9 +114,9 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getUserLogs()
+    public function getLogs()
     {
-        return $this->hasMany(UserLogs::className(), ['id_user' => 'id']);
+        return $this->hasMany(UserLogs::className(), ['id_user' => 'id'])->orderBy('login_date DESC');
     }
     
     /**
@@ -146,7 +146,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     {
         return static::findOne(['email' => $email]);
     }
-
+    
     /**
      * @inheritdoc
      */
@@ -185,6 +185,24 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     public function validatePassword($password)
     {
         return \Yii::$app->security->validatePassword($password, $this->password);
+    }
+    
+    /**
+     * Returns the user full name.
+     * 
+     * @return string
+     */
+    public function getFullName()
+    {
+        $data = [];
+        if ($this->firstname) {
+            $data[] = $this->firstname;
+        }
+        if ($this->lastname) {
+            $data[] = $this->lastname;
+        }
+        
+        return implode(' ', $data);
     }
 
 }
