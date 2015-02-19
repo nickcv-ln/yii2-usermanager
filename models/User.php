@@ -15,6 +15,7 @@ use nickcv\usermanager\enums\Database;
 use nickcv\usermanager\enums\Scenarios;
 use nickcv\usermanager\enums\Roles;
 use yii\web\IdentityInterface;
+use nickcv\usermanager\helpers\AuthHelper;
 
 /**
  * This is the model class for table "usermanager_user".
@@ -63,6 +64,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     {
         $scenarios = parent::scenarios();
         $scenarios[Scenarios::ADMIN_CREATION] = ['firstname', 'lastname', 'email', 'password', 'role'];
+        $scenarios[Scenarios::USER_EDITING] = ['firstname', 'lastname', 'email', 'password', 'role'];
         
         return $scenarios;
     }
@@ -82,8 +84,29 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             [['password'], 'string', 'max' => 220],
             ['password', '\nickcv\usermanager\validators\PasswordStrength'],
             [['firstname'], 'string', 'max' => 64],
-            ['role', 'in', 'range' => [Roles::ADMIN, Roles::SUPER_ADMIN]],
+            ['role', 'in', 'range' => [Roles::ADMIN, Roles::SUPER_ADMIN], 'on' => Scenarios::ADMIN_CREATION],
+            ['role', 'notParentOfCurrentUser'],
         ];
+    }
+    
+    /**
+     * Checks wheter the given role exists and is not a parent of the current
+     * user's role.
+     * 
+     * @param string $attribute
+     * @return boolean
+     */
+    public function notParentOfCurrentUser($attribute)
+    {
+        if (!\Yii::$app->authManager->getRole($this->$attribute)) {
+            $this->addError($attribute, 'The given role "' . $this->$attribute . '" does not exists.');
+            return false;
+        }
+        
+        $currentUserRole = \Yii::$app->authManager->getRolesByUser(\Yii::$app->user->id);
+        if (array_key_exists($currentUserRole, AuthHelper::getChildrenRoles($this->$attribute))) {
+            $this->addError($attribute, 'You cannot assign to another user a role that is inheriting yours.');
+        }
     }
 
     /**

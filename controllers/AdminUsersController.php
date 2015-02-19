@@ -65,11 +65,6 @@ class AdminUsersController extends Controller
         ]);
     }
     
-    public function actionUpdate($id)
-    {
-        
-    }
-    
     public function actionView($id)
     {
         $model = User::find(['id' => $id])->with(['logs'])->one();
@@ -79,7 +74,21 @@ class AdminUsersController extends Controller
         }
         
         return $this->render('view', [
-            'model' => $model
+            'model' => $model,
+        ]);
+    }
+    
+    public function actionUpdate($id)
+    {
+        $model = User::findOne($id);
+        $model->password = null;
+        
+        if (!$model) {
+            throw new \yii\web\NotFoundHttpException('user not found');
+        }
+        
+        return $this->render('update', [
+            'model' => $model,
         ]);
     }
 

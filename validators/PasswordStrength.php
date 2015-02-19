@@ -11,7 +11,6 @@
 namespace nickcv\usermanager\validators;
 
 use yii\validators\Validator;
-use yii\base\Model;
 use nickcv\usermanager\enums\PasswordStrength as PS;
 
 /**

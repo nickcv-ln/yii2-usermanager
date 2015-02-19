@@ -23,6 +23,7 @@ class Scenarios extends BasicEnum
     const USER_REGISTRATION = 'userRegistration';
     const USER_CREATION = 'userCreation';
     const ADMIN_CREATION = 'adminCreation';
+    const USER_EDITING = 'userEditing';
     const PERMISSION_ADD = 'permissionAdd';
     const PERMISSION_NEW = 'permissionNew';
     const PERMISSION_DELETE = 'permissionDelete';
