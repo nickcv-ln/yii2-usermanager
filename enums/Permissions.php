@@ -23,4 +23,21 @@ class Permissions extends BasicEnum
     const USER_MANAGEMENT = 'usersManagement';
     const ROLES_MANAGEMENT = 'rolesManagement';
     const PROFILE_EDITING = 'profileEditing';
+    
+    /**
+     * Returns the permission description
+     * 
+     * @param string $value
+     * @return string
+     */
+    public static function getLabel($value)
+    {
+        $permission = \Yii::$app->authManager->getPermission($value);
+        
+        if ($permission === null) {
+            return null;
+        }
+        
+        return $permission->description;
+    }
 }

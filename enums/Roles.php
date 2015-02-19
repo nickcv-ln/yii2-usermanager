@@ -22,4 +22,21 @@ class Roles extends BasicEnum
     const SUPER_ADMIN = 'superAdmin';
     const ADMIN = 'admin';
     const STANDARD_USER = 'standardUser';
+    
+    /**
+     * Returns the role description
+     * 
+     * @param string $value
+     * @return string
+     */
+    public static function getLabel($value)
+    {
+        $role = \Yii::$app->authManager->getRole($value);
+        
+        if ($role === null) {
+            return null;
+        }
+        
+        return $role->description;
+    }
 }

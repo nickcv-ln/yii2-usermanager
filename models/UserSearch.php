@@ -20,7 +20,6 @@ use nickcv\usermanager\helpers\AuthHelper;
  */
 class UserSearch extends User
 {
-    public $role;
     
     /**
      * @inheritdoc
