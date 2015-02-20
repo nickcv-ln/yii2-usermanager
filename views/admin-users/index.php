@@ -23,6 +23,7 @@ $this->params['breadcrumbs'][] = 'Users';
 <?php echo GridView::widget([
     'dataProvider' => $dataProvider,
     'filterModel' => $model,
+    'emptyText' => 'No user found.',
     'columns' => [
         'email',
         'firstname',
@@ -37,14 +38,10 @@ $this->params['breadcrumbs'][] = 'Users';
         [
             'attribute' => 'role',
             'value' => function($model) {
-                $roles = [];
-                foreach (\Yii::$app->authManager->getRolesByUser($model->id) as $role) {
-                    $roles[] = $role->description;
-                }
-                
-                return implode(', ', $roles);
+                return '<kbd>' . $model->role . '</kbd>';
             },
-            'filter' => ExtendedRoles::getLabels(),
+            'format' => 'html',
+            'filter' => array_combine(ExtendedRoles::getList(), ExtendedRoles::getList()),
         ],
         [
             'class' => yii\grid\ActionColumn::className(),

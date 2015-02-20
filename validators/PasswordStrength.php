@@ -34,7 +34,7 @@ use nickcv\usermanager\enums\PasswordStrength as PS;
  */
 class PasswordStrength extends Validator
 {
-    
+    public $required = true;
     
     public function init()
     {
@@ -53,6 +53,10 @@ class PasswordStrength extends Validator
     public function validateAttribute($model, $attribute)
     {
         $value = $model->$attribute;
+        if (!$this->required && !$value) {
+            return true;
+        }
+        
         $results = [];
         preg_match($this->getValidationRegEx(), $value, $results);
         
@@ -69,8 +73,9 @@ class PasswordStrength extends Validator
     {
         $regex = $this->getValidationRegEx();
         $message = json_encode($this->message, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+        $requiredCheck = $this->required ? null : 'value &&';
         return <<<JS
-if (!value.match($regex)) {
+if ($requiredCheck !value.match($regex)) {
     messages.push($message);
 }
 JS;

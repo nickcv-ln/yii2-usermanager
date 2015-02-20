@@ -6,12 +6,6 @@ use nickcv\usermanager\enums\Permissions;
 use nickcv\usermanager\enums\Roles;
 AuthHelper::disableCache();
 
-$testName = Yii::$app->authManager->getPermission('TestName');
-if ($testName) {
-    Yii::$app->authManager->remove($testName);
-}
-
-
 $I = new FunctionalTester($scenario);
 $I->wantTo('ensure that permissions page works');
 

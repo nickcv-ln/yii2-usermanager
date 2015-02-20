@@ -311,20 +311,20 @@ class AuthHelperTest extends DbTestCase
         $this->assertFalse(AuthHelper::isChildRoleProtected(Roles::STANDARD_USER, 'madeup'));
     }
     
-    public function testAdminProtectedChildRoles()
+    public function testAllRolesAreProtectedChildRolesOfAdmin()
     {
-        $this->assertFalse(AuthHelper::isChildRoleProtected(Roles::ADMIN, Roles::SUPER_ADMIN));
-        $this->assertFalse(AuthHelper::isChildRoleProtected(Roles::ADMIN, Roles::ADMIN));
+        $this->assertTrue(AuthHelper::isChildRoleProtected(Roles::ADMIN, Roles::SUPER_ADMIN));
+        $this->assertTrue(AuthHelper::isChildRoleProtected(Roles::ADMIN, Roles::ADMIN));
         $this->assertTrue(AuthHelper::isChildRoleProtected(Roles::ADMIN, Roles::STANDARD_USER));
-        $this->assertFalse(AuthHelper::isChildRoleProtected(Roles::ADMIN, 'madeup'));
+        $this->assertTrue(AuthHelper::isChildRoleProtected(Roles::ADMIN, 'madeup'));
     }
     
-    public function testSuperAdminProtectedChildRoles()
+    public function testAllRolesAreProtectedChildRolesOfSuperAdmin()
     {
-        $this->assertFalse(AuthHelper::isChildRoleProtected(Roles::SUPER_ADMIN, Roles::SUPER_ADMIN));
+        $this->assertTrue(AuthHelper::isChildRoleProtected(Roles::SUPER_ADMIN, Roles::SUPER_ADMIN));
         $this->assertTrue(AuthHelper::isChildRoleProtected(Roles::SUPER_ADMIN, Roles::ADMIN));
         $this->assertTrue(AuthHelper::isChildRoleProtected(Roles::SUPER_ADMIN, Roles::STANDARD_USER));
-        $this->assertFalse(AuthHelper::isChildRoleProtected(Roles::SUPER_ADMIN, 'madeup'));
+        $this->assertTrue(AuthHelper::isChildRoleProtected(Roles::SUPER_ADMIN, 'madeup'));
     }
     
     public function testGetListOfUserWithRole()
@@ -339,6 +339,71 @@ class AuthHelperTest extends DbTestCase
         
         $standardUsers = AuthHelper::getUsersWithRole(Roles::STANDARD_USER);
         $this->assertCount(0, $standardUsers);
+    }
+    
+    public function testGetAllRolesExcludingParentRoles()
+    {
+        $superAdmin = AuthHelper::getAllRolesExcludingParentRoles(Roles::SUPER_ADMIN);
+        
+        $this->assertCount(3, $superAdmin);
+        $this->assertContainsOnlyInstancesOf('\yii\rbac\Role', $superAdmin);
+        $this->assertEquals(Roles::SUPER_ADMIN, $superAdmin[Roles::SUPER_ADMIN]->name);
+        $this->assertEquals(Roles::ADMIN, $superAdmin[Roles::ADMIN]->name);
+        $this->assertEquals(Roles::STANDARD_USER, $superAdmin[Roles::STANDARD_USER]->name);
+        
+        $admin = AuthHelper::getAllRolesExcludingParentRoles(Roles::ADMIN);
+        
+        $this->assertCount(2, $admin);
+        $this->assertContainsOnlyInstancesOf('\yii\rbac\Role', $admin);
+        $this->assertEquals(Roles::ADMIN, $admin[Roles::ADMIN]->name);
+        $this->assertEquals(Roles::STANDARD_USER, $admin[Roles::STANDARD_USER]->name);
+        
+        $standardUser = AuthHelper::getAllRolesExcludingParentRoles(Roles::STANDARD_USER);
+        
+        $this->assertCount(1, $standardUser);
+        $this->assertContainsOnlyInstancesOf('\yii\rbac\Role', $standardUser);
+        $this->assertEquals(Roles::STANDARD_USER, $standardUser[Roles::STANDARD_USER]->name);
+    }
+    
+    public function testGetAllRolesExcludingParentRolesAsDataProvider()
+    {
+        $superAdminData = AuthHelper::getAllRolesExcludingParentRoles(Roles::SUPER_ADMIN, true);
+        
+        $this->assertInstanceOf('\yii\data\ArrayDataProvider', $superAdminData);
+        $this->assertEquals(3, $superAdminData->count);
+        
+        $superAdmin = $superAdminData->getModels();
+        
+        $this->assertContainsOnlyInstancesOf('\yii\rbac\Role', $superAdmin);
+        $this->assertEquals(Roles::SUPER_ADMIN, $superAdmin[Roles::SUPER_ADMIN]->name);
+        $this->assertEquals(Roles::ADMIN, $superAdmin[Roles::ADMIN]->name);
+        $this->assertEquals(Roles::STANDARD_USER, $superAdmin[Roles::STANDARD_USER]->name);
+        
+        $adminData = AuthHelper::getAllRolesExcludingParentRoles(Roles::ADMIN, true);
+        
+        $this->assertInstanceOf('\yii\data\ArrayDataProvider', $adminData);
+        $this->assertEquals(2, $adminData->count);
+        
+        $admin = $adminData->getModels();
+        
+        $this->assertContainsOnlyInstancesOf('\yii\rbac\Role', $admin);
+        $this->assertEquals(Roles::ADMIN, $admin[Roles::ADMIN]->name);
+        $this->assertEquals(Roles::STANDARD_USER, $admin[Roles::STANDARD_USER]->name);
+        
+        $standardUserData = AuthHelper::getAllRolesExcludingParentRoles(Roles::STANDARD_USER, true);
+        
+        $this->assertInstanceOf('\yii\data\ArrayDataProvider', $standardUserData);
+        $this->assertEquals(1, $standardUserData->count);
+        
+        $standardUser = $standardUserData->getModels();
+        $this->assertContainsOnlyInstancesOf('\yii\rbac\Role', $standardUser);
+        $this->assertEquals(Roles::STANDARD_USER, $standardUser[Roles::STANDARD_USER]->name);
+    }
+    
+    public function testGetRolePerUserID()
+    {
+        $this->assertEquals(Roles::ADMIN, AuthHelper::getUserRoleName(2));
+        $this->assertEquals(Roles::SUPER_ADMIN, AuthHelper::getUserRoleName(1));
     }
     
     private function createRole($roleName, $child = null, $parent = null)

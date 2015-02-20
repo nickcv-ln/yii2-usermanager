@@ -15,8 +15,10 @@ namespace nickcv\usermanager\controllers;
 use yii\web\Controller;
 use yii\filters\AccessControl;
 use nickcv\usermanager\enums\Permissions;
+use nickcv\usermanager\enums\Scenarios;
 use nickcv\usermanager\models\User;
 use nickcv\usermanager\models\UserSearch;
+use nickcv\usermanager\helpers\AuthHelper;
 
 /**
  * Controller class containing the actions for the user administration.
@@ -67,7 +69,7 @@ class AdminUsersController extends Controller
     
     public function actionView($id)
     {
-        $model = User::find(['id' => $id])->with(['logs'])->one();
+        $model = User::find()->where(['id' => $id])->with(['logs'])->one();
         
         if (!$model) {
             throw new \yii\web\NotFoundHttpException('user not found');
@@ -80,11 +82,25 @@ class AdminUsersController extends Controller
     
     public function actionUpdate($id)
     {
+        if (\Yii::$app->user->id == $id) {
+            throw new \yii\web\ForbiddenHttpException('You cannot edit your own user.');
+        }
+        
         $model = User::findOne($id);
+        $model->scenario = Scenarios::USER_EDITING;
         $model->password = null;
+        
+        if (AuthHelper::IsParentRole($model->role, AuthHelper::getUserRoleName(\Yii::$app->user->id))) {
+            throw new \yii\web\ForbiddenHttpException('You cannot edit a user with a higher level than yours.');
+        }
         
         if (!$model) {
             throw new \yii\web\NotFoundHttpException('user not found');
+        }
+        
+        if ($model->load(\Yii::$app->request->post()) && $model->validate())
+        {
+            
         }
         
         return $this->render('update', [

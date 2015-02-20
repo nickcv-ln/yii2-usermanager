@@ -2,15 +2,23 @@
 
 namespace nickcv\usermanager\tests\codeception\unit\models;
 
-use yii\codeception\TestCase;
+use yii\codeception\DbTestCase;
 use nickcv\usermanager\forms\RoleForm;
 use nickcv\usermanager\enums\Scenarios;
 use nickcv\usermanager\enums\Roles;
 use nickcv\usermanager\enums\Permissions;
 use nickcv\usermanager\helpers\AuthHelper;
+use nickcv\usermanager\tests\codeception\unit\fixtures\UserFixture;
 
-class RoleFormTest extends TestCase
+class RoleFormTest extends DbTestCase
 {
+    
+    public function fixtures()
+    {
+        return [
+            'users' => UserFixture::className(),
+        ];
+    }
     
     public function setUp()
     {
@@ -154,6 +162,9 @@ class RoleFormTest extends TestCase
         $this->assertEquals('madeUp', $role->name);
         $this->assertEquals('made up description', $role->description);
         
+        $this->assertArrayHasKey('madeUp', AuthHelper::getChildrenRoles(Roles::SUPER_ADMIN));
+        $this->assertArrayHasKey('madeUp', AuthHelper::getChildrenRoles(Roles::ADMIN));
+        
         $auth->remove($role);
         
         $this->assertNull($auth->getRole('madeUp'));
@@ -232,7 +243,7 @@ class RoleFormTest extends TestCase
         $model->name = Roles::SUPER_ADMIN;
         
         $this->assertFalse($model->validate());
-        $this->assertCount(1, $model->getErrors());
+        $this->assertCount(2, $model->getErrors());
         $this->assertCount(1, $model->getErrors('parentRole'));
         $this->assertContains('The role "admin" is not a parent of role "superAdmin".', $model->getErrors('parentRole'));
     }

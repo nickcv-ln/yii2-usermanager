@@ -6,12 +6,6 @@ use nickcv\usermanager\enums\Permissions;
 use nickcv\usermanager\enums\Roles;
 AuthHelper::disableCache();
 
-$testName = Yii::$app->authManager->getRole('TestName');
-if ($testName) {
-    Yii::$app->authManager->remove($testName);
-}
-
-
 $I = new FunctionalTester($scenario);
 $I->wantTo('ensure that roles page works');
 
@@ -56,37 +50,51 @@ $I->see('The role name should be unique, role "admin" already exists.');
 
 $I->amGoingTo('add a child role to the new role');
 $I->amOnPage(['usermanager/admin/roles/TestName']);
-$I->expectTo('see add role modal button and superAdmin role button');
+$I->expectTo('see add role modal button and standardUser role button');
 $I->see('add child role');
-$I->see('superAdmin', '#add-role-modal');
-$I->click('superAdmin', '#add-role-modal');
+$I->see('standardUser', '#add-role-modal');
+$I->click('standardUser', '#add-role-modal');
 $I->expectTo('see success message and not the modal or role button');
-$I->see('The role "superAdmin" is now a child of the current role.', '.alert-success');
+$I->see('The role "standardUser" is now a child of the current role.', '.alert-success');
 $I->dontSee('add child role');
-$I->dontSee('superAdmin', '#add-role-modal');
+$I->dontSee('standardUser', '#add-role-modal');
 
 $I->amGoingTo('remove the superAdmin child role');
 $I->expectTo('see the role revoke button');
-$I->seeElement('#revoke-role-form-superAdmin');
-$I->submitForm('#revoke-role-form-superAdmin', []);
+$I->seeElement('#revoke-role-form-standardUser');
+$I->submitForm('#revoke-role-form-standardUser', []);
 $I->expectTo('see success message and the modal and role button');
-$I->see('The role "superAdmin" is not a child of this role anymore.', '.alert-success');
+$I->see('The role "standardUser" is not a child of this role anymore.', '.alert-success');
 $I->see('add child role');
-$I->see('superAdmin', '#add-role-modal');
+$I->see('standardUser', '#add-role-modal');
+
+$I->amGoingTo('add three extra roles for tests and make them all child of each other');
+$I->amOnPage(['usermanager/admin/roles']);
+$rolePage->createRole('TestNameA', 'Test Role A');
+$rolePage->createRole('TestNameB', 'Test Role B');
+$rolePage->createRole('TestNameC', 'Test Role C');
+$I->amOnPage(['usermanager/admin/roles/TestNameA']);
+$I->click('TestNameB', '#add-role-modal');
+$I->amOnPage(['usermanager/admin/roles/TestNameB']);
+$I->click('TestNameC', '#add-role-modal');
 
 $I->amGoingTo('test that only available roles appear');
-$I->expectTo('see add role modal button and admin role button');
+$I->amOnPage(['usermanager/admin/roles/TestName']);
+$I->expectTo('see add role modal button and Testname3 role button');
 $I->see('add child role');
-$I->see('admin', '#add-role-modal #add-role-form-admin');
-$I->see('superAdmin', '#add-role-modal #add-role-form-superAdmin');
-$I->see('standardUser', '#add-role-modal #add-role-form-standardUser');
-$I->click('admin', '#add-role-modal');
+$I->see('TestNameA', '#add-role-modal #add-role-form-TestNameA');
+$I->see('TestNameB', '#add-role-modal #add-role-form-TestNameB');
+$I->see('TestNameC', '#add-role-modal #add-role-form-TestNameC');
+$I->click('TestNameB', '#add-role-modal');
 $I->expectTo('see success message and not the roles button not available');
-$I->see('The role "admin" is now a child of the current role.', '.alert-success');
+$I->see('The role "TestNameB" is now a child of the current role.', '.alert-success');
 $I->see('add child role');
-$I->dontSee('admin', '#add-role-modal #add-role-form-admin');
-$I->see('superAdmin', '#add-role-modal #add-role-form-superAdmin');
-$I->dontSee('standardUser', '#add-role-modal #add-role-form-standardUser');
+$I->see('TestNameA', '#add-role-modal #add-role-form-TestNameA');
+$I->dontSee('TestNameB', '#add-role-modal #add-role-form-TestNameB');
+$I->dontSee('TestNameC', '#add-role-modal #add-role-form-TestNameC');
 
 Yii::$app->authManager->remove(Yii::$app->authManager->getRole('TestName'));
+Yii::$app->authManager->remove(Yii::$app->authManager->getRole('TestNameA'));
+Yii::$app->authManager->remove(Yii::$app->authManager->getRole('TestNameB'));
+Yii::$app->authManager->remove(Yii::$app->authManager->getRole('TestNameC'));
 AuthHelper::enableCache();

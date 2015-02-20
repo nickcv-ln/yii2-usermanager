@@ -76,6 +76,34 @@ class AuthHelper
     }
     
     /**
+     * Returns all the roles but the ones that already inherit the given one.
+     * 
+     * @param string $role
+     * @param boolean $returnDataProvider
+     * @return \yii\rbac\Role[]|\yii\data\ArrayDataProvider
+     */
+    public static function getAllRolesExcludingParentRoles($role, $returnDataProvider = false)
+    {
+        $roles = self::getChildrenRoles($role);
+        
+        foreach (array_diff_key(\Yii::$app->authManager->getRoles(), $roles) as $key => $remainingRole) {
+            if (!array_key_exists($role, self::getChildrenRoles($remainingRole->name))) {
+                $roles[$key] = $remainingRole;
+            }
+        }
+        
+        
+        
+        if ($returnDataProvider) {
+            return new ArrayDataProvider([
+                'allModels' => $roles,
+            ]);
+        }
+        
+        return $roles;
+    }
+    
+    /**
      * Returns all the direct permissions granted to a given role.
      * 
      * @param string $role the role to check
@@ -179,6 +207,56 @@ class AuthHelper
     }
     
     /**
+     * Returns the given user current role name.
+     * 
+     * @param integer $userID
+     * @return string
+     */
+    public static function getUserRoleName($userID)
+    {
+        $roles = \Yii::$app->authManager->getRolesByUser($userID);
+        
+        if (!count($roles)) {
+            return null;
+        }
+        
+        return array_pop($roles)->name;    
+    }
+    
+    /**
+     * Returns a list of user ids with the given role.
+     * 
+     * @param string $role
+     * @return array
+     */
+    public static function getUsersWithRole($role)
+    {
+        $auth = \Yii::$app->authManager;
+        $query = (new Query)
+            ->from($auth->assignmentTable)
+            ->where(['item_name' => (string) $role]);
+
+        $userIDs = [];
+        foreach ($query->all($auth->db) as $row) {
+            $userIDs[] = $row['user_id'];
+        }
+        
+        return $userIDs;
+    }
+    
+    /**
+     * Checks whether the parent role si a parent of the child role.
+     * 
+     * @param string $parent the supposed parent role name
+     * @param string $child the supposed child role name
+     * @return boolean
+     */
+    public static function IsParentRole($parent, $child)
+    {
+        return array_key_exists($child, AuthHelper::getChildrenRoles($parent));
+    }
+    
+    /**
      * Checks whether the given permission is protected for the given role.
      * 
      * @param string $role
@@ -210,33 +288,11 @@ class AuthHelper
     {
         switch ($role) {
             case Roles::ADMIN:
-                return self::isAdminChildRoleProtected($child);
             case Roles::SUPER_ADMIN:
-                return self::isSuperAdminChildRoleProtected($child);
+                return true;
             default:
                 return false;
         }
-    }
-    
-    /**
-     * Returns a list of user ids with the given role.
-     * 
-     * @param string $role
-     * @return array
-     */
-    public static function getUsersWithRole($role)
-    {
-        $auth = \Yii::$app->authManager;
-        $query = (new Query)
-            ->from($auth->assignmentTable)
-            ->where(['item_name' => (string) $role]);
-
-        $userIDs = [];
-        foreach ($query->all($auth->db) as $row) {
-            $userIDs[] = $row['user_id'];
-        }
-        
-        return $userIDs;
     }
     
     /**
@@ -301,33 +357,4 @@ class AuthHelper
         }
     }
     
-    /**
-     * Checks whether the given child role is protected for the Admin role.
-     * 
-     * @param string $child
-     * @return boolean
-     */
-    private static function isAdminChildRoleProtected($child)
-    {
-        if ($child === Roles::STANDARD_USER) {
-            return true;
-        }
-        
-        return false;
-    }
-    
-    /**
-     * Checks whether the given child role is protected for the SuperAdmin role.
-     * 
-     * @param string $child
-     * @return boolean
-     */
-    private static function isSuperAdminChildRoleProtected($child)
-    {
-        if ($child === Roles::ADMIN) {
-            return true;
-        }
-        
-        return self::isAdminChildRoleProtected($child);
-    }
 }

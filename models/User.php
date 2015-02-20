@@ -16,6 +16,8 @@ use nickcv\usermanager\enums\Scenarios;
 use nickcv\usermanager\enums\Roles;
 use yii\web\IdentityInterface;
 use nickcv\usermanager\helpers\AuthHelper;
+use nickcv\usermanager\validators\PasswordStrength;
+use nickcv\usermanager\behaviors\UserBehavior;
 
 /**
  * This is the model class for table "usermanager_user".
@@ -43,6 +45,13 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     public $role;
     
     /**
+     * Password used when updating a password.
+     *
+     * @var string 
+     */
+    public $newPassword;
+    
+    /**
      * @inheritdoc
      */
     public static function tableName()
@@ -53,7 +62,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     public function behaviors()
     {
         return [
-            'user' => '\nickcv\usermanager\behaviors\UserBehavior',
+            'user' => UserBehavior::className(),
         ];
     }
     
@@ -64,7 +73,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     {
         $scenarios = parent::scenarios();
         $scenarios[Scenarios::ADMIN_CREATION] = ['firstname', 'lastname', 'email', 'password', 'role'];
-        $scenarios[Scenarios::USER_EDITING] = ['firstname', 'lastname', 'email', 'password', 'role'];
+        $scenarios[Scenarios::USER_EDITING] = ['firstname', 'lastname', 'email', 'newPassword', 'role'];
         
         return $scenarios;
     }
@@ -75,17 +84,19 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            [['firstname', 'lastname', 'email', 'password', 'role'], 'required'],
+            [['firstname', 'lastname', 'email', 'role', 'password'], 'required'],
             ['email', 'email'],
             ['email', 'unique'],
             [['status'], 'integer'],
             [['registration_date'], 'safe'],
             [['email', 'lastname', 'token'], 'string', 'max' => 130],
-            [['password'], 'string', 'max' => 220],
-            ['password', '\nickcv\usermanager\validators\PasswordStrength'],
+            [['password', 'newPassword'], 'string', 'max' => 220],
+            ['password', PasswordStrength::className()],
+            ['newPassword', PasswordStrength::className(), 'required' => false],
+            
             [['firstname'], 'string', 'max' => 64],
             ['role', 'in', 'range' => [Roles::ADMIN, Roles::SUPER_ADMIN], 'on' => Scenarios::ADMIN_CREATION],
-            ['role', 'notParentOfCurrentUser'],
+            ['role', 'notParentOfCurrentUser', 'on' => Scenarios::USER_EDITING],
         ];
     }
     
@@ -97,14 +108,14 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
      * @return boolean
      */
     public function notParentOfCurrentUser($attribute)
-    {
+    {   
         if (!\Yii::$app->authManager->getRole($this->$attribute)) {
             $this->addError($attribute, 'The given role "' . $this->$attribute . '" does not exists.');
             return false;
         }
         
-        $currentUserRole = \Yii::$app->authManager->getRolesByUser(\Yii::$app->user->id);
-        if (array_key_exists($currentUserRole, AuthHelper::getChildrenRoles($this->$attribute))) {
+        $currentUserRole = AuthHelper::getUserRoleName(\Yii::$app->user->id);
+        if (!$currentUserRole || AuthHelper::IsParentRole($currentUserRole, $this->$attribute)) {
             $this->addError($attribute, 'You cannot assign to another user a role that is inheriting yours.');
         }
     }

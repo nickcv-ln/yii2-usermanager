@@ -1,7 +1,8 @@
 <?php
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
-use nickcv\usermanager\enums\UserStatus;
+use yii\helpers\ArrayHelper;
+use nickcv\usermanager\helpers\AuthHelper;
 
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
@@ -21,11 +22,12 @@ $this->params['breadcrumbs'][] = 'Edit';
     'id' => 'edit-user-form',
     'options' => ['autocomplete' => 'off'],
     'fieldConfig' => [
-        'template' => "{label}\n<div class=\"\">{input}</div>\n<div class=\"\">{error}</div>",
+        'template' => "{label}\n<div class=\"\">{input}</div>\n<div class=\"\">{hint}{error}</div>",
         'labelOptions' => ['class' => 'control-label'],
     ],
-    'action' => ['admin/roles/add-new-role'],
 ]);
+
+echo $form->errorSummary($model);
 ?>
 
 <div class="col-md-6">
@@ -38,12 +40,15 @@ $this->params['breadcrumbs'][] = 'Edit';
     <?php echo $form->field($model, 'email')->textInput();  ?>
 </div>
 <div class="col-md-6">
-    <?php echo $form->field($model, 'password')->passwordInput();  ?>
+    <?php echo $form->field($model, 'newPassword')->passwordInput()->hint('Leave this field blank if you don\'t want to update the password.');  ?>
+</div>
+<div class="col-md-6">
+    <?php echo $form->field($model, 'role')->dropDownList(ArrayHelper::map(AuthHelper::getAllRolesExcludingParentRoles(AuthHelper::getUserRoleName(\Yii::$app->user->id)), 'name', 'name')); ?>
 </div>
 <div class="clearfix"></div>
 
-<div class="col-md-12">
-    <?php echo Html::submitButton('update user data', ['class' => 'btn btn-primary', 'name' => 'edit-user-button']) ?>
+<div class="col-md-12 text-center">
+    <?php echo Html::submitButton('update user data', ['class' => 'btn btn-lg btn-primary', 'name' => 'edit-user-button']) ?>
 </div>
 
 <?php ActiveForm::end(); ?>

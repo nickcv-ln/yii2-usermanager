@@ -163,6 +163,7 @@ class RoleForm extends Model
         $role = \Yii::$app->authManager->createRole($this->name);
         $role->description = $this->description;
         \Yii::$app->authManager->add($role);
+        \Yii::$app->authManager->addChild(\Yii::$app->authManager->getRole(Roles::ADMIN), $role);
         
         $roleClass = Module::EXTENDED_ROLES_CLASS;
         if (defined('YII_ENV') && YII_ENV === 'test') {

@@ -18,6 +18,7 @@ use yii\base\InvalidCallException;
 use nickcv\usermanager\enums\Scenarios;
 use nickcv\usermanager\enums\UserStatus;
 use nickcv\usermanager\enums\Roles;
+use nickcv\usermanager\helpers\AuthHelper;
 
 /**
  * This Behavior is used to pre-populate some attributes when creating a new
@@ -51,6 +52,7 @@ class UserBehavior extends Behavior
         return [
             ActiveRecord::EVENT_BEFORE_INSERT => 'prepopulateBeforeCreation',
             ActiveRecord::EVENT_AFTER_INSERT => 'updateRoles',
+            ActiveRecord::EVENT_AFTER_FIND => 'retrieveRoleName',
         ];
     }
 
@@ -64,16 +66,24 @@ class UserBehavior extends Behavior
     {
         $this->checkIfActiveRecordIsUsermanagerUser();
         
-        if ($this->owner->scenario === Scenarios::ADMIN_CREATION) {
-            $this->owner->status = UserStatus::ACTIVE;
-        } else {
-            $this->owner->status = UserStatus::PENDING;
+        switch ($this->owner->scenario) {
+            case Scenarios::ADMIN_CREATION:
+                $this->owner->status = UserStatus::ACTIVE;
+                $this->updatePassword();
+                $this->owner->registration_date = date('Y-m-d H:i:s');
+                break;
+            case Scenarios::USER_REGISTRATION:
+                $this->owner->status = UserStatus::PENDING;
+                $this->updatePassword();
+                $this->owner->registration_date = date('Y-m-d H:i:s');
+                break;
+            case Scenarios::USER_EDITING:
+                if ($this->owner->password) {
+                    $this->updatePassword();
+                }
+            default:
+                break;
         }
-        
-        $this->owner->password = \Yii::$app->security->generatePasswordHash($this->owner->password);
-        $this->owner->authkey = \Yii::$app->security->generateRandomString();
-        
-        $this->owner->registration_date = date('Y-m-d H:i:s');
     }
     
     /**
@@ -95,6 +105,25 @@ class UserBehavior extends Behavior
         }
         
         \Yii::$app->authManager->assign($role, $this->owner->id);
+    }
+    
+    /**
+     * Retrieve role name for current user
+     * 
+     * @param Event $event
+     */
+    public function retrieveRoleName(Event $event)
+    {
+        $this->owner->role = AuthHelper::getUserRoleName($this->owner->id);
+    }
+    
+    /**
+     * Updates the user password.
+     */
+    private function updatePassword($passwordField = 'password')
+    {
+        $this->owner->password = \Yii::$app->security->generatePasswordHash($this->owner->$passwordField);
+        $this->owner->authkey = \Yii::$app->security->generateRandomString();
     }
 
     /**
